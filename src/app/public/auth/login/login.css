@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i');
+
+form {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: black;
+  }
+
+  #login-button{
+    background-color: black; /* Green */
+    border-radius: 15px;
+    border: none;
+    width: 300px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: 100;
+  }

@@ -23,7 +23,7 @@ import {ResendCodeComponent} from "./public/auth/resend/resendCode.component";
 import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.component";
 import { MFAComponent } from './public/auth/mfa/mfa.component';
 import { EpisodesPageComponent } from './episodes-page/episodes-page.component';
-
+import { MatInputModule } from '@angular/material/input'
 
 @NgModule({
     declarations: [
@@ -49,7 +49,8 @@ import { EpisodesPageComponent } from './episodes-page/episodes-page.component';
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        routing,
+        MatInputModule
     ],
     providers: [
         CognitoUtil,

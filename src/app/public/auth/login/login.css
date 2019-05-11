@@ -4,9 +4,9 @@ form {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: black;
-  }
+}
 
-  #login-button{
+#login-button{
     background-color: black;
     border-radius: 15px;
     border: none;
@@ -15,14 +15,14 @@ form {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 40px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    font-size: 35px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     font-weight: 100;
-  }
+}
 
-  a{
-      color:black;
-      font-weight: 100;
-      font-size: 25px;
-  }
+a{
+    color:black;
+    font-weight: 100;
+    font-size: 19px;
+}

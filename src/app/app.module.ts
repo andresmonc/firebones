@@ -8,7 +8,7 @@ import {UserParametersService} from "./service/user-parameters.service";
 import {UserLoginService} from "./service/user-login.service";
 import {CognitoUtil} from "./service/cognito.service";
 import {routing} from "./app.routes";
-import {AboutComponent, HomeComponent, HomeLandingComponent} from "./public/home.component";
+import {AboutComponent, HomeComponent} from "./public/home.component";
 import {AwsUtil} from "./service/aws.service";
 import {UseractivityComponent} from "./secure/useractivity/useractivity.component";
 import {MyProfileComponent} from "./secure/profile/myprofile.component";
@@ -37,7 +37,6 @@ import { EpisodesPageComponent } from './episodes-page/episodes-page.component';
         RegisterComponent,
         MFAComponent,
         AboutComponent,
-        HomeLandingComponent,
         HomeComponent,
         UseractivityComponent,
         MyProfileComponent,

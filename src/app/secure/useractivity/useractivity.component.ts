@@ -8,6 +8,7 @@ import {DynamoDBService} from "../../service/ddb.service";
 export class Stuff {
     public type: string;
     public date: string;
+    public contentCount: number;
 }
 
 @Component({
@@ -28,6 +29,7 @@ export class UseractivityComponent implements LoggedInCallback {
             this.router.navigate(['/home/login']);
         } else {
             console.log("scanning DDB");
+            console.log(this.logdata)
             this.ddb.getLogEntries(this.logdata);
         }
     }

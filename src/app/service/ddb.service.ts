@@ -45,7 +45,12 @@ export class DynamoDBService {
                 // print all the movies
                 console.log("DynamoDBService: Query succeeded.");
                 data.Items.forEach(function (logitem) {
-                    mapArray.push({type: logitem.type, date: logitem.activityDate});
+                    console.log('This is the log item', logitem)
+                    mapArray.push({
+                        type: logitem.type, 
+                        contentCount: logitem.contentCount,
+                        date: logitem.activityDate
+                    });
                 });
             }
         }

@@ -113,7 +113,7 @@ export class UserLoginService {
 
     logout() {
         console.log("UserLoginService: Logging out");
-        this.ddb.writeLogEntry("logout");
+       // this.ddb.writeLogEntry("logout");
         this.cognitoUtil.getCurrentUser().signOut();
 
     }

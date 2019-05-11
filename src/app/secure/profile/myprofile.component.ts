@@ -50,7 +50,7 @@ export class GetParametersCallback implements Callback {
             parameter.name = result[i].getName();
             parameter.value = result[i].getValue();
             this.me.parameters.push(parameter);
-            console.log(parameter)
+            // console.log(parameter)
         }
         let param = new Parameters()
         param.name = "cognito ID";

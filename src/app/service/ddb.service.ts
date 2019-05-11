@@ -5,6 +5,7 @@ import {environment} from "../../environments/environment";
 import {Stuff} from "../secure/useractivity/useractivity.component";
 import * as AWS from "aws-sdk/global";
 import * as DynamoDB from "aws-sdk/clients/dynamodb";
+import { integer } from "aws-sdk/clients/lightsail";
 
 /**
  * Created by Vladimir Budilov
@@ -45,7 +46,7 @@ export class DynamoDBService {
                 // print all the movies
                 console.log("DynamoDBService: Query succeeded.");
                 data.Items.forEach(function (logitem) {
-                    console.log('This is the log item', logitem)
+                    // console.log('This is the user object currently in Dynamo DB', logitem)
                     mapArray.push({
                         type: logitem.type, 
                         contentCount: logitem.contentCount,
@@ -66,6 +67,47 @@ export class DynamoDBService {
         }
 
     }
+
+    incrementContentCount(currentContentCount: number){
+        try {
+            let contentCount = currentContentCount + 1;
+            let date = new Date().toString();
+            console.log("DynamoDBService: Incrementing User's Content Count"  + " ID: " + this.cognitoUtil.getCognitoIdentity() + " Date: " + date);
+            this.updateUserContentCount(currentContentCount);
+        } catch (exc) {
+            console.log("DynamoDBService: Couldn't write to DDB");
+        }
+    }
+
+    updateUserContentCount(contentCount: number): void {
+        console.log("DynamoDBService: updating entrty");
+
+        let clientParams:any = {
+            params: {TableName: environment.ddbTableName}
+        };
+        if (environment.dynamodb_endpoint) {
+            clientParams.endpoint = environment.dynamodb_endpoint;
+        }
+        var DDB = new DynamoDB(clientParams);
+
+
+        // Write the item to the table
+        var updateParams =
+            {
+                TableName: environment.ddbTableName,
+                Key: {userId:{S: this.cognitoUtil.getCognitoIdentity()}},
+                ConditionExpression: 'set contentCount = :r',
+                ExpressionAttributeValues:{
+                    ":r":{N: contentCount.toString()}
+                }
+            };
+
+        DDB.updateItem(updateParams, function (result) {
+            console.log("DynamoDBService: updated entry: " + JSON.stringify(result));
+        });
+    }
+
+
 
     write(data: string, date: string, type: string): void {
         console.log("DynamoDBService: writing " + type + " entry");

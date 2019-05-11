@@ -8,7 +8,8 @@
     margin: 0 auto;
     color: black;
     display: inline-block;
-    font-size: 72px; 
+    font-size: 72px;
+    font-weight: 100;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
   }

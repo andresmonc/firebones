@@ -12,6 +12,7 @@ import { DynamoDBService } from "../../../service/ddb.service";
 export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit {
     email: string;
     password: string;
+    hide = false;
     errorMessage: string;
     mfaStep = false;
     mfaData = {

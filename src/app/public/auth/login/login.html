@@ -5,19 +5,18 @@
     <div *ngIf="!mfaStep">
         <div class="form-group">
             <mat-form-field hideRequiredMarker>
-                <mat-placeholder style="font-size: 27px;">Email</mat-placeholder>
-                <input matInput id="signupEmail" required type="email" maxlength="100" class="form-control"
+                <mat-placeholder style="font-size: 20px;">Email</mat-placeholder>
+                <input matInput id="signupEmail" required type="email" maxlength="100" 
                     [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <mat-form-field hideRequiredMarker>
+                <mat-placeholder style="font-size: 20px;margin-top: 100px;">Password</mat-placeholder>
+                <input matInput id="signupPassword" required [type]="hide ? 'password' : 'text'" maxlength="25"
+                    length="40" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </mat-form-field>
         </div>
 
-        <div class="form-group">
-            <mat-form-field hideRequiredMarker>
-                <mat-placeholder style="font-size: 28px;">Password</mat-placeholder>
-                <input matInput id="signupPassword" required type="password" maxlength="25"
-                    class="form-control" length="40" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
-            </mat-form-field>
-        </div>
         <div class="form-group">
             <button (click)="onLogin()" id="signupSubmit" type="submit" id="login-button">
                 Login

@@ -1,12 +1,20 @@
 {
-  "name": "aws-cognito-angular-quickstart",
+  "name": "firebones-app",
   "version": "1.0.0",
-  "author": "Vladimir Budilov",
-  "homepage": "http://cognito.budilov.com",
+  "author": "Vladimir Budilov, Jaime Moncayo, Farhan Islam",
+  "homepage": "https://cognitosample-firebonesapp.s3-website.us-east-2.amazonaws.com/home",
   "contributors": [
     {
       "name": "Vladimir Budilov",
-      "url": "http://budilov.com"
+      "url": "https://budilov.com"
+    },
+    {
+      "name": "Jaime Moncayo",
+      "url": "https://jmoncayo.com"
+    },
+    {
+      "name": "Farhan Islam",
+      "url": "https://farhanislam.com"
     }
   ],
   "description": "A single-page web app, based on angular4, utilizing Amazon Cognito, S3, and DynamoDB (serverless architecture)",

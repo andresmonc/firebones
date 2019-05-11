@@ -17,14 +17,9 @@
                 Login
             </button>
         </div>
-
-        <hr>
-        <p>
-            <a [routerLink]="['/home/register']">Register</a>
-            <a [routerLink]="['/home/forgotPassword']">Forgot Password?</a><br />
-            <a [routerLink]="['/home/resendCode']">Resend Confirmation Code</a>
-        </p>
-
+        <a [routerLink]="['/home/register']">Register</a>
+        <a [routerLink]="['/home/forgotPassword']">Forgot Password?</a><br />
+        <a [routerLink]="['/home/resendCode']">Resend Confirmation Code</a>
     </div>
 
     <div class="form-group" *ngIf="mfaStep">

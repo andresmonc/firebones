@@ -26,3 +26,13 @@ a{
     font-weight: 100;
     font-size: 19px;
 }
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+.form-group > * {
+width: 100%;
+}

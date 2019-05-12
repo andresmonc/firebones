@@ -5,10 +5,25 @@
         <tr>
             <th>Action</th>
             <th>Date</th>
+            <th>contentCount</th>
         </tr>
+
         <tr *ngFor="let item of logdata" class="active">
             <td>{{ item.type }}</td>
             <td>{{ item.date }}</td>
+            <td>{{ item.contentCount}}</td>
+            
+            
         </tr>
     </table>
+    
+    <div *ngIf="logdata.length >0">
+            <p *ngIf="logdata[0].contentCount>1">
+                    SHOW ME THE MONEY
+                </p> 
+    </div>
+
 </div>
+
+
+

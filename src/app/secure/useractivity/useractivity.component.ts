@@ -11,6 +11,14 @@ export class Stuff {
     public contentCount: number;
 }
 
+interface userObj{
+     type: string;
+     date: string;
+     contentCount: number;
+}
+
+
+
 @Component({
     selector: 'awscognito-angular2-app',
     templateUrl: './useractivity.html'
@@ -29,9 +37,22 @@ export class UseractivityComponent implements LoggedInCallback {
             this.router.navigate(['/home/login']);
         } else {
             console.log("scanning DDB");
-            console.log(this.logdata)
+            
             this.ddb.getLogEntries(this.logdata);
+
+            console.log(this.logdata);
+
+            // letMeSee = this.logdata[0].contentCount;
+
+            setTimeout(()=>{
+                console.log(this.logdata[0].type)
+            },5000)
+
+
+
         }
     }
+
+
 
 }

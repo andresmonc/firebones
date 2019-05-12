@@ -89,14 +89,18 @@ export class DynamoDBService {
             clientParams.endpoint = environment.dynamodb_endpoint;
         }
         var DDB = new DynamoDB(clientParams);
+        console.log(this.cognitoUtil.getCognitoIdentity())
 
 
         // Write the item to the table
         var updateParams =
             {
                 TableName: environment.ddbTableName,
-                Key: {userId:{S: this.cognitoUtil.getCognitoIdentity()}},
-                ConditionExpression: 'set contentCount = :r',
+                Key: {
+                    userId:{S: this.cognitoUtil.getCognitoIdentity()},
+                    activityDate:{S: "Sat May 11 2019 10:54:37 GMT-0700 (Pacific Daylight Time)"}
+                },
+                UpdateExpression: "set contentCount = :r",
                 ExpressionAttributeValues:{
                     ":r":{N: contentCount.toString()}
                 }

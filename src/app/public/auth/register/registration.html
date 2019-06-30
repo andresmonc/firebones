@@ -1,7 +1,4 @@
 <form class="form-signin" method="POST" action="#" role="form">
-    <div class="form-group">
-        <h2>Create account</h2>
-    </div>
     <div *ngIf="errorMessage!=null" class="alert alert-danger">
         {{ errorMessage }}
     </div>
@@ -16,19 +13,20 @@
                [(ngModel)]="registrationUser.email" [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group">
-        <label class="control-label" for="signupPhone">Phone number</label>
-        <input id="signupPhone" type="text" maxlength="13" class="form-control"
-               [(ngModel)]="registrationUser.phone_number" [ngModelOptions]="{standalone: true}">
-    </div>
-    <div class="form-group">
         <label class="control-label" for="signupPassword">Password</label>
         <input id="signupPassword" type="password" maxlength="25" class="form-control"
                placeholder="at least 8 characters" length="40" [(ngModel)]="registrationUser.password"
                [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group">
-        <button (click)="onRegister()" id="signupSubmit" type="submit" class="btn btn-info btn-block">
-            Create your account
+        <label class="control-label" for="signupPhone">Phone number</label>
+        <input id="signupPhone" type="text" maxlength="13" class="form-control"
+               [(ngModel)]="registrationUser.phone_number" [ngModelOptions]="{standalone: true}">
+    </div>
+
+    <div class="form-group">
+        <button (click)="onRegister()" id="register-button" type="submit">
+            Register
         </button>
     </div>
     <hr>

@@ -2,27 +2,45 @@
     <div *ngIf="errorMessage!=null" class="alert alert-danger">
         {{ errorMessage }}
     </div>
+
+
     <div class="form-group">
-        <label class="control-label" for="signupName">Name</label>
-        <input id="signupName" type="text" maxlength="50" class="form-control"
-               [(ngModel)]="registrationUser.name" [ngModelOptions]="{standalone: true}">
+        <mat-form-field hideRequiredMarker>
+            <mat-placeholder style="font-size: 20px;">Name</mat-placeholder>
+            <input matInput id="signupName" required type="text" maxlength="50" [(ngModel)]="registrationUser.name"
+                [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
     </div>
+
+
     <div class="form-group">
-        <label class="control-label" for="signupEmail">Email</label>
-        <input id="signupEmail" type="email" maxlength="50" class="form-control"
-               [(ngModel)]="registrationUser.email" [ngModelOptions]="{standalone: true}">
+        <mat-form-field hideRequiredMarker>
+            <mat-placeholder style="font-size: 20px;">Email</mat-placeholder>
+            <input matInput id="signupEmail" required type="email" maxlength="50" [(ngModel)]="registrationUser.email"
+                [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
     </div>
+
     <div class="form-group">
-        <label class="control-label" for="signupPassword">Password</label>
-        <input id="signupPassword" type="password" maxlength="25" class="form-control"
-               placeholder="at least 8 characters" length="40" [(ngModel)]="registrationUser.password"
-               [ngModelOptions]="{standalone: true}">
+        <mat-form-field hideRequiredMarker>
+            <mat-placeholder style="font-size: 20px;">Password</mat-placeholder>
+            <input matInput id="signupPassword" required type="password" maxlength="40"
+                [(ngModel)]="registrationUser.password" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
     </div>
+
     <div class="form-group">
+        <mat-form-field hideRequiredMarker>
+            <mat-placeholder style="font-size: 20px;">Phone Number</mat-placeholder>
+            <input matInput id="signupPhone" required type="text" maxlength="13"
+                [(ngModel)]="registrationUser.phone_number" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+    </div>
+    <!-- <div class="form-group">
         <label class="control-label" for="signupPhone">Phone number</label>
         <input id="signupPhone" type="text" maxlength="13" class="form-control"
-               [(ngModel)]="registrationUser.phone_number" [ngModelOptions]="{standalone: true}">
-    </div>
+            [(ngModel)]="registrationUser.phone_number" [ngModelOptions]="{standalone: true}">
+    </div> -->
 
     <div class="form-group">
         <button (click)="onRegister()" id="register-button" type="submit">
@@ -32,4 +50,3 @@
     <hr>
     <p>Already have an account? <a [routerLink]="['/home/']"> <i class="fa fa-fw fa-lock"></i>Login</a></p>
 </form>
-

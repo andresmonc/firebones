@@ -4,6 +4,7 @@ import {AboutComponent, HomeComponent} from "./public/home.component";
 import {SecureHomeComponent} from "./secure/landing/securehome.component";
 import {MyProfileComponent} from "./secure/profile/myprofile.component";
 import {JwtComponent} from "./secure/jwttokens/jwt.component";
+import {EpisodesPageComponent} from "./secure/episodes-page/episodes-page.component";
 import {UseractivityComponent} from "./secure/useractivity/useractivity.component";
 import {LoginComponent} from "./public/auth/login/login.component";
 import {RegisterComponent} from "./public/auth/register/registration.component";
@@ -45,6 +46,7 @@ const secureHomeRoutes: Routes = [
         path: 'securehome', component: SecureHomeComponent, children: [
         {path: 'logout', component: LogoutComponent},
         {path: 'jwttokens', component: JwtComponent},
+        {path: 'episodes-page', component: EpisodesPageComponent},
         {path: 'myprofile', component: MyProfileComponent},
         {path: 'useractivity', component: UseractivityComponent},
         {path: '', component: MyProfileComponent}]

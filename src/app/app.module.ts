@@ -22,7 +22,6 @@ import {LogoutComponent, RegistrationConfirmationComponent} from "./public/auth/
 import {ResendCodeComponent} from "./public/auth/resend/resendCode.component";
 import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.component";
 import { MFAComponent } from './public/auth/mfa/mfa.component';
-import { EpisodesPageComponent } from './episodes-page/episodes-page.component';
 import { MatButtonModule, MatCheckboxModule, MatToolbarModule, MatIconModule, MatTableModule, MatFormFieldModule } from '@angular/material';
 import { MatSidenavModule, MatTabsModule, MatInputModule, MatDatepickerModule, MatNativeDateModule,
     MatRadioModule, MatGridListModule, MatCardModule, MatMenuModule, MatPaginatorModule,
@@ -30,8 +29,11 @@ import { MatSidenavModule, MatTabsModule, MatInputModule, MatDatepickerModule, M
     MatExpansionModule, MatListModule, MatProgressBarModule,  MatProgressSpinnerModule, MatRippleModule,
     MatSelectModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatStepperModule, MatTooltipModule
    } from '@angular/material';
+import { YoutubePlayerModule } from 'ngx-youtube-player';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EpisodesPageComponent } from './secure/episodes-page/episodes-page.component'
 @NgModule({
     declarations: [
         NewPasswordComponent,
@@ -50,7 +52,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
         SecureHomeComponent,
         JwtComponent,
         AppComponent,
-        EpisodesPageComponent
+        EpisodesPageComponent,
     ],
     imports: [
         BrowserModule,
@@ -60,41 +62,40 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
         routing,
         MatInputModule,
         BrowserAnimationsModule,
-
-
          // Material
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSlideToggleModule,
-    MatSliderModule,
-    MatSnackBarModule,
-    MatStepperModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatFormFieldModule
+        MatAutocompleteModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatChipsModule,
+        MatDatepickerModule,
+        MatDialogModule,
+        MatExpansionModule,
+        MatGridListModule,
+        MatIconModule,
+        MatInputModule,
+        MatListModule,
+        MatMenuModule,
+        MatProgressBarModule,
+        MatProgressSpinnerModule,
+        MatRadioModule,
+        MatRippleModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatSlideToggleModule,
+        MatSliderModule,
+        MatSnackBarModule,
+        MatStepperModule,
+        MatTableModule,
+        MatTabsModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        MatNativeDateModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatFormFieldModule,
+        YoutubePlayerModule
     ],
     providers: [
         CognitoUtil,

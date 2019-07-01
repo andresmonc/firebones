@@ -27,7 +27,8 @@ export class LogoutComponent implements LoggedInCallback {
 
 @Component({
     selector: 'awscognito-angular2-app',
-    templateUrl: './confirmRegistration.html'
+    templateUrl: './confirmRegistration.html',
+    styleUrls: ['./confirmRegistration.css']
 })
 export class RegistrationConfirmationComponent implements OnInit, OnDestroy {
     confirmationCode: string;

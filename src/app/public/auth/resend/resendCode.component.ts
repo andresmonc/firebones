@@ -4,7 +4,8 @@ import {CognitoCallback} from "../../../service/cognito.service";
 import {Router} from "@angular/router";
 @Component({
     selector: 'awscognito-angular2-app',
-    templateUrl: './resendCode.html'
+    templateUrl: './resendCode.html',
+    styleUrls: ['./resendCode.css']
 })
 export class ResendCodeComponent implements CognitoCallback {
 

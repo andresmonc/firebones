@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i');
-
-#container-logo{
-  text-align: center;
+#container-logo {
+    text-align: center;
 }
 
 #logo {
@@ -12,9 +11,20 @@
     font-weight: 100;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-  }
+}
 
-  a {
+#brand {
+    width: 30vw;
+    max-width: 300px;
+}
+
+a {
     color: black;
     text-decoration: none;
-  }
+}
+
+@media screen and (max-width: 600px) {
+    #logo {
+        font-size: 55px;
+    }
+}

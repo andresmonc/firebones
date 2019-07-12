@@ -1,13 +1,14 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {FormsModule,ReactiveFormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";
+// import {HttpModule} from "@angular/http";
+// import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from "./app.component";
 import {UserRegistrationService} from "./service/user-registration.service";
 import {UserParametersService} from "./service/user-parameters.service";
 import {UserLoginService} from "./service/user-login.service";
 import {CognitoUtil} from "./service/cognito.service";
-import {routing} from "./app.routes";
+import {routing} from "./app-routing.module";
 import {AboutComponent, HomeComponent} from "./public/home.component";
 import {AwsUtil} from "./service/aws.service";
 import {UseractivityComponent} from "./secure/useractivity/useractivity.component";
@@ -58,7 +59,7 @@ import { EpisodesPageComponent } from './secure/episodes-page/episodes-page.comp
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpModule,
+        // HttpClientModule,
         routing,
         MatInputModule,
         BrowserAnimationsModule,

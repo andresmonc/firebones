@@ -38,3 +38,4 @@ Thumbs.db
 # Build Artifacts
 upload.zip
 resetConfig.sh
+node_modules

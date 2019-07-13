@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 body,
 html {
@@ -8,7 +9,9 @@ html {
     background-size: cover;
 }
 
+
 /* Material Styles */
+
 
 /* mat-form-field:not(.mat-form-field-should-float) .mat-input-placeholder {
   padding: 12px;
@@ -17,10 +20,12 @@ html {
 } */
 
 .mat-focused .placeholder {
-  color: #00D318;
+    color: #00D318;
 }
 
+
 /* Spinner Loader */
+
 #loader {
     bottom: 0;
     height: 175px;
@@ -30,9 +35,9 @@ html {
     right: 0;
     top: 0;
     width: 175px;
-  }
-  
-  #loader {
+}
+
+#loader {
     bottom: 0;
     height: 175px;
     left: 0;
@@ -41,9 +46,9 @@ html {
     right: 0;
     top: 0;
     width: 175px;
-  }
-  
-  #loader .dot {
+}
+
+#loader .dot {
     bottom: 0;
     height: 100%;
     left: 0;
@@ -52,9 +57,9 @@ html {
     right: 0;
     top: 0;
     width: 87.5px;
-  }
-  
-  #loader .dot::before {
+}
+
+#loader .dot::before {
     border-radius: 100%;
     content: "";
     height: 87.5px;
@@ -64,81 +69,81 @@ html {
     top: 0;
     transform: scale(0);
     width: 87.5px;
-  }
-  
-  #loader .dot:nth-child(7n+1) {
+}
+
+#loader .dot:nth-child(7n+1) {
     transform: rotate(45deg);
-  }
-  
-  #loader .dot:nth-child(7n+1)::before {
+}
+
+#loader .dot:nth-child(7n+1)::before {
     animation: 0.8s linear 0.1s normal none infinite running load;
     background: #676470 none repeat scroll 0 0;
-  }
-  
-  #loader .dot:nth-child(7n+2) {
+}
+
+#loader .dot:nth-child(7n+2) {
     transform: rotate(90deg);
-  }
-  
-  #loader .dot:nth-child(7n+2)::before {
+}
+
+#loader .dot:nth-child(7n+2)::before {
     animation: 0.8s linear 0.2s normal none infinite running load;
     background: #dd4142 none repeat scroll 0 0;
-  }
-  
-  #loader .dot:nth-child(7n+3) {
+}
+
+#loader .dot:nth-child(7n+3) {
     transform: rotate(135deg);
-  }
-  
-  #loader .dot:nth-child(7n+3)::before {
+}
+
+#loader .dot:nth-child(7n+3)::before {
     animation: 0.8s linear 0.3s normal none infinite running load;
     background: #702625 none repeat scroll 0 0;
-  }
-  
-  #loader .dot:nth-child(7n+4) {
+}
+
+#loader .dot:nth-child(7n+4) {
     transform: rotate(180deg);
-  }
-  
-  #loader .dot:nth-child(7n+4)::before {
+}
+
+#loader .dot:nth-child(7n+4)::before {
     animation: 0.8s linear 0.4s normal none infinite running load;
     background: #df6480 none repeat scroll 0 0;
-  }
-  
-  #loader .dot:nth-child(7n+5) {
+}
+
+#loader .dot:nth-child(7n+5) {
     transform: rotate(225deg);
-  }
-  
-  #loader .dot:nth-child(7n+5)::before {
+}
+
+#loader .dot:nth-child(7n+5)::before {
     animation: 0.8s linear 0.5s normal none infinite running load;
     background: #fef93a none repeat scroll 0 0;
-  }
-  
-  #loader .dot:nth-child(7n+6) {
+}
+
+#loader .dot:nth-child(7n+6) {
     transform: rotate(270deg);
-  }
-  
-  #loader .dot:nth-child(7n+6)::before {
+}
+
+#loader .dot:nth-child(7n+6)::before {
     animation: 0.8s linear 0.6s normal none infinite running load;
     background: #6092bf none repeat scroll 0 0;
-  }
-  
-  #loader .dot:nth-child(7n+7) {
+}
+
+#loader .dot:nth-child(7n+7) {
     transform: rotate(315deg);
-  }
-  
-  #loader .dot:nth-child(7n+7)::before {
+}
+
+#loader .dot:nth-child(7n+7)::before {
     animation: 0.8s linear 0.7s normal none infinite running load;
     background: #dab885 none repeat scroll 0 0;
-  }
-  
-  #loader .dot:nth-child(7n+8) {
+}
+
+#loader .dot:nth-child(7n+8) {
     transform: rotate(360deg);
-  }
-  
-  #loader .dot:nth-child(7n+8)::before {
+}
+
+#loader .dot:nth-child(7n+8)::before {
     animation: 0.8s linear 0.8s normal none infinite running load;
     background: #513f7c none repeat scroll 0 0;
-  }
-  
-  #loader .loading {
+}
+
+#loader .loading {
     background-position: 50% 50%;
     background-repeat: no-repeat;
     bottom: -40px;
@@ -147,22 +152,22 @@ html {
     position: absolute;
     right: 0;
     width: 180px;
-  }
-  
-  @keyframes load {
+}
+
+@keyframes load {
     100% {
-      opacity: 0;
-      transform: scale(1);
+        opacity: 0;
+        transform: scale(1);
     }
-  }
-  
-  @keyframes load {
+}
+
+@keyframes load {
     100% {
-      opacity: 0;
-      transform: scale(1);
+        opacity: 0;
+        transform: scale(1);
     }
-  }
-  
-  .spinner-message {
+}
+
+.spinner-message {
     text-align: center;
-  }
+}

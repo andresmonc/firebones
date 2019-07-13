@@ -34,7 +34,10 @@ import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EpisodesPageComponent } from './secure/episodes-page/episodes-page.component'
+import { EpisodesPageComponent } from './secure/episodes-page/episodes-page.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component'
 @NgModule({
     declarations: [
         NewPasswordComponent,
@@ -54,6 +57,7 @@ import { EpisodesPageComponent } from './secure/episodes-page/episodes-page.comp
         JwtComponent,
         AppComponent,
         EpisodesPageComponent,
+        PageNotFoundComponent,
     ],
     imports: [
         BrowserModule,
@@ -63,7 +67,6 @@ import { EpisodesPageComponent } from './secure/episodes-page/episodes-page.comp
         routing,
         MatInputModule,
         BrowserAnimationsModule,
-         // Material
         MatAutocompleteModule,
         MatButtonModule,
         MatButtonToggleModule,
@@ -96,7 +99,8 @@ import { EpisodesPageComponent } from './secure/episodes-page/episodes-page.comp
         MatPaginatorModule,
         MatSortModule,
         MatFormFieldModule,
-        YoutubePlayerModule
+        YoutubePlayerModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
     providers: [
         CognitoUtil,

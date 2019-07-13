@@ -12,7 +12,7 @@ import {ForgotPassword2Component, ForgotPasswordStep1Component} from "./public/a
 import {LogoutComponent, RegistrationConfirmationComponent} from "./public/auth/confirm/confirmRegistration.component";
 import {ResendCodeComponent} from "./public/auth/resend/resendCode.component";
 import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.component";
-
+import { PageNotFoundComponent } from "./public/page-not-found/page-not-found.component";
 const homeRoutes: Routes = [
     {
         path: '',
@@ -62,7 +62,8 @@ const routes: Routes = [
             {
                 path: '',
                 component: HomeComponent
-            }
+            },
+            { path: '**', component: PageNotFoundComponent }
         ]
     },
 

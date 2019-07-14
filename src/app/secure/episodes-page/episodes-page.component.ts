@@ -40,7 +40,7 @@ ngOnInit() {
           'onStateChange': (event) => { this.onPlayerStateChange(event); }
         },
         playerVars: {
-          autoplay: 1,
+          autoplay: 0,
           controls: 1,
           modestbranding: 1,
           // playlist: 'UG3sfZKtCQI,ALZHF5UqnU4,x9ZkC3OgI78',

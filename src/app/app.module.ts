@@ -39,6 +39,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 import { NavbarComponent } from './secure/navbar/navbar.component'
+import { WINDOW_PROVIDERS } from './service/window.service'
 @NgModule({
     declarations: [
         NewPasswordComponent,
@@ -110,7 +111,9 @@ import { NavbarComponent } from './secure/navbar/navbar.component'
         DynamoDBService,
         UserRegistrationService,
         UserLoginService,
-        UserParametersService],
+        UserParametersService,
+        WINDOW_PROVIDERS
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

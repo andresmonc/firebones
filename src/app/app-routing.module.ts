@@ -49,7 +49,7 @@ const secureHomeRoutes: Routes = [
         {path: 'episodes-page', component: EpisodesPageComponent},
         {path: 'myprofile', component: MyProfileComponent},
         {path: 'useractivity', component: UseractivityComponent},
-        {path: '', component: MyProfileComponent}]
+        {path: '', component: EpisodesPageComponent}]
     }
 ];
 

@@ -37,7 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EpisodesPageComponent } from './secure/episodes-page/episodes-page.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component'
+import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
+import { NavbarComponent } from './secure/navbar/navbar.component'
 @NgModule({
     declarations: [
         NewPasswordComponent,
@@ -58,6 +59,7 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
         AppComponent,
         EpisodesPageComponent,
         PageNotFoundComponent,
+        NavbarComponent,
     ],
     imports: [
         BrowserModule,

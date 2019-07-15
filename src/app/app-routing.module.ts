@@ -24,6 +24,7 @@ const homeRoutes: Routes = [
         component: HomeComponent,
         children: [
             {path: 'about', component: AboutComponent},
+            {path: 'login', component: LoginComponent},
             {path: 'register', component: RegisterComponent},
             {path: 'confirmRegistration/:username', component: RegistrationConfirmationComponent},
             {path: 'resendCode', component: ResendCodeComponent},

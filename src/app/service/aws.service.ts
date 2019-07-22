@@ -10,7 +10,7 @@ import * as AWS from "aws-sdk/global";
 
 @Injectable()
 export class AwsUtil {
-    public static firstLogin: boolean = false;
+    public static firstLogin: boolean = true;
     public static runningInit: boolean = false;
 
     constructor(public cognitoUtil: CognitoUtil) {
@@ -41,6 +41,7 @@ export class AwsUtil {
         let mythis = this;
         // First check if the user is authenticated already
         if (isLoggedIn)
+            console.log('HEY THE USER IS LOGGED IN AND YOU SHOULD ADD THE USER TO LOGIN TABLE NOW')
             mythis.setupAWS(isLoggedIn, callback, idToken);
 
     }
@@ -92,7 +93,7 @@ export class AwsUtil {
             if (!err) {
                 if (AwsUtil.firstLogin) {
                     // save the login info to DDB
-                    this.ddb.writeLogEntry("login");
+                    console.log("CREATING USER ENTRY INTO DYNAMODB TABLE!")
                     AwsUtil.firstLogin = false;
                 }
             }

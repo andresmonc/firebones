@@ -59,7 +59,7 @@ export class DynamoDBService {
 
     writeLogEntry(type: string) {
         try {
-            let date = new Date().toString();
+            let date = "NO RANGE KEY"
             console.log("DynamoDBService: Writing log entry. Type:" + type + " ID: " + this.cognitoUtil.getCognitoIdentity() + " Date: " + date);
             this.write(this.cognitoUtil.getCognitoIdentity(), date, type);
         } catch (exc) {
@@ -68,16 +68,16 @@ export class DynamoDBService {
 
     }
 
-    incrementContentCount(currentContentCount: number){
-        try {
-            let contentCount = currentContentCount + 1;
-            let date = new Date().toString();
-            console.log("DynamoDBService: Incrementing User's Content Count"  + " ID: " + this.cognitoUtil.getCognitoIdentity() + " Date: " + date);
-            this.updateUserContentCount(currentContentCount);
-        } catch (exc) {
-            console.log("DynamoDBService: Couldn't write to DDB");
-        }
-    }
+    // incrementContentCount(currentContentCount: number){
+    //     try {
+    //         let contentCount = currentContentCount + 1;
+    //         let date = new Date().toString();
+    //         console.log("DynamoDBService: Incrementing User's Content Count"  + " ID: " + this.cognitoUtil.getCognitoIdentity() + " Date: " + date);
+    //         this.updateUserContentCount(currentContentCount);
+    //     } catch (exc) {
+    //         console.log("DynamoDBService: Couldn't write to DDB");
+    //     }
+    // }
 
     updateUserContentCount(contentCount: number): void {
         console.log("DynamoDBService: updating entrty");
@@ -108,6 +108,40 @@ export class DynamoDBService {
 
         DDB.updateItem(updateParams, function (result) {
             console.log("DynamoDBService: updated entry: " + JSON.stringify(result));
+        });
+    }
+
+
+
+    updateUserContentWatched(): void {
+        console.log("this is the current user", this.cognitoUtil.getCognitoIdentity())
+
+        console.log("DynamoDBService: updating entrty");
+
+        let clientParams:any = {
+            params: {TableName: environment.ddbTableName}
+        };
+        if (environment.dynamodb_endpoint) {
+            clientParams.endpoint = environment.dynamodb_endpoint;
+        }
+        var DDB = new DynamoDB(clientParams);
+
+        // Write the item to the table
+        var updateParams =
+            {
+                TableName: environment.ddbTableName,
+                Key: {
+                    userId:{S: this.cognitoUtil.getCognitoIdentity()},
+                    activityDate:{S: "Sat May 11 2019 10:54:37 GMT-0700 (Pacific Daylight Time)"}
+                },
+                UpdateExpression: "set contentWatched = :r",
+                ExpressionAttributeValues:{
+                    ":r":{BOOL: false}
+                }
+            };
+
+        DDB.updateItem(updateParams, function (result) {
+            console.log("DynamoDBService Updated Content watch " + JSON.stringify(result));
         });
     }
 

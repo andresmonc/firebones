@@ -63,6 +63,7 @@ export class DynamoDBService {
             console.log("DynamoDBService: Writing log entry. Type:" + type + " ID: " + this.cognitoUtil.getCognitoIdentity() + " Date: " + date);
             this.write(this.cognitoUtil.getCognitoIdentity(), date, type);
         } catch (exc) {
+            console.log(exc)
             console.log("DynamoDBService: Couldn't write to DDB");
         }
 
@@ -79,42 +80,41 @@ export class DynamoDBService {
     //     }
     // }
 
-    updateUserContentCount(contentCount: number): void {
-        console.log("DynamoDBService: updating entrty");
+    // updateUserContentCount(contentCount: number): void {
+    //     console.log("DynamoDBService: updating entrty");
 
-        let clientParams:any = {
-            params: {TableName: environment.ddbTableName}
-        };
-        if (environment.dynamodb_endpoint) {
-            clientParams.endpoint = environment.dynamodb_endpoint;
-        }
-        var DDB = new DynamoDB(clientParams);
-        console.log(this.cognitoUtil.getCognitoIdentity())
+    //     let clientParams:any = {
+    //         params: {TableName: environment.ddbTableName}
+    //     };
+    //     if (environment.dynamodb_endpoint) {
+    //         clientParams.endpoint = environment.dynamodb_endpoint;
+    //     }
+    //     var DDB = new DynamoDB(clientParams);
+    //     console.log(this.cognitoUtil.getCognitoIdentity())
 
 
-        // Write the item to the table
-        var updateParams =
-            {
-                TableName: environment.ddbTableName,
-                Key: {
-                    userId:{S: this.cognitoUtil.getCognitoIdentity()},
-                    activityDate:{S: "Sat May 11 2019 10:54:37 GMT-0700 (Pacific Daylight Time)"}
-                },
-                UpdateExpression: "set contentCount = :r",
-                ExpressionAttributeValues:{
-                    ":r":{N: contentCount.toString()}
-                }
-            };
+    //     // Write the item to the table
+    //     var updateParams =
+    //         {
+    //             TableName: environment.ddbTableName,
+    //             Key: {
+    //                 userId:{S: this.cognitoUtil.getCognitoIdentity()},
+    //                 activityDate:{S: "Sat May 11 2019 10:54:37 GMT-0700 (Pacific Daylight Time)"}
+    //             },
+    //             UpdateExpression: "set contentCount = :r",
+    //             ExpressionAttributeValues:{
+    //                 ":r":{N: contentCount.toString()}
+    //             }
+    //         };
 
-        DDB.updateItem(updateParams, function (result) {
-            console.log("DynamoDBService: updated entry: " + JSON.stringify(result));
-        });
-    }
+    //     DDB.updateItem(updateParams, function (result) {
+    //         console.log("DynamoDBService: updated entry: " + JSON.stringify(result));
+    //     });
+    // }
 
 
 
     updateUserContentWatched(): void {
-        console.log("this is the current user", this.cognitoUtil.getCognitoIdentity())
 
         console.log("DynamoDBService: updating entrty");
 
@@ -126,24 +126,45 @@ export class DynamoDBService {
         }
         var DDB = new DynamoDB(clientParams);
 
-        // Write the item to the table
-        var updateParams =
-            {
-                TableName: environment.ddbTableName,
-                Key: {
-                    userId:{S: this.cognitoUtil.getCognitoIdentity()},
-                    activityDate:{S: "Sat May 11 2019 10:54:37 GMT-0700 (Pacific Daylight Time)"}
-                },
-                UpdateExpression: "set contentWatched = :r",
-                ExpressionAttributeValues:{
-                    ":r":{BOOL: false}
-                }
-            };
+        let cognitoUser = this.cognitoUtil.getCurrentUser();
 
-        DDB.updateItem(updateParams, function (result) {
-            console.log("DynamoDBService Updated Content watch " + JSON.stringify(result));
+        cognitoUser.getSession(function (err, session) {
+            if (err)
+                console.log("UserParametersService: Couldn't retrieve the user");
+            else {
+                cognitoUser.getUserAttributes(function (err, result) {
+                    if (err) {
+                        console.log("UserParametersService: in getParameters: " + err);
+                    } else {
+                        console.log("THIS IS THE USER ID (SUB)", result[0].Value);
+                        let userSubId =  result[0].Value;
+                        var updateParams =
+                        {
+                            TableName: environment.ddbTableName,
+                            Key: {
+                                userId:{S: userSubId},
+                            },
+                            UpdateExpression: "set contentWatched = :r",
+                            ExpressionAttributeValues:{
+                                ":r":{S: "DB TEST"}
+                            }
+                        };
+            
+                        DDB.updateItem(updateParams, function (result) {
+                        console.log("DynamoDBService Updated Content watch " + JSON.stringify(result));
+                    });
+                    }
+                });
+            }
+
         });
+     
+    
+
+
     }
+
+    //implemtn DB call to read content count of user
 
 
 

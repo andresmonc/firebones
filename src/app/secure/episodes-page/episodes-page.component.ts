@@ -57,8 +57,8 @@ onPlayerStateChange(event) {
 console.log("Vid status number:", event.data);
   if (event.data == 0){
     console.log('VIDEO HAS ENDED')
+    //if content count is less than 2
     this.ddb.updateUserContentWatched();
-    this.ddb.updateUserContentCount(325);
   }
 }
 

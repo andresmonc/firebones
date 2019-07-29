@@ -57,7 +57,7 @@ export class CognitoUtil {
 
 
     getUserSub(cognitoUser) {
-        cognitoUser.getSession(function (err, session) {
+       return cognitoUser.getSession(function (err, session) {
             if (err)
                 console.log("UserParametersService: Couldn't retrieve the user");
             else {
@@ -65,8 +65,8 @@ export class CognitoUtil {
                     if (err) {
                         console.log("UserParametersService: in getParameters: " + err);
                     } else {
-                        console.log("THIS IS THE USER PARAMS", result);
-                        console.log(result[0].Value)
+                        console.log("THIS IS THE USER ID (SUB)", result[0].Value);
+                        return result[0].Value
                     }
                 });
             }

@@ -55,9 +55,29 @@ export class CognitoUtil {
         return new CognitoUserPool(CognitoUtil._POOL_DATA);
     }
 
+
+    getUserSub(cognitoUser) {
+        cognitoUser.getSession(function (err, session) {
+            if (err)
+                console.log("UserParametersService: Couldn't retrieve the user");
+            else {
+                cognitoUser.getUserAttributes(function (err, result) {
+                    if (err) {
+                        console.log("UserParametersService: in getParameters: " + err);
+                    } else {
+                        console.log("THIS IS THE USER PARAMS", result);
+                        console.log(result[0].Value)
+                    }
+                });
+            }
+
+        });
+    }
+
     getCurrentUser() {
         return this.getUserPool().getCurrentUser();
     }
+
 
     // AWS Stores Credentials in many ways, and with TypeScript this means that
     // getting the base credentials we authenticated with from the AWS globals gets really murky,

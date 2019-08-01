@@ -11,7 +11,7 @@ export const environment = {
   albumName: "usercontent",
   bucketRegion: 'us-east-2',
 
-  ddbTableName: 'LoginTrailfirebonesapp',
+  ddbTableName: 'userObject',
 
   cognito_idp_endpoint: '',
   cognito_identity_endpoint: '',

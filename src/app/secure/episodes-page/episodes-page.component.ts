@@ -41,7 +41,7 @@ ngOnInit() {
           'onStateChange': (event) => { this.onPlayerStateChange(event); }
         },
         playerVars: {
-          autoplay: 0,
+          autoplay: 1,
           controls: 1,
           modestbranding: 1,
           // playlist: 'UG3sfZKtCQI,ALZHF5UqnU4,x9ZkC3OgI78',
@@ -58,7 +58,8 @@ onPlayerStateChange(event) {
 console.log("Vid status number:", event.data);
   if (event.data == 0){
     console.log('VIDEO HAS ENDED')
-    this.ddb.incrementContentCount(10)
+    //if content count is less than 2
+    this.ddb.updateUserContentWatched();
   }
 }
 

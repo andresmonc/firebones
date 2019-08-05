@@ -84,9 +84,6 @@ sub {
     bottom: -.25em
 }
 
-img {
-    border: 0
-}
 
 svg:not(:root) {
     overflow: hidden
@@ -225,9 +222,6 @@ td, th {
     }
     img, tr {
         page-break-inside: avoid
-    }
-    img {
-        max-width: 100%!important
     }
     h2, h3, p {
         orphans: 3;
@@ -1370,9 +1364,7 @@ figure {
     margin: 0
 }
 
-img {
-    vertical-align: middle
-}
+
 
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
     display: block;
@@ -2084,7 +2076,7 @@ pre code {
         width: 58.33333333%
     }
     .col-sm-6 {
-        width: 50%
+        width: 100%
     }
     .col-sm-5 {
         width: 41.66666667%
@@ -2243,7 +2235,7 @@ pre code {
         width: 58.33333333%
     }
     .col-md-6 {
-        width: 50%
+        width: 100%
     }
     .col-md-5 {
         width: 41.66666667%

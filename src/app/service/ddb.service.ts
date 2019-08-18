@@ -113,18 +113,27 @@ export class DynamoDBService {
     // }
 
 
+    getUserId() {
+        let cognitoUser = this.cognitoUtil.getCurrentUser();
+
+        cognitoUser.getSession(function (err, session) {
+            if (err)
+                console.log("UserParametersService: Couldn't retrieve the user");
+            else {
+                cognitoUser.getUserAttributes(function (err, result) {
+                    if (err) {
+                        console.log("UserParametersService: in getParameters: " + err);
+                    } else {
+                        console.log("THIS IS THE USER ID (SUB)", result[0].Value);
+                    }
+                });
+            }
+
+        });
+    }
 
     updateUserContentWatched(): void {
-
-        console.log("DynamoDBService: updating entrty");
-
-        let clientParams:any = {
-            params: {TableName: environment.ddbTableName}
-        };
-        if (environment.dynamodb_endpoint) {
-            clientParams.endpoint = environment.dynamodb_endpoint;
-        }
-        var DDB = new DynamoDB(clientParams);
+        console.log("hello world")
 
         let cognitoUser = this.cognitoUtil.getCurrentUser();
 
@@ -137,6 +146,19 @@ export class DynamoDBService {
                         console.log("UserParametersService: in getParameters: " + err);
                     } else {
                         console.log("THIS IS THE USER ID (SUB)", result[0].Value);
+
+                        // block of code that should be in own fucntion
+
+                        console.log("DynamoDBService: updating entrty");
+
+                        let clientParams:any = {
+                            params: {TableName: environment.ddbTableName}
+                        };
+                        if (environment.dynamodb_endpoint) {
+                            clientParams.endpoint = environment.dynamodb_endpoint;
+                        }
+                        var DDB = new DynamoDB(clientParams);
+
                         let userSubId =  result[0].Value;
                         var updateParams =
                         {
@@ -146,22 +168,20 @@ export class DynamoDBService {
                             },
                             UpdateExpression: "set contentWatched = :r",
                             ExpressionAttributeValues:{
-                                ":r":{S: "DB TEST"}
+                                ":r":{S: "TRUE"}
                             }
                         };
             
                         DDB.updateItem(updateParams, function (result) {
                         console.log("DynamoDBService Updated Content watch " + JSON.stringify(result));
-                    });
+                        });
+
+                        //
                     }
                 });
             }
 
         });
-     
-    
-
-
     }
 
     //implemtn DB call to read content count of user

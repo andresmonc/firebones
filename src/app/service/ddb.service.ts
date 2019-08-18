@@ -124,7 +124,7 @@ export class DynamoDBService {
                     if (err) {
                         console.log("UserParametersService: in getParameters: " + err);
                     } else {
-                        console.log("THIS IS THE USER ID (SUB)", result[0].Value);
+                        console.log("THIS IS THE USER ID (SUB)", result[0].getValue());
                     }
                 });
             }
@@ -145,7 +145,7 @@ export class DynamoDBService {
                     if (err) {
                         console.log("UserParametersService: in getParameters: " + err);
                     } else {
-                        console.log("THIS IS THE USER ID (SUB)", result[0].Value);
+                        console.log("THIS IS THE USER ID (SUB)", result[0].getValue());
 
                         // block of code that should be in own fucntion
 
@@ -159,7 +159,7 @@ export class DynamoDBService {
                         }
                         var DDB = new DynamoDB(clientParams);
 
-                        let userSubId =  result[0].Value;
+                        let userSubId =  result[0].getValue();
                         var updateParams =
                         {
                             TableName: environment.ddbTableName,

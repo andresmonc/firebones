@@ -1,13 +1,6 @@
 {
-  "short_name": "FireBones",
+  "short_name": "Fire Bones",
   "name": "Fire Bones",
-  "prefer_related_applications": true,
-  "related_applications": [
-    {
-      "platform": "play",
-      "id": "com.google.samples.apps.iosched"
-    }
-  ],
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

@@ -3,4 +3,16 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100vw;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    clip-path: polygon(0 0, 0 87%, 7% 93%, 17% 94%, 21% 99%, 30% 96%, 37% 100%, 45% 100%, 51% 96%, 60% 100%, 69% 98%, 77% 95%, 85% 96%, 100% 89%, 100% 0);
+}
+
+nav {
+    display: inline-block;
+}
+
+a {
+    font-size: 10vw;
 }

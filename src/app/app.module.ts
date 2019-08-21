@@ -38,8 +38,10 @@ import { EpisodesPageComponent } from './secure/episodes-page/episodes-page.comp
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
-import { NavbarComponent } from './secure/navbar/navbar.component'
-import { WINDOW_PROVIDERS } from './service/window.service'
+import { BannerComponent } from './secure/banner/banner.component'
+import { WINDOW_PROVIDERS } from './service/window.service';
+import { NavbarComponent } from './secure/navbar/navbar.component';
+
 @NgModule({
     declarations: [
         NewPasswordComponent,
@@ -60,7 +62,8 @@ import { WINDOW_PROVIDERS } from './service/window.service'
         AppComponent,
         EpisodesPageComponent,
         PageNotFoundComponent,
-        NavbarComponent,
+        BannerComponent,
+        NavbarComponent
     ],
     imports: [
         BrowserModule,

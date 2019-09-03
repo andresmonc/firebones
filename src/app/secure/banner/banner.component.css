@@ -110,8 +110,14 @@
   }
   .bringTextCloserRight {
     margin-right: -37px;
+    /* Use this to position vertically due to inline block */
+    vertical-align: 50px;
+    /*  */
   }
   .bringTextCloserLeft {
     margin-left: -22px;
+    /* Use this to position vertically due to inline block */
+    vertical-align: 50px;
+    /*  */
   }
 }

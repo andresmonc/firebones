@@ -57,7 +57,7 @@
   }
   
   /* Tablet */
-  /* @media screen and (min-width: 400px) and (max-width: 900px) {
+  @media screen and (min-width: 400px) and (max-width: 900px) {
 
     #logo{
       width: 165px;
@@ -80,11 +80,11 @@
     }
     
     
-  } */
+  }
 
 
   /* Mobile */
-/* @media only screen and (max-width: 399px) {
+@media only screen and (max-width: 399px) {
 
   #navbar a {
     font-size: 18px; 
@@ -101,11 +101,10 @@
 
   .bringTextCloserRight{
     margin-right: -37px;
-
   }
 
   .bringTextCloserLeft{
     margin-left: -22px;
   }
   
-} */
+}

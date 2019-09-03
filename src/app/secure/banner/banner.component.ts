@@ -20,8 +20,6 @@ export class BannerComponent implements OnInit {
     this.styleNav()
   }
 
-
-
   styleNav() {
     if (this.document.body.clientWidth < 399) {
       this.bringTextCloser = true;
@@ -42,7 +40,7 @@ export class BannerComponent implements OnInit {
       this.document.getElementById("navbar").style.padding = "0px 10px";
       this.document.getElementById("navbar").style.height = "165px";
       this.document.getElementById("navbar").style.top = "-2%";
-      this.document.getElementById("navbar").style.backgroundColor = "red";
+      this.document.getElementById("navbar").style.backgroundColor = "black";
       this.document.getElementById("navbar").style.color = "#f9dfbe";
       this.document.getElementById("logo").style.height = "auto";
       this.document.getElementById("logo").style.transform = 'scale(' + (1 - 110 / 250) + ')'

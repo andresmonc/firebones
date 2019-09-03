@@ -13,7 +13,7 @@ import {AboutComponent, HomeComponent} from "./public/home.component";
 import {AwsUtil} from "./service/aws.service";
 import {UseractivityComponent} from "./secure/useractivity/useractivity.component";
 import {MyProfileComponent} from "./secure/profile/myprofile.component";
-import {SecureHomeComponent} from "./secure/landing/securehome.component";
+import {SecureHomeComponent} from "./secure/securehome/securehome.component";
 import {JwtComponent} from "./secure/jwttokens/jwt.component";
 import {DynamoDBService} from "./service/ddb.service";
 import {LoginComponent} from "./public/auth/login/login.component";
@@ -34,7 +34,7 @@ import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EpisodesPageComponent } from './secure/episodes-page/episodes-page.component';
+import { EpisodePageComponent } from './secure/episode-page/episode-page.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
@@ -61,7 +61,7 @@ import { SettingsComponent } from './secure/settings/settings.component';
         SecureHomeComponent,
         JwtComponent,
         AppComponent,
-        EpisodesPageComponent,
+        EpisodePageComponent,
         PageNotFoundComponent,
         BannerComponent,
         NavbarComponent,

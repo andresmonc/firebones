@@ -4,15 +4,15 @@ import {DynamoDBService} from "../../service/ddb.service";
 
 @Component({
   selector: 'awscognito-angular2-app',
-  templateUrl: './episodes-page.component.html',
-  styleUrls: ['./episodes-page.component.css']
+  templateUrl: './episode-page.component.html',
+  styleUrls: ['./episode-page.component.css']
 })
-export class EpisodesPageComponent implements OnInit {
+export class EpisodePageComponent implements OnInit {
 
   player;
 
   constructor(public ddb: DynamoDBService) {
-    console.log("in Episodes Page");
+    console.log("in Episode Page");
 
 }
 

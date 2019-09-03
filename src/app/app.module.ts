@@ -41,6 +41,7 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
 import { BannerComponent } from './secure/banner/banner.component'
 import { WINDOW_PROVIDERS } from './service/window.service';
 import { NavbarComponent } from './secure/navbar/navbar.component';
+import { SettingsComponent } from './secure/settings/settings.component';
 
 @NgModule({
     declarations: [
@@ -63,13 +64,13 @@ import { NavbarComponent } from './secure/navbar/navbar.component';
         EpisodesPageComponent,
         PageNotFoundComponent,
         BannerComponent,
-        NavbarComponent
+        NavbarComponent,
+        SettingsComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        // HttpClientModule,
         routing,
         MatInputModule,
         BrowserAnimationsModule,

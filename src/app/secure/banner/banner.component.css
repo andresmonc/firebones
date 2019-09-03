@@ -17,7 +17,6 @@
     position: fixed;
     width: 100vw;
     z-index: 99;
-    top:0;
     text-align: center;
     clip-path: polygon(0 0, 0 87%, 7% 93%, 17% 94%, 21% 99%, 30% 96%, 37% 100%, 45% 100%, 51% 96%, 60% 100%, 69% 98%, 77% 95%, 85% 96%, 100% 89%, 100% 0);
 }
@@ -26,15 +25,18 @@
     /* text-align: center; */
     font-size: 72px; 
     display:inline-block;
+    /* display: block; */
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
   }
  
   .bringTextCloserRight{
+    /* Use this to position vertically due to inline block */
+    vertical-align: 100px;
+    /*  */
     margin-right: -75px;
     transition: all .5s ease;
     letter-spacing: 10px;
-    margin-bottom: 40%;
     -ms-transform: skewX(-10deg) rotate(-10deg);  /* IE 9 */
     -webkit-transform: skewX(-10deg) rotate(-10deg); /* Safari */
     transform: skewX(-10deg) rotate(-10deg); /* Standard syntax */
@@ -43,6 +45,9 @@
   }
 
   .bringTextCloserLeft{
+    /* Use this to position vertically due to inline block */
+    vertical-align: 100px;
+    /*  */
     margin-left: -60px;
     letter-spacing: 8px;
     transition: all .5s ease;
@@ -51,8 +56,8 @@
     transform: scale(1.2) skewY(-5deg) rotate(10deg) ; /* Standard syntax */
   }
   
-  
-  @media screen and (min-width: 400px) and (max-width: 900px) {
+  /* Tablet */
+  /* @media screen and (min-width: 400px) and (max-width: 900px) {
 
     #logo{
       width: 165px;
@@ -75,11 +80,11 @@
     }
     
     
-  }
+  } */
 
 
-  
-@media only screen and (max-width: 399px) {
+  /* Mobile */
+/* @media only screen and (max-width: 399px) {
 
   #navbar a {
     font-size: 18px; 
@@ -96,10 +101,11 @@
 
   .bringTextCloserRight{
     margin-right: -37px;
+
   }
 
   .bringTextCloserLeft{
     margin-left: -22px;
   }
   
-}
+} */

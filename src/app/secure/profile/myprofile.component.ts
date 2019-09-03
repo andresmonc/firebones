@@ -17,6 +17,12 @@ export class MyProfileComponent implements LoggedInCallback {
     constructor(public router: Router, public userService: UserLoginService, public userParams: UserParametersService, public cognitoUtil: CognitoUtil) {
         this.userService.isAuthenticated(this);
         console.log("In MyProfileComponent");
+        this.test();
+    }
+
+    test(){
+        console.log("test called")
+        console.log(this.cognitoUtil.getUserSub(this.cognitoUtil.getCurrentUser()));
     }
 
     isLoggedIn(message: string, isLoggedIn: boolean) {

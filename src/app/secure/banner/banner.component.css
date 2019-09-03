@@ -1,110 +1,117 @@
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i');
+* {
+  box-sizing: border-box;
+}
 
-* {box-sizing: border-box;}
-
-#logo{
-    overflow: hidden;
-    z-index: 99;
-    margin-right: auto;
-    margin-left: auto;
-    display:inline-block;
+#logo {
+  overflow: hidden;
+  z-index: 99;
+  margin-right: auto;
+  margin-left: auto;
+  display: inline-block;
 }
 
 #navbar {
-    overflow: hidden;
-    background-color: #f1f1f100;
-    transition: 0.4s;
-    position: fixed;
-    width: 100vw;
-    z-index: 99;
-    text-align: center;
-    clip-path: polygon(0 0, 0 87%, 7% 93%, 17% 94%, 21% 99%, 30% 96%, 37% 100%, 45% 100%, 51% 96%, 60% 100%, 69% 98%, 77% 95%, 85% 96%, 100% 89%, 100% 0);
+  overflow: hidden;
+  background-color: #f1f1f100;
+  transition: 0.4s;
+  position: fixed;
+  width: 100vw;
+  z-index: 99;
+  text-align: center;
+  clip-path: polygon(0 0, 0 87%, 7% 93%, 17% 94%, 21% 99%, 30% 96%, 37% 100%, 45% 100%, 51% 96%, 60% 100%, 69% 98%, 77% 95%, 85% 96%, 100% 89%, 100% 0);
 }
-  
+
+#navbar a {
+  /* text-align: center; */
+  font-size: 72px;
+  display: inline-block;
+  /* display: block; */
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+}
+
+.bringTextCloserRight {
+  margin-right: -75px;
+  transition: all .5s ease;
+  letter-spacing: 10px;
+  -ms-transform: skewX(-10deg) rotate(-10deg);
+  /* IE 9 */
+  -webkit-transform: skewX(-10deg) rotate(-10deg);
+  /* Safari */
+  transform: skewX(-10deg) rotate(-10deg);
+  /* Standard syntax */
+}
+
+.bringTextCloserLeft {
+  margin-left: -60px;
+  letter-spacing: 8px;
+  transition: all .5s ease;
+  -ms-transform: skewY(-5deg) rotate(10deg);
+  /* IE 9 */
+  -webkit-transform: skewY(-5deg) rotate(10deg);
+  /* Safari */
+  transform: scale(1.2) skewY(-5deg) rotate(10deg);
+  /* Standard syntax */
+}
+
+/* Desktop */
+
+@media screen and (min-width: 901px) {
+  .bringTextCloserRight {
+    /* Use this to position vertically due to inline block */
+    vertical-align: 100px;
+    /*  */
+  }
+  .bringTextCloserLeft {
+    /* Use this to position vertically due to inline block */
+    vertical-align: 100px;
+    /*  */
+  }
+}
+
+/* Tablet */
+
+@media screen and (min-width: 400px) and (max-width: 900px) {
+  #logo {
+    width: 165px;
+  }
+  #navbar {
+    width: 100vw;
+  }
   #navbar a {
-    /* text-align: center; */
-    font-size: 72px; 
-    display:inline-block;
-    /* display: block; */
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
+    font-size: 38px;
   }
- 
-  .bringTextCloserRight{
+  .bringTextCloserRight {
+    margin-right: -50px;
     /* Use this to position vertically due to inline block */
-    vertical-align: 100px;
+    vertical-align: 60px;
     /*  */
-    margin-right: -75px;
-    transition: all .5s ease;
-    letter-spacing: 10px;
-    -ms-transform: skewX(-10deg) rotate(-10deg);  /* IE 9 */
-    -webkit-transform: skewX(-10deg) rotate(-10deg); /* Safari */
-    transform: skewX(-10deg) rotate(-10deg); /* Standard syntax */
-
-
   }
-
-  .bringTextCloserLeft{
+  .bringTextCloserLeft {
+    margin-left: -37px;
     /* Use this to position vertically due to inline block */
-    vertical-align: 100px;
+    vertical-align: 60px;
     /*  */
-    margin-left: -60px;
-    letter-spacing: 8px;
-    transition: all .5s ease;
-    -ms-transform: skewY(-5deg) rotate(10deg); /* IE 9 */
-    -webkit-transform: skewY(-5deg) rotate(10deg); /* Safari */
-    transform: scale(1.2) skewY(-5deg) rotate(10deg) ; /* Standard syntax */
   }
-  
-  /* Tablet */
-  @media screen and (min-width: 400px) and (max-width: 900px) {
+}
 
-    #logo{
-      width: 165px;
-    }
-    
-    #navbar {
-      width: 100vw;
-    }
-      
-    #navbar a {
-      font-size: 38px; 
-    }
+/* Mobile */
 
-    .bringTextCloserRight{
-      margin-right: -50px;
-    }
-
-    .bringTextCloserLeft{
-      margin-left: -37px;
-    }
-    
-    
-  }
-
-
-  /* Mobile */
 @media only screen and (max-width: 399px) {
-
   #navbar a {
-    font-size: 18px; 
+    font-size: 18px;
   }
-
-  #logo{
+  #logo {
     width: 120px;
   }
-
-  #navbar{
+  #navbar {
     width: 100vw;
   }
-
-
-  .bringTextCloserRight{
+  .bringTextCloserRight {
     margin-right: -37px;
   }
-
-  .bringTextCloserLeft{
+  .bringTextCloserLeft {
     margin-left: -22px;
   }
-  
 }

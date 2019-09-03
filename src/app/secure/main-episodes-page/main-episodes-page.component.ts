@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainEpisodesPageComponent implements OnInit {
 
+  public episodePayload: Array<Array<String>> = [["1", "I Love Lucy"], ["2", "Jumping Jehosivits"]];
   constructor() { }
 
   ngOnInit() {

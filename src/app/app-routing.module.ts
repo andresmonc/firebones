@@ -13,6 +13,7 @@ import {LogoutComponent, RegistrationConfirmationComponent} from "./public/auth/
 import {ResendCodeComponent} from "./public/auth/resend/resendCode.component";
 import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.component";
 import { PageNotFoundComponent } from "./public/page-not-found/page-not-found.component";
+import { MainEpisodesPageComponent } from './secure/main-episodes-page/main-episodes-page.component';
 const homeRoutes: Routes = [
     {
         path: '',
@@ -40,11 +41,12 @@ const secureHomeRoutes: Routes = [
     {
 
         path: '',
-        redirectTo: '/securehome',
+        redirectTo: '/securehome/',
         pathMatch: 'full'
     },
     {
         path: 'securehome', component: SecureHomeComponent, children: [
+        {path: '', component: MainEpisodesPageComponent},
         {path: 'logout', component: LogoutComponent},
         {path: 'jwttokens', component: JwtComponent},
         {path: 'episode-page', component: EpisodePageComponent},

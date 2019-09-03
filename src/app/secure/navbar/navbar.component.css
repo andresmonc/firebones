@@ -2,7 +2,7 @@ footer {
     background-color: black;
     position: absolute;
     bottom: 0;
-    width: 100vw;
+    /* width: 100vw; */
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -10,9 +10,33 @@ footer {
 }
 
 nav {
-    display: inline-block;
+    display: inline;
 }
 
-a {
-    font-size: 10vw;
+i {
+    width: 33.33vw;
+}
+
+/* Desktop */
+
+@media screen and (min-width: 901px) {
+    i {
+        font-size: 4vw;
+    }
+}
+
+/* Tablet */
+
+@media screen and (min-width: 400px) and (max-width: 900px) {
+    i {
+        font-size: 6vw;
+    }
+}
+
+/* Mobile */
+
+@media only screen and (max-width: 399px) {
+    i {
+        font-size: 10vw;
+    }
 }

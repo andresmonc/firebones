@@ -1,6 +1,6 @@
 <div class="eipsodes-page">
-    <div class="episode-tile" *ngFor="let episode of episodePayload">
-        <img src="https://via.placeholder.com/150">
+    <div class="episode-tile" *ngFor="let episode of episodePayload" >
+        <img src="https://via.placeholder.com/150" [routerLink]="[episode[2]]">
         {{ episode[1] }}
     </div>
 </div>

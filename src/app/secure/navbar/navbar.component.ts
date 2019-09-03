@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
       }
 
       if (event instanceof NavigationEnd) {
-        if (this.router.url == "/securehome/myprofile") {
+        if (this.router.url == "/securehome/episode-page") {
           this.showTimelineButton = true;
           this.showPlaceholderButton = false;
         } else {

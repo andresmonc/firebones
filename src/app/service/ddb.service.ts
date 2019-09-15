@@ -57,7 +57,7 @@ export class DynamoDBService {
         }
     }
 
-    writeLogEntry(type: string) {
+    createNewUser(type: string) {
         try {
             let date = "NO RANGE KEY"
             console.log("DynamoDBService: Writing log entry. Type:" + type + " ID: " + this.cognitoUtil.getCognitoIdentity() + " Date: " + date);
@@ -68,52 +68,9 @@ export class DynamoDBService {
         }
 
     }
+    
 
-    // incrementContentCount(currentContentCount: number){
-    //     try {
-    //         let contentCount = currentContentCount + 1;
-    //         let date = new Date().toString();
-    //         console.log("DynamoDBService: Incrementing User's Content Count"  + " ID: " + this.cognitoUtil.getCognitoIdentity() + " Date: " + date);
-    //         this.updateUserContentCount(currentContentCount);
-    //     } catch (exc) {
-    //         console.log("DynamoDBService: Couldn't write to DDB");
-    //     }
-    // }
-
-    // updateUserContentCount(contentCount: number): void {
-    //     console.log("DynamoDBService: updating entrty");
-
-    //     let clientParams:any = {
-    //         params: {TableName: environment.ddbTableName}
-    //     };
-    //     if (environment.dynamodb_endpoint) {
-    //         clientParams.endpoint = environment.dynamodb_endpoint;
-    //     }
-    //     var DDB = new DynamoDB(clientParams);
-    //     console.log(this.cognitoUtil.getCognitoIdentity())
-
-
-    //     // Write the item to the table
-    //     var updateParams =
-    //         {
-    //             TableName: environment.ddbTableName,
-    //             Key: {
-    //                 userId:{S: this.cognitoUtil.getCognitoIdentity()},
-    //                 activityDate:{S: "Sat May 11 2019 10:54:37 GMT-0700 (Pacific Daylight Time)"}
-    //             },
-    //             UpdateExpression: "set contentCount = :r",
-    //             ExpressionAttributeValues:{
-    //                 ":r":{N: contentCount.toString()}
-    //             }
-    //         };
-
-    //     DDB.updateItem(updateParams, function (result) {
-    //         console.log("DynamoDBService: updated entry: " + JSON.stringify(result));
-    //     });
-    // }
-
-
-    getUserId() {
+    getUserId(): any{
         let cognitoUser = this.cognitoUtil.getCurrentUser();
 
         cognitoUser.getSession(function (err, session) {
@@ -124,7 +81,9 @@ export class DynamoDBService {
                     if (err) {
                         console.log("UserParametersService: in getParameters: " + err);
                     } else {
-                        console.log("THIS IS THE USER ID (SUB)", result[0].getValue());
+                        let response = result[0].getValue();
+                        console.log(response)
+                        return response;
                     }
                 });
             }
@@ -132,55 +91,111 @@ export class DynamoDBService {
         });
     }
 
-    updateUserContentWatched(): void {
-        console.log("hello world")
+    getUserObjectFunc(userSubId) {
+        let clientParams:any = {
+            params: {TableName: environment.ddbTableName}
+        };
+        console.log(environment.ddbTableName)
+        if (environment.dynamodb_endpoint) {
+            clientParams.endpoint = environment.dynamodb_endpoint;
+        }
+        var DDB = new DynamoDB(clientParams);
 
+        var getParams =
+        {
+            TableName: environment.ddbTableName,
+            Key: {
+                'userId' : {S: userSubId},
+            }
+        };
+
+        DDB.getItem(getParams, function (err, result) {
+            if (err){
+                console.log(err)
+                return err; 
+            } else {
+                console.log("DynamoDBService got user object: " + JSON.stringify(result));
+            }
+        });
+    } 
+
+
+    getUserObject(): any{
         let cognitoUser = this.cognitoUtil.getCurrentUser();
 
         cognitoUser.getSession(function (err, session) {
             if (err)
                 console.log("UserParametersService: Couldn't retrieve the user");
             else {
-                cognitoUser.getUserAttributes(function (err, result) {
-                    if (err) {
-                        console.log("UserParametersService: in getParameters: " + err);
-                    } else {
-                        console.log("THIS IS THE USER ID (SUB)", result[0].getValue());
-
-                        // block of code that should be in own fucntion
-
-                        console.log("DynamoDBService: updating entrty");
-
-                        let clientParams:any = {
-                            params: {TableName: environment.ddbTableName}
-                        };
-                        if (environment.dynamodb_endpoint) {
-                            clientParams.endpoint = environment.dynamodb_endpoint;
-                        }
-                        var DDB = new DynamoDB(clientParams);
-
-                        let userSubId =  result[0].getValue();
-                        var updateParams =
-                        {
-                            TableName: environment.ddbTableName,
-                            Key: {
-                                userId:{S: userSubId},
-                            },
-                            UpdateExpression: "set contentWatched = :r",
-                            ExpressionAttributeValues:{
-                                ":r":{S: "TRUE"}
-                            }
-                        };
-            
-                        DDB.updateItem(updateParams, function (result) {
-                        console.log("DynamoDBService Updated Content watch " + JSON.stringify(result));
+                cognitoUser.getUserAttributes(
+                    function getSubId(err, result) {
+                        let promise = new Promise((resolve,reject) => {
+                            setTimeout(() => {
+                                if (err) {
+                                  reject('error');
+                                } else {
+                                 let response: any = result[0].getValue();
+                                  resolve(response);
+                                }
+                              }, 1000);
                         });
-
-                        //
+                        promise.then((val) => {
+                            let clientParams:any = {
+                                params: {TableName: environment.ddbTableName}
+                            };
+                            if (environment.dynamodb_endpoint) {
+                                clientParams.endpoint = environment.dynamodb_endpoint;
+                            }
+                            var DDB = new DynamoDB(clientParams);
+                    
+                            var getParams =
+                            {
+                                TableName: environment.ddbTableName,
+                                Key: {
+                                    'userId' : {S: val.toString()},
+                                }
+                            };
+                    
+                            DDB.getItem(getParams, function (err, result) {
+                                if (err){
+                                    console.log(err)
+                                } else {
+                                    console.log("DynamoDBService got user object: " + JSON.stringify(result));
+                                }
+                            });
+                        });
                     }
-                });
+                );
             }
 
+        });
+    }
+    
+
+    updateUserContentWatched(): void {
+        let clientParams:any = {
+            params: {TableName: environment.ddbTableName}
+        };
+        if (environment.dynamodb_endpoint) {
+            clientParams.endpoint = environment.dynamodb_endpoint;
+        }
+        var DDB = new DynamoDB(clientParams);
+
+        let userSubId =  this.getUserId()
+        var updateParams =
+        {
+            TableName: environment.ddbTableName,
+            Key: {
+                userId:{S: userSubId},
+            },
+            UpdateExpression: "set contentWatched = :r",
+            ExpressionAttributeValues:{
+                ":r":{S: "TRUE"}
+            }
+        };
+
+        DDB.updateItem(updateParams, function (result) {
+        console.log("DynamoDBService Updated Content watch " + JSON.stringify(result));
         });
     }
 

@@ -11,14 +11,14 @@ import { EpisodeDetailsService } from "../../service/episode-details.service"
 export class EpisodePageComponent implements OnInit {
 
   public id = this.route.snapshot.paramMap.get('id')
-  public episodeTitle: String;
-  public episodeDesc:  String;
+  public episodeTitle: String = this.episodeDetailsService.getEpisodeTitle(this.id);
+  public episodeDesc: String = this.episodeDetailsService.getEpisodeDesc(this.id);
   player;
 
   constructor(
     private route: ActivatedRoute,
     public ddb: DynamoDBService,
-    public episodeDetailsService :EpisodeDetailsService
+    public episodeDetailsService: EpisodeDetailsService
   ) {
     console.log("in Episode Page");
 
@@ -35,10 +35,7 @@ export class EpisodePageComponent implements OnInit {
 
 
   ngOnInit() {
-
-    this.getEpisodeDetails(this.id);
-
-    //seriously? can this be moved to it's own function?
+    //seriously? can this be moved to it's own function????????????????????????
     (<any>window).onYouTubeIframeAPIReady = () => {
       this.player = new (<any>window).YT.Player('player', {
         height: '500px',
@@ -79,18 +76,6 @@ export class EpisodePageComponent implements OnInit {
   onPlayerReady(event) {
     console.log("what is this", event);
     event.target.playVideo();
-  }
-
-  getEpisodeDetails(id){
-    let obj = this.episodeDetailsService.episodeLookup(id)
-    for (var key in obj) {
-      if (key == 'episodeTitle'){
-        this.episodeTitle = obj[key]
-      }
-      if (key == 'episodeDesc'){
-        this.episodeDesc = obj[key]
-      }
-    }
   }
 
 }

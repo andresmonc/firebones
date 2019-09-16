@@ -1,6 +1,7 @@
 <div class="eipsodes-page">
-    <div class="episode-tile" *ngFor="let episode of episodePayload" >
-        <img src="https://via.placeholder.com/150" [routerLink]="[episode[2]]">
-        {{ episode[1] }}
+    <div class="episode-tile" *ngFor="let key of objectKeys(episodesObj)" >
+        <img src="https://via.placeholder.com/150" [routerLink]="['/securehome/episode-page',key]">
+        {{key}}
+        {{episodesObj[key].episodeTitle}}
     </div>
 </div>

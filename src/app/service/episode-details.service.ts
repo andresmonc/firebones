@@ -15,7 +15,7 @@ export class EpisodeDetailsService {
     8: { "episodeTitle": "Come On", "episodeDesc": "loremipsum" }
   }
   constructor() { }
-
+  
   episodeLookup(id) {
     for (var episode in this.episodesDetails) {
       if (episode == id) {
@@ -26,6 +26,26 @@ export class EpisodeDetailsService {
     }
   }
 
+  getEpisodes(){
+    return this.episodesDetails;
+  }
 
+  getEpisodeTitle(id){
+    let obj = this.episodeLookup(id);
+    for (var key in obj) {
+      if (key == 'episodeTitle'){
+        return obj[key]
+      }
+    }
+  }
+  
+  getEpisodeDesc(id){
+    let obj = this.episodeLookup(id);
+    for (var key in obj) {
+      if (key == 'episodeDesc'){
+        return obj[key]
+      }
+    }
+  }
 
 }

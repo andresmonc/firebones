@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-
+import { EpisodeDetailsService } from "../../service/episode-details.service"
 @Component({
   selector: 'app-main-episodes-page',
   templateUrl: './main-episodes-page.component.html',
   styleUrls: ['./main-episodes-page.component.css']
 })
 export class MainEpisodesPageComponent implements OnInit {
+  objectKeys = Object.keys
+  public episodesObj = this.episodeDetailsService.getEpisodes()
 
-  public test : String = "episode-page";
-  public episodePayload: Array<Array<String>> = [["1", "I Love Lucy","episode-page"], ["2", "Jumping Jehosivits","episode-page"]];
-  constructor() { }
+  constructor(public episodeDetailsService: EpisodeDetailsService) { }
 
   ngOnInit() {
+    // console.log(this.episodesObj)
   }
 
 }

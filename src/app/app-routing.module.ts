@@ -49,7 +49,7 @@ const secureHomeRoutes: Routes = [
         {path: '', component: MainEpisodesPageComponent},
         {path: 'logout', component: LogoutComponent},
         {path: 'jwttokens', component: JwtComponent},
-        {path: 'episode-page', component: EpisodePageComponent},
+        {path: 'episode-page/:id', component: EpisodePageComponent},
         {path: 'myprofile', component: MyProfileComponent},
         {path: 'useractivity', component: UseractivityComponent},
         {path: '', component: EpisodePageComponent}]

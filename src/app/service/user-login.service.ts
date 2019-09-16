@@ -9,27 +9,26 @@ import * as STS from "aws-sdk/clients/sts";
 @Injectable()
 export class UserLoginService {
 
+    constructor(public ddb: DynamoDBService, public cognitoUtil: CognitoUtil) {
+    }
+
     private onLoginSuccess = (callback: CognitoCallback, session: CognitoUserSession) => {
-
-        console.log("In authenticateUser onSuccess callback");
-
         AWS.config.credentials = this.cognitoUtil.buildCognitoCreds(session.getIdToken().getJwtToken());
 
-        // So, when CognitoIdentity authenticates a user, it doesn't actually hand us the IdentityID,
-        // used by many of our other handlers. This is handled by some sly underhanded calls to AWS Cognito
-        // API's by the SDK itself, automatically when the first AWS SDK request is made that requires our
-        // security credentials. The identity is then injected directly into the credentials object.
-        // If the first SDK call we make wants to use our IdentityID, we have a
-        // chicken and egg problem on our hands. We resolve this problem by "priming" the AWS SDK by calling a
-        // very innocuous API call that forces this behavior.
         let clientParams: any = {};
         if (environment.sts_endpoint) {
             clientParams.endpoint = environment.sts_endpoint;
         }
         let sts = new STS(clientParams);
+        let databaseDynamo = this.ddb;
+        
         sts.getCallerIdentity(function (err, data) {
-            console.log("UserLoginService: Successfully set the AWS credentials");
-            callback.cognitoCallback(null, session);
+            //HERE WE NEED TO SET PROMISE SO THAT callback is called after we get usobject, also load screen trigger at this point
+             databaseDynamo.getUserObject().then((data => {
+                console.log("this is the resolved data", data);
+                console.log("getUserObject function execution done!");
+                callback.cognitoCallback(null, session);
+           })); 
         });
     }
 
@@ -37,16 +36,14 @@ export class UserLoginService {
         callback.cognitoCallback(err.message, null);
     }
 
-    constructor(public ddb: DynamoDBService, public cognitoUtil: CognitoUtil) {
-    }
 
     authenticate(username: string, password: string, callback: CognitoCallback) {
         console.log("UserLoginService: starting the authentication");
-
         let authenticationData = {
             Username: username,
             Password: password,
         };
+        
         let authenticationDetails = new AuthenticationDetails(authenticationData);
 
         let userData = {
@@ -114,7 +111,6 @@ export class UserLoginService {
     logout() {
         console.log("UserLoginService: Logging out");
         this.cognitoUtil.getCurrentUser().signOut();
-
     }
 
     isAuthenticated(callback: LoggedInCallback) {
@@ -139,4 +135,7 @@ export class UserLoginService {
             callback.isLoggedIn("Can't retrieve the CurrentUser", false);
         }
     }
+
+
+
 }

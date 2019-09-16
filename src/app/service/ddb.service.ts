@@ -120,55 +120,65 @@ export class DynamoDBService {
     } 
 
 
-    getUserObject(): any{
-        let cognitoUser = this.cognitoUtil.getCurrentUser();
+    async getUserObject(): Promise<any> {
+        let promise = new Promise((resolve, reject) => {
+            setTimeout(() => {
 
-        cognitoUser.getSession(function (err, session) {
-            if (err)
-                console.log("UserParametersService: Couldn't retrieve the user");
-            else {
-                cognitoUser.getUserAttributes(
-                    function getSubId(err, result) {
-                        let promise = new Promise((resolve,reject) => {
-                            setTimeout(() => {
-                                if (err) {
-                                  reject('error');
-                                } else {
-                                 let response: any = result[0].getValue();
-                                  resolve(response);
+
+                let cognitoUser = this.cognitoUtil.getCurrentUser();
+
+                cognitoUser.getSession(function (err, session) {
+                if (err)
+                    console.log("UserParametersService: Couldn't retrieve the user");
+                else {
+                    //Here were grabbing the subId and returning a promise 
+                    cognitoUser.getUserAttributes(
+                        function getSubId(err, result) {
+                            let cognitoSubIdPromise = new Promise((resolve,reject) => {
+                                setTimeout(() => {
+                                    if (err) {
+                                        reject('error');
+                                    } else {
+                                        let response: any = result[0].getValue();
+                                        resolve(response);
+                                    }
+                                }, 1000);
+                            });
+                            //Once we've resolved the subId from Cognito we can plug it into our dynamodb query
+                            cognitoSubIdPromise.then((val) => {
+                                let clientParams:any = {
+                                    params: {TableName: environment.ddbTableName}
+                                };
+                                if (environment.dynamodb_endpoint) {
+                                    clientParams.endpoint = environment.dynamodb_endpoint;
                                 }
-                              }, 1000);
-                        });
-                        promise.then((val) => {
-                            let clientParams:any = {
-                                params: {TableName: environment.ddbTableName}
-                            };
-                            if (environment.dynamodb_endpoint) {
-                                clientParams.endpoint = environment.dynamodb_endpoint;
-                            }
-                            var DDB = new DynamoDB(clientParams);
-                    
-                            var getParams =
-                            {
-                                TableName: environment.ddbTableName,
-                                Key: {
-                                    'userId' : {S: val.toString()},
-                                }
-                            };
-                    
-                            DDB.getItem(getParams, function (err, result) {
-                                if (err){
-                                    console.log(err)
-                                } else {
-                                    console.log("DynamoDBService got user object: " + JSON.stringify(result));
-                                }
+                                var DDB = new DynamoDB(clientParams);
+                                var getParams = {
+                                    TableName: environment.ddbTableName,
+                                    Key: {
+                                        'userId' : {S: val.toString()},
+                                    }
+                                };
+                                //Here we are executing the query
+                                DDB.getItem(getParams, 
+                                    function (err, result) {
+                                        if (err){
+                                            console.log(err)
+                                        } else {
+                                            console.log("DynamoDBService got user object: " + JSON.stringify(result));
+                                            resolve(result);
+                                        }
+                                    }
+                                );
                             });
                         });
                     }
-                );
-            }
+                });
+              console.log("Async Work Complete");
+            }, 1000);
+          });
 
-        });
+          return promise;
     }
     
 

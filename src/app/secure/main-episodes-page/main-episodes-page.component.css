@@ -1,5 +1,14 @@
-.eipsodes-page{
-   display: inline;
-   margin-left: 5vw;
-   margin-right: 5vw;
+
+.episode-tile{
+   text-align: justify;
+}
+
+.episode-tile img {
+   display: block;
+   margin: 0 auto;
+   width: 20vw;
+}
+
+.episode-tile p {
+   text-align: center;
 }

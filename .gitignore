@@ -39,3 +39,5 @@ Thumbs.db
 upload.zip
 resetConfig.sh
 node_modules
+/FireBonesMobileApp/www
+/FireBonesMobileApp/platforms

@@ -1,12 +1,17 @@
 footer {
-    background-color: black;
+    background-image: url("../../../assets/img/firebones-nav.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: transparent;
+    width: 100vw;
     position: fixed;
     bottom: 0;
-    /* width: 100vw; */
+    width: 100vw;
+    height: 90px;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 35px;
     padding-bottom: 10px;
-    clip-path: polygon(0 0, 0 87%, 7% 93%, 17% 94%, 21% 99%, 30% 96%, 37% 100%, 45% 100%, 51% 96%, 60% 100%, 69% 98%, 77% 95%, 85% 96%, 100% 89%, 100% 0);
+    
 }
 
 nav {
@@ -19,7 +24,7 @@ a {
 }
 
 a:hover {
-    color: grey;
+    color: white;
 }
 
 i {
@@ -30,7 +35,12 @@ i {
 
 @media screen and (min-width: 901px) {
     i {
-        font-size: 4vw;
+        font-size: 3vw;
+    }
+
+    footer{
+        height: 120px;
+        padding-top:41px;
     }
 }
 

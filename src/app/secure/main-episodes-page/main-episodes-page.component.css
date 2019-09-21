@@ -1,14 +1,32 @@
-
-.episode-tile{
-   text-align: justify;
+.episodes-page{
+   padding-top: 0px;
+   padding-bottom: 0px;
+   margin-top: 0px;
+   margin-bottom: 0px;
 }
 
-.episode-tile img {
+.episode-tiles{
+   text-align: justify;
+   padding-bottom: 100px;
+
+}
+
+.episode-tiles img {
    display: block;
    margin: 0 auto;
-   width: 20vw;
+   width: 25vw;
+   height: 37vw;
+   /* width: 200px;
+   height: 300px; */
 }
 
-.episode-tile p {
+.episode-tiles p {
    text-align: center;
+   font-family: 'Cormorant Garamond', serif;
+   font-style: initial;
+   font-size: 4vw;
+   margin-bottom: 0;
+}
+.episode-tile{
+   padding-bottom: 25px;
 }

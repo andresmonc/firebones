@@ -58,6 +58,14 @@
 /* Desktop */
 
 @media screen and (min-width: 901px) {
+  #logo{
+    width: 230px;
+  }
+
+  #navbar a {
+    font-size: 58px;
+  }
+
   .bringTextCloserRight {
     /* Use this to position vertically due to inline block */
     vertical-align: 100px;

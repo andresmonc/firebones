@@ -97,8 +97,7 @@ export class RegisterComponent implements CognitoCallback {
             this.phoneValidation() == true && 
             this.emailValidation() == true && 
             this.passwordValidation() == true){
-                this.validated = true
-                console.log('validated');
+                this.validated = true;
             }
     }
 

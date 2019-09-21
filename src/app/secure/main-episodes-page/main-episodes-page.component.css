@@ -1,14 +1,25 @@
+.episodes-page{
+   padding-top: 0px;
+   padding-bottom: 0px;
+   margin-top: 0px;
+   margin-bottom: 0px;
+}
 
 .episode-tile{
    text-align: justify;
+
 }
 
 .episode-tile img {
    display: block;
    margin: 0 auto;
    width: 20vw;
+   height: 25vw;
 }
 
 .episode-tile p {
    text-align: center;
+   font-family: 'Cormorant Garamond', serif;
+   font-size: 4vw;
+   margin-bottom: 0;
 }

@@ -1,7 +1,7 @@
 <div id="profile-page">
 
 
-    <h2 class="text-center" id="account-setting-title"><i class="fas fa-chevron-left"></i>Account Settings</h2>
+    <h2 class="text-center" id="account-setting-title"><i class="fas fa-chevron-left" (click)="backClicked()"></i>Account Settings</h2>
     <hr>
     <div *ngFor="let parameter of parameters.slice().reverse()" id="profile-info">
         <div class="text-center account-field" *ngIf="parameter.name == 'email'">

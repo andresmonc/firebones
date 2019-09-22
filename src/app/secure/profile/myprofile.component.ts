@@ -3,7 +3,7 @@ import {UserLoginService} from "../../service/user-login.service";
 import {Callback, CognitoUtil, LoggedInCallback} from "../../service/cognito.service";
 import {UserParametersService} from "../../service/user-parameters.service";
 import {Router} from "@angular/router";
-
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'awscognito-angular2-app',
@@ -14,8 +14,15 @@ export class MyProfileComponent implements LoggedInCallback {
 
     public parameters: Array<Parameters> = [];
     public cognitoId: String;
+    
 
-    constructor(public router: Router, public userService: UserLoginService, public userParams: UserParametersService, public cognitoUtil: CognitoUtil) {
+    constructor(
+        public router: Router,
+        public userService: UserLoginService,
+        public userParams: UserParametersService,
+        public cognitoUtil: CognitoUtil,
+        private _location: Location
+        ) {
         this.userService.isAuthenticated(this);
         console.log("In MyProfileComponent");
         this.test();
@@ -33,6 +40,10 @@ export class MyProfileComponent implements LoggedInCallback {
             this.userParams.getParameters(new GetParametersCallback(this, this.cognitoUtil));
         }
     }
+
+    backClicked() {
+        this._location.back();
+      }
 }
 
 export class Parameters {

@@ -7,7 +7,8 @@ import {Router} from "@angular/router";
 
 @Component({
     selector: 'awscognito-angular2-app',
-    templateUrl: './myprofile.html'
+    templateUrl: './myprofile.html',
+    styleUrls: ['./myprofile.css']
 })
 export class MyProfileComponent implements LoggedInCallback {
 
@@ -56,7 +57,6 @@ export class GetParametersCallback implements Callback {
             parameter.name = result[i].getName();
             parameter.value = result[i].getValue();
             this.me.parameters.push(parameter);
-            // console.log(parameter)
         }
         let param = new Parameters()
         param.name = "cognito ID";

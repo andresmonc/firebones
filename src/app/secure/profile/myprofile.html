@@ -8,10 +8,16 @@
             <p>Account: <i>{{ parameter.value }}</i></p>
         </div>
         <div class="text-center account-field" *ngIf="parameter.name == 'phone_number'">
-            <p>Phone Number: <i>{{ parameter.value }}</i></p>
+            <p>Phone Number: <i>{{ parameter.value }}</i> <i class="fas fa-pencil-alt"></i></p>
         </div>
         <div class="text-center account-field" *ngIf="parameter.name == 'phone_number'">
-            <p>Notifications: <i>SLIDE ME YO</i></p>
+            <p>Notifications
+                <!-- Rounded switch -->
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </p>
         </div>
         <div class="text-center account-field" *ngIf="parameter.name == 'phone_number'">
             <p>Change Password</p>
@@ -24,4 +30,13 @@
         </div>
     </div>
 
+
+
+
+</div>
+
+<div id="logout-button-container">
+    <div id="logout-button">
+        <a [routerLink]="['/securehome/logout']">Log out</a>
+    </div>
 </div>

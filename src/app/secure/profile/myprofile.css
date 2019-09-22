@@ -2,23 +2,24 @@
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: #6F6F6F;
+    font-size: 40px;
+    font-weight: 100;
 }
 
 #account-setting-title i {
     margin-right: 30px;
+    font-size: 20px;
 }
 
 #profile-info {
-    margin-left: auto;
-    margin-right: auto;
     color: #6F6F6F;
 }
 
 .account-field {
     margin-bottom: 10px;
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 20px;
+    font-style: normal;
+    font-size: 22.5px;
     display: block;
     text-align: left;
 }
@@ -27,8 +28,38 @@ i {
     margin-left: 10px;
 }
 
-#profile-page{
+#profile-page {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    font-weight: 300;
+}
+
+#logout-button {
+    font-size: 25px;
+    width: 240px;
+    height: 60px;
+    border: 1px solid lightgray;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    padding: 10px;
+    border-radius: 25px;
+    color: #6F6F6F;
+    display: inline-block;
+}
+
+#logout-button-container {
+    margin-top: 25vh;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #6F6F6F;
+}
+
+
+label{
+    margin-left: 5px;
 }

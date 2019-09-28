@@ -23,7 +23,7 @@ export class UserLoginService {
         let databaseDynamo = this.ddb;
         
         sts.getCallerIdentity(function (err, data) {
-            //HERE WE NEED TO SET PROMISE SO THAT callback is called after we get usobject, also load screen trigger at this point
+            // save to local storage here , then callback to
              databaseDynamo.getUserObject().then((data => {
                 console.log("this is the resolved data", data);
                 console.log("getUserObject function execution done!");

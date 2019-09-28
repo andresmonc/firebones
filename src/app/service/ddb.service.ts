@@ -165,7 +165,14 @@ export class DynamoDBService {
                                         if (err){
                                             console.log(err)
                                         } else {
+                                            //Here we first save our user object key value pairs to local storage to use throughout the app 
                                             console.log("DynamoDBService got user object: " + JSON.stringify(result));
+                                            localStorage.setItem('userSubId', result.Item.userId.S);
+                                            localStorage.setItem('name', result.Item.name.S);
+                                            localStorage.setItem('phoneNumber', result.Item.phoneNumber.S);
+                                            localStorage.setItem('email', result.Item.email.S);
+                                            localStorage.setItem('contentWatched', result.Item.contentWatched.S);
+                                            localStorage.setItem('contentCount', result.Item.contentCount.S);
                                             resolve(result);
                                         }
                                     }

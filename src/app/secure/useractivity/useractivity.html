@@ -1,5 +1,7 @@
 <h1 class="page-header">My Login Activity</h1>
 
+<div id="player"></div>
+
 <div class="table-responsive">
     <table class="table table-hover table-striped">
         <tr>
@@ -16,14 +18,22 @@
             
         </tr>
     </table>
+
     
-    <div *ngIf="logdata.length >0">
+    <div *ngIf="logdata.length > 0">
             <p *ngIf="logdata[0].contentCount>1">
                     SHOW ME THE MONEY
+
                 </p> 
     </div>
 
 </div>
+
+
+
+
+
+
 
 
 

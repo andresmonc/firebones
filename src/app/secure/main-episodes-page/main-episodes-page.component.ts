@@ -8,11 +8,13 @@ import { EpisodeDetailsService } from "../../service/episode-details.service"
 export class MainEpisodesPageComponent implements OnInit {
   objectKeys = Object.keys
   public episodesObj = this.episodeDetailsService.getEpisodes()
+  public foo;
 
   constructor(public episodeDetailsService: EpisodeDetailsService) { }
 
   ngOnInit() {
-    // console.log(this.episodesObj)
+    this.foo = localStorage.getItem("name")
+    console.log(this.foo)
   }
 
 }

@@ -172,7 +172,7 @@ export class DynamoDBService {
                                             localStorage.setItem('phoneNumber', result.Item.phoneNumber.S);
                                             localStorage.setItem('email', result.Item.email.S);
                                             localStorage.setItem('contentWatched', result.Item.contentWatched.S);
-                                            localStorage.setItem('contentCount', result.Item.contentCount.S);
+                                            localStorage.setItem('contentCount', result.Item.contentCount.N);
                                             resolve(result);
                                         }
                                     }

@@ -9,12 +9,16 @@ export class MainEpisodesPageComponent implements OnInit {
   objectKeys = Object.keys
   public episodesObj = this.episodeDetailsService.getEpisodes()
   public foo;
+  public contentCount;
 
   constructor(public episodeDetailsService: EpisodeDetailsService) { }
 
   ngOnInit() {
     this.foo = localStorage.getItem("name")
+    this.contentCount = localStorage.getItem("contentCount");
     console.log(this.foo)
+    console.log(this.contentCount);
   }
+
 
 }

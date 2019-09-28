@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Fire Bones</title>
-    <base href="/">
+    <base href="#">
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
@@ -66,13 +66,6 @@
             </div>
         </div>
     </app-root>
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker
-                .register('/assets/service-workers/sw.js')
-                .then(function () { console.log("Service Worker Registered"); });
-        }
-    </script>
     <noscript>Please enable JavaScript to continue using this application.</noscript>
 
 </body>

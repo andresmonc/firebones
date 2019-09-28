@@ -71,7 +71,6 @@ import { MainEpisodesPageComponent } from './secure/main-episodes-page/main-epis
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        routing,
         MatInputModule,
         BrowserAnimationsModule,
         MatAutocompleteModule,
@@ -107,7 +106,7 @@ import { MainEpisodesPageComponent } from './secure/main-episodes-page/main-epis
         MatSortModule,
         MatFormFieldModule,
         YoutubePlayerModule,
-        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+        routing,
     ],
     providers: [
         CognitoUtil,

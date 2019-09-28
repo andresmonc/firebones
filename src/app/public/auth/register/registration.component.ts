@@ -61,17 +61,19 @@ export class RegisterComponent implements CognitoCallback {
             return false;
         }
         let i = 1;
-        while (i <= phone_num.length){
+        while (i <= phone_num.length - 1){
+            console.log(phone_num.charAt(i))
             let current_digit = parseInt(phone_num.charAt(i));
             if(isNaN(current_digit)){
                 this.errorMessage = "Please use only numbers in this format +15555555555"
+                console.log(current_digit);
                 return false;
             };
             i++;
         } 
         
         if(phone_num.charAt(0) != "+"){
-            this.errorMessage = "Missing '+' symbol; Phone number must be 13 digits in this format +15555555555"
+            this.errorMessage = "Missing '+' symbol; Phone number must be 13 digits in this format +01555555555"
             return false;
         }
         else {

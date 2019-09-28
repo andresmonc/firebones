@@ -22,6 +22,7 @@ export class RegisterComponent implements CognitoCallback {
     registrationUser: RegistrationUser;
     router: Router;
     errorMessage: string;
+    validated = false;
 
     constructor(public userRegistration: UserRegistrationService, router: Router) {
         this.router = router;
@@ -35,7 +36,11 @@ export class RegisterComponent implements CognitoCallback {
 
     onRegister() {
         this.errorMessage = null;
-        this.userRegistration.register(this.registrationUser, this);
+        this.validation()
+        if (this.validated == true){
+            this.userRegistration.register(this.registrationUser, this);
+        }
+
     }
 
     cognitoCallback(message: string, result: any) {
@@ -48,4 +53,56 @@ export class RegisterComponent implements CognitoCallback {
             this.router.navigate(['/home/confirmRegistration', result.user.username]);
         }
     }
+
+    phoneValidation(){
+        let phone_num = this.registrationUser.phone_number
+        if(phone_num.length < 13){
+            this.errorMessage = "Phone number must be 13 digits in this format +15555555555"
+            return false;
+        }
+        let i = 1;
+        while (i <= phone_num.length){
+            let current_digit = parseInt(phone_num.charAt(i));
+            if(isNaN(current_digit)){
+                this.errorMessage = "Please use only numbers in this format +15555555555"
+                return false;
+            };
+            i++;
+        } 
+        
+        if(phone_num.charAt(0) != "+"){
+            this.errorMessage = "Missing '+' symbol; Phone number must be 13 digits in this format +15555555555"
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    nameValidation(){
+        return true;
+    }
+
+    emailValidation(){
+        return true;
+    }
+
+    passwordValidation(){
+        return true;
+    }
+
+    validation(){
+        if (
+            this.nameValidation() == true &&
+            this.phoneValidation() == true && 
+            this.emailValidation() == true && 
+            this.passwordValidation() == true){
+                this.validated = true;
+            }
+    }
+
+
+
+
+
 }

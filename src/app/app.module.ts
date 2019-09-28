@@ -41,7 +41,6 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
 import { BannerComponent } from './secure/banner/banner.component'
 import { WINDOW_PROVIDERS } from './service/window.service';
 import { NavbarComponent } from './secure/navbar/navbar.component';
-import { SettingsComponent } from './secure/settings/settings.component';
 import { MainEpisodesPageComponent } from './secure/main-episodes-page/main-episodes-page.component';
 
 @NgModule({
@@ -66,7 +65,6 @@ import { MainEpisodesPageComponent } from './secure/main-episodes-page/main-epis
         PageNotFoundComponent,
         BannerComponent,
         NavbarComponent,
-        SettingsComponent,
         MainEpisodesPageComponent
     ],
     imports: [

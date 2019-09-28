@@ -30,3 +30,8 @@
 .episode-tile{
    padding-bottom: 25px;
 }
+
+.disable{
+   pointer-events: none;
+   filter: blur(3px)
+}

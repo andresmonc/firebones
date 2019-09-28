@@ -1,16 +1,12 @@
+{{contentCount}}
 <div class="container eipsodes-page">
     <div class="row episode-tiles">
-        <div class="col-xs-6 episode-tile" *ngFor="let key of objectKeys(episodesObj)">
+        <div class="col-xs-6 episode-tile"  [class.disable]="key>contentCount" *ngFor="let key of objectKeys(episodesObj)">
             <img src="https://via.placeholder.com/100" [routerLink]="['/securehome/episode-page',key]">
             <p>Episode {{key}}:</p>
             <p>{{episodesObj[key].episodeTitle}}</p>
-            
         </div>
     </div>
 </div>
-
-<h1>
-    {{foo}}
-</h1>
 
 

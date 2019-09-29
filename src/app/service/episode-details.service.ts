@@ -14,6 +14,7 @@ export class EpisodeDetailsService {
     7: { "episodeTitle": "Milk", "episodeDesc": "loremipsum" },
     8: { "episodeTitle": "Come On", "episodeDesc": "loremipsum" }
   }
+
   constructor() { }
   
   episodeLookup(id) {

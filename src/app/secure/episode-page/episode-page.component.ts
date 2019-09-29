@@ -9,10 +9,11 @@ import { EpisodeDetailsService } from "../../service/episode-details.service"
   styleUrls: ['./episode-page.component.css']
 })
 export class EpisodePageComponent implements OnInit {
-
+  objectKeys = Object.keys
   public id = this.route.snapshot.paramMap.get('id')
   public episodeTitle: String = this.episodeDetailsService.getEpisodeTitle(this.id);
   public episodeDesc: String = this.episodeDetailsService.getEpisodeDesc(this.id);
+  public episodeContent: JSON = this.episodeDetailsService.getEpisodeContentArray(this.id);
   player;
 
   constructor(
@@ -21,8 +22,9 @@ export class EpisodePageComponent implements OnInit {
     public episodeDetailsService: EpisodeDetailsService
   ) {
     console.log("in Episode Page");
-
   }
+
+  isEven(num) { return !(num % 2);}
 
   ngAfterViewInit() {
 
@@ -35,6 +37,7 @@ export class EpisodePageComponent implements OnInit {
 
 
   ngOnInit() {
+    console.log(this.episodeContent);
     //seriously? can this be moved to it's own function????????????????????????
     (<any>window).onYouTubeIframeAPIReady = () => {
       this.player = new (<any>window).YT.Player('player', {
@@ -77,5 +80,7 @@ export class EpisodePageComponent implements OnInit {
     console.log("what is this", event);
     event.target.playVideo();
   }
+   
+
 
 }

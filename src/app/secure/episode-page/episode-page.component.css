@@ -1,15 +1,7 @@
 
-
-* {
-    box-sizing: border-box;
-  }
-  
-
-  
   /* The actual timeline (the vertical ruler) */
   .timeline {
     position: relative;
-    max-width: 1200px;
     margin: 0 auto;
   }
   
@@ -41,7 +33,7 @@
     position: absolute;
     width: 25px;
     height: 25px;
-    right: -17px;
+    right: -12px;
     background-color: white;
     border: 4px solid #FF9F55;
     top: 15px;
@@ -89,7 +81,7 @@
   
   /* Fix the circle for containers on the right side */
   .right::after {
-    left: -16px;
+    left: -12px;
   }
   
   /* The actual content */
@@ -99,4 +91,9 @@
     position: relative;
     border-radius: 6px;
   }
+
+  .episodeHeader{
+    text-align: center;
+  }
+
   

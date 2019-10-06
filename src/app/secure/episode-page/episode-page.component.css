@@ -12,37 +12,72 @@
   .timeline::after {
     content: '';
     position: absolute;
-    width: 6px;
-    background-color: rgb(0, 0, 0);
+    width: 3px;
+    background-color: #e2e2e2;
     top: 0;
     bottom: 0;
     left: 50%;
-    margin-left: -3px;
+    /* margin-left: -3px; */
+  }
+
+  .timeline::before {
+    background-color: white;
   }
   
   /* Container around content */
   .container {
+    margin-top: 70px;
+    margin-bottom: 70px;
     margin-right: 0px !important;
     margin-left: 0px !important;
-    padding: 10px 40px;
+    padding: 35px 40px;
     position: relative;
     background-color: inherit;
     width: 50%;
+    border: 1px solid #FF9F55;
+    
   }
   
   /* The circles on the timeline */
   .container::after {
     content: '';
     position: absolute;
-    width: 25px;
-    height: 25px;
-    right: -12px;
-    background-color: white;
-    border: 4px solid #FF9F55;
+    width: 18px;
+    height: 18px;
+    right: -11px;
+    background-color: #908e8e;
     top: 15px;
     border-radius: 50%;
     z-index: 1;
+    border: 2px solid white;
   }
+
+    /* Container around content */
+    .first-container {
+      margin-right: 0px !important;
+      margin-left: 0px !important;
+      padding: 10px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+      /* border: 4px solid #FF9F55; */
+      
+    }
+    
+    /* The circles on the timeline */
+    .first-container::after {
+      content: '';
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      right: -13px;
+      background-color: #5B5B5B;
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+      border: 2px solid white;
+    }
+    
   
   /* Place the container to the left */
   .left {
@@ -57,18 +92,15 @@
   /* Add arrows to the left container (pointing right) */
   .left::before {
     content: " ";
-    height: 0;
-    position: absolute;
-    top: 8px;
-    width: 0;
+    top: 10%;
     z-index: 1;
-    left: 79px;
-
-    position: relative;
-    height: 20px;
+    left: 54%;
+    /* border: 2px solid white; */
+    position: absolute;
+    /* height: 20px;
     width: 20px;
     background-color: red;
-    border-radius: 100px;
+    border-radius: 100px; */
     display: inline-block;
     max-width: 400px;
 
@@ -77,25 +109,22 @@
   /* Add arrows to the right container (pointing left) */
   .right::before {
     content: " ";
-    height: 0;
-    position: absolute;
     top: 8px;
-    width: 0;
     z-index: 1;
     left: 30px;
 
     position: relative;
-    height: 20px;
+    /* height: 20px;
     width: 20px;
     background-color: red;
-    border-radius: 100px;
+    border-radius: 100px; */
     display: inline-block;
     max-width: 400px;
   }
   
   /* Fix the circle for containers on the right side */
   .right::after {
-    left: -12px;
+    left: -7px;
   }
   
   /* The actual content */
@@ -111,6 +140,8 @@
   .episodeText{
     margin-top: 0px;
     margin-bottom: 0px;
+    text-align: center;
+    padding-top: 25px;
   }
 
   /* .block {
@@ -125,18 +156,30 @@
    */
   hr.lineRight {
     position: absolute;
-    width: 50px;
+    width: 15vw;
     border: 2px solid purple;
-    right: 96px;
-    top: -29px;
+    left: -21%;
+    top: -27%;
   }
 
   hr.lineLeft {
     position: absolute;
-    width: 50px;
+    width: 15vw;
     border: 2px solid blue;
-    left: 98px;
-    top: -29px;
+    left: 73%;
+    bottom: 44%;
+  }
+
+  .episodeIconImg-left{
+    bottom: 69%;
+    left: 9%;
+    position: absolute;
+  }
+
+  .episodeIconImg-right{
+    bottom: 69%;
+    left: 9%;
+    position: absolute;
   }
 
   

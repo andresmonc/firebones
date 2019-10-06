@@ -2,7 +2,7 @@
     {{episodeTitle}}
 </h1>
 
-<div class= "container">
+<div class="first-container">
 </div>
 
 <div class="timeline">
@@ -11,11 +11,11 @@
             <div [ngClass]="isEven(contentKey) ?'container right':'container left'">
                 <div class="content">
                     <p class="episodeText">{{episodeContent[contentKey].contentType}}</p>
-                    <div class='block'>
-                    <hr [ngClass]="isEven(contentKey) ?' lineRight':'lineLeft'" />
+                    <!-- <div class='block'>
+                        <hr [ngClass]="isEven(contentKey) ?' lineRight':'lineLeft'" />
+                    </div> -->
+                    <img [ngClass]="isEven(contentKey) ?' episodeIconImg-left':'episodeIconImg-right'" src="https://via.placeholder.com/100">
                 </div>
             </div>
         </div>
     </div>
-</div>
-

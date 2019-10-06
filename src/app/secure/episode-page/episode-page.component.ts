@@ -15,6 +15,8 @@ export class EpisodePageComponent implements OnInit {
   public episodeDesc: string = this.episodeDetailsService.getEpisodeDesc(this.id);
   public episodeContent: JSON = this.episodeDetailsService.getEpisodeContentArray(this.id);
   public contentCount = localStorage.getItem('contentCount');
+  public contentWatched = localStorage.getItem('contentWatched');
+  public clickInContentKey;
   public episodeVideoId = '';
   public timelineEpisodeCount;
   player;
@@ -42,8 +44,7 @@ export class EpisodePageComponent implements OnInit {
           onReady: (event) => {
             console.log('ARE WE READY FOR VID');
             this.onPlayerReady(event);
-          }
-          ,
+          },
           onStateChange: (event) => { this.onPlayerStateChange(event); }
         },
         playerVars: {
@@ -59,8 +60,10 @@ export class EpisodePageComponent implements OnInit {
 
   isEven(num) { return !(num % 2); }
 
-  setVideoId(epvideoId) {
+  setVideoId(epvideoId, contentKey) {
     this.player.loadVideoById(epvideoId);
+    console.log('this is the content key clickd in', contentKey);
+    this.clickInContentKey = contentKey;
   }
 
   getTimelineEpisodeCount() {
@@ -81,9 +84,14 @@ export class EpisodePageComponent implements OnInit {
     // The API calls this function when the player's state changes.
     onPlayerStateChange(event) {
       console.log('Vid status number:', event.data);
-      if (event.data === 0) {
-        console.log('VIDEO HAS ENDED');
+      console.log('content key', this.clickInContentKey );
+      console.log('contentCount', this.contentCount);
+      console.log('contentWatched', this.contentWatched);
+      if (event.data === 0 && this.contentWatched === 'FALSE' && this.clickInContentKey === this.contentCount) {
+        console.log('UPDATING CONTENT WATCH TO TRUE ONCE ONLY');
         // if content count is less than 2
+        this.contentWatched = 'TRUE';
+        localStorage.setItem('contentWatched', 'TRUE');
         this.ddb.updateUserContentWatched();
       }
     }

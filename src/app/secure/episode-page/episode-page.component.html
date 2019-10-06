@@ -18,7 +18,7 @@
                     </div> -->
                     <img [ngClass]="isEven(contentKey) ?' episodeIconImg-left':'episodeIconImg-right'" 
                     onclick="document.getElementById('id01').style.display='block'"
-                    (click) = "setVideoId(episodeContent[contentKey].videoId)"
+                    (click) = "setVideoId(episodeContent[contentKey].videoId, contentKey)"
                     src="https://via.placeholder.com/100">
                 </div>
             </div>

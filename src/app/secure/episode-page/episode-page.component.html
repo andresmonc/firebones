@@ -10,13 +10,12 @@
         <div *ngIf="i < timelineEpisodeCount">
             <div [ngClass]="isEven(contentKey) ?'container right':'container left'">
                 <div class="content">
-                    <h2>{{episodeContent[contentKey].contentType}}</h2>
-                    <p>Loremerent detracto. Emis ea eam.</p>
+                    <p class="episodeText">{{episodeContent[contentKey].contentType}}</p>
+                    <div class='block'>
+                    <hr [ngClass]="isEven(contentKey) ?' lineRight':'lineLeft'" />
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class= "container">
-</div>

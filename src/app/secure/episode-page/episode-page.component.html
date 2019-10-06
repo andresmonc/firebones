@@ -2,6 +2,8 @@
     {{episodeTitle}}
 </h1>
 
+<!-- <div id="player"></div> -->
+
 <div class="first-container">
 </div>
 
@@ -14,8 +16,21 @@
                     <!-- <div class='block'>
                         <hr [ngClass]="isEven(contentKey) ?' lineRight':'lineLeft'" />
                     </div> -->
-                    <img [ngClass]="isEven(contentKey) ?' episodeIconImg-left':'episodeIconImg-right'" src="https://via.placeholder.com/100">
+                    <img [ngClass]="isEven(contentKey) ?' episodeIconImg-left':'episodeIconImg-right'" 
+                    onclick="document.getElementById('id01').style.display='block'"
+                    (click) = "setVideoId(episodeContent[contentKey].videoId)"
+                    src="https://via.placeholder.com/100">
                 </div>
             </div>
         </div>
     </div>
+
+
+<div id="id01" class="w3-modal episodeVidModal">
+    <div class="w3-animate-left episodeDiv">
+           <span onclick="document.getElementById('id01').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                    <h2>Modal Header</h2>
+        <div id="player"></div>
+    </div>
+</div>

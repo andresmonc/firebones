@@ -14,6 +14,8 @@ export class EpisodePageComponent implements OnInit {
   public episodeTitle: String = this.episodeDetailsService.getEpisodeTitle(this.id);
   public episodeDesc: String = this.episodeDetailsService.getEpisodeDesc(this.id);
   public episodeContent: JSON = this.episodeDetailsService.getEpisodeContentArray(this.id);
+  public contentCount = localStorage.getItem("contentCount");
+  public timelineEpisodeCount;
   player;
 
   constructor(
@@ -24,7 +26,20 @@ export class EpisodePageComponent implements OnInit {
     console.log("in Episode Page");
   }
 
+
   isEven(num) { return !(num % 2);}
+
+  getTimelineEpisodeCount(){
+    let timelineCount = 0;
+    for (var key in this.episodeContent) {
+      timelineCount++;
+      if (key == this.contentCount){
+        return timelineCount;
+      }
+    }
+  }
+
+
 
   ngAfterViewInit() {
 
@@ -37,7 +52,8 @@ export class EpisodePageComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.episodeContent);
+    this.timelineEpisodeCount = this.getTimelineEpisodeCount();
+
     //seriously? can this be moved to it's own function????????????????????????
     (<any>window).onYouTubeIframeAPIReady = () => {
       this.player = new (<any>window).YT.Player('player', {

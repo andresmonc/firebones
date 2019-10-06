@@ -1,15 +1,22 @@
-
 <h1 class="episodeHeader">
     {{episodeTitle}}
 </h1>
 
+<div class= "container">
+</div>
+
 <div class="timeline">
-    <div *ngFor="let contentKey of objectKeys(episodeContent)">
-        <div [ngClass]="isEven(contentKey) ?'container right':'container left'">
-            <div class="content">
-                <h2>{{episodeContent[contentKey].contentType}}</h2>
-                <p>Loremerent detracto. Emis ea eam.</p>
+    <div *ngFor="let contentKey of objectKeys(episodeContent); let i=index">
+        <div *ngIf="i < timelineEpisodeCount">
+            <div [ngClass]="isEven(contentKey) ?'container right':'container left'">
+                <div class="content">
+                    <h2>{{episodeContent[contentKey].contentType}}</h2>
+                    <p>Loremerent detracto. Emis ea eam.</p>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+<div class= "container">
 </div>

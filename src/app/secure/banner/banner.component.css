@@ -60,6 +60,7 @@
 @media screen and (min-width: 901px) {
   #logo{
     width: 230px;
+    margin-top: 8px; 
   }
 
   #navbar a {
@@ -68,12 +69,12 @@
 
   .bringTextCloserRight {
     /* Use this to position vertically due to inline block */
-    vertical-align: 100px;
+    vertical-align: 10px;
     /*  */
   }
   .bringTextCloserLeft {
     /* Use this to position vertically due to inline block */
-    vertical-align: 100px;
+    vertical-align: 10px;
     /*  */
   }
 }
@@ -93,13 +94,13 @@
   .bringTextCloserRight {
     margin-right: -50px;
     /* Use this to position vertically due to inline block */
-    vertical-align: 70px;
+    vertical-align: -1px;
     /*  */
   }
   .bringTextCloserLeft {
     margin-left: -37px;
     /* Use this to position vertically due to inline block */
-    vertical-align: 70px;
+    vertical-align: -1px;
     /*  */
   }
 }
@@ -119,13 +120,13 @@
   .bringTextCloserRight {
     margin-right: -37px;
     /* Use this to position vertically due to inline block */
-    vertical-align: 50px;
+    vertical-align: -1px;
     /*  */
   }
   .bringTextCloserLeft {
     margin-left: -22px;
     /* Use this to position vertically due to inline block */
-    vertical-align: 50px;
+    vertical-align: -1px;
     /*  */
   }
 }

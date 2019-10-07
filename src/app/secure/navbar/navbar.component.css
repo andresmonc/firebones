@@ -7,9 +7,9 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100vw;
-    height: 90px;
+    height: 65px;
     text-align: center;
-    padding-top: 35px;
+    padding-top: 24px;
     padding-bottom: 10px;
     z-index:2;
     
@@ -47,16 +47,20 @@ i {
 
 /* Tablet */
 
-@media screen and (min-width: 400px) and (max-width: 900px) {
+@media screen and (min-width: 591px) and (max-width: 900px) {
     i {
-        font-size: 6vw;
+        font-size: 4vw;
     }
 }
 
 /* Mobile */
-
+@media screen and (min-width: 400px) and (max-width: 590px) {
+    i {
+        font-size: 5vw;
+    }
+}
 @media only screen and (max-width: 399px) {
     i {
-        font-size: 10vw;
+        font-size: 7vw;
     }
 }

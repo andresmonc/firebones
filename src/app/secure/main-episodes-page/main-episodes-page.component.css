@@ -15,7 +15,7 @@
    display: block;
    margin: 0 auto;
    width: 25vw;
-   height: 37vw;
+   max-width: 200px;
    /* width: 200px;
    height: 300px; */
 }
@@ -34,4 +34,10 @@
 .disable{
    pointer-events: none;
    filter: blur(3px)
+}
+
+@media screen and (min-width: 972px){
+   .episode-tiles p {
+      font-size: 2.5vw;
+   }
 }

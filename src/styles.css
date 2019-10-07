@@ -7,6 +7,7 @@ html {
     height: 100%;
     background-image: url("https://s3-us-west-1.amazonaws.com/firebones-lz/paperPattern.png");
     background-size: cover;
+    margin-top: 60px;
 }
 
 
@@ -170,4 +171,11 @@ html {
 
 .spinner-message {
     text-align: center;
+}
+
+
+@media screen and (min-width: 773px){
+    body{
+        margin-top: 90px;
+    }
 }

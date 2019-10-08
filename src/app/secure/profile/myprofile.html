@@ -1,14 +1,20 @@
 <div id="profile-page">
 
 
-    <h2 class="text-center" id="account-setting-title"><i class="fas fa-chevron-left" (click)="backClicked()"></i>Account Settings</h2>
+    <h2 class="text-center" id="account-setting-title"><i class="fas fa-chevron-left"
+            (click)="backClicked()"></i>Account Settings</h2>
     <hr>
     <div *ngFor="let parameter of parameters.slice().reverse()" id="profile-info">
         <div class="text-center account-field" *ngIf="parameter.name == 'email'">
             <p>Account: <i>{{ parameter.value }}</i></p>
         </div>
-        <div class="text-center account-field" *ngIf="parameter.name == 'phone_number'">
-            <p>Phone Number: <i>{{ parameter.value }}</i> <i class="fas fa-pencil-alt"></i></p>
+        <div class="text-center account-field phone-number" *ngIf="parameter.name == 'phone_number'">
+            <p>Phone Number: 
+                <i *ngIf="!editMode" >{{ parameter.value }}</i>
+                <input class="edit-field" (submit)="console.log('Hiii')"*ngIf="editMode" value="{{ parameter.value }}">
+                <i (click)="editMode=true" *ngIf="!editMode" class="fas fa-pencil-alt" style="margin-left: 28px;"></i>
+                <i (click)="editMode=false" class="fas fa-check" *ngIf="editMode"></i>
+            </p>
         </div>
         <div class="text-center account-field" *ngIf="parameter.name == 'phone_number'">
             <p>Notifications

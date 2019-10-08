@@ -22,6 +22,7 @@
     font-size: 22.5px;
     display: block;
     text-align: left;
+    height: 50px;
 }
 
 i {
@@ -62,4 +63,12 @@ a {
 
 label{
     margin-left: 5px;
+}
+
+.edit-field{
+    width: 150px;
+}
+
+.phone-number {
+    width: 350px;
 }

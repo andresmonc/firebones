@@ -14,7 +14,7 @@ export class MyProfileComponent implements LoggedInCallback {
 
     public parameters: Array<Parameters> = [];
     public cognitoId: String;
-
+    
 
     constructor(
         public router: Router,

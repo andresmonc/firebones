@@ -52,6 +52,8 @@ const secureHomeRoutes: Routes = [
         {path: 'episode-page/:id', component: EpisodePageComponent},
         {path: 'myprofile', component: MyProfileComponent},
         {path: 'useractivity', component: UseractivityComponent},
+        {path: 'changepassword', component: ForgotPasswordStep1Component},
+        {path: 'changepassword/:email', component: ForgotPassword2Component},
         {path: '', component: EpisodePageComponent}]
     }
 ];

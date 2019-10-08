@@ -13,14 +13,14 @@
                 <i *ngIf="!editMode" >{{ parameter.value }}</i>
                 <input class="edit-field" (submit)="console.log('Hiii')"*ngIf="editMode" value="{{ parameter.value }}">
                 <i (click)="editMode=true" *ngIf="!editMode" class="fas fa-pencil-alt" style="margin-left: 28px;"></i>
-                <i (click)="editMode=false" class="fas fa-check" *ngIf="editMode"></i>
+                <i (click)="editMode=false;updatePhoneNumber()" class="fas fa-check" *ngIf="editMode"></i>
             </p>
         </div>
         <div class="text-center account-field" *ngIf="parameter.name == 'phone_number'">
             <p>Notifications
                 <!-- Rounded switch -->
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" (click)="updateNotifications()">
                     <span class="slider round"></span>
                 </label>
             </p>

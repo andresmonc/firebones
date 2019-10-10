@@ -42,6 +42,7 @@ import { BannerComponent } from './secure/banner/banner.component'
 import { WINDOW_PROVIDERS } from './service/window.service';
 import { NavbarComponent } from './secure/navbar/navbar.component';
 import { MainEpisodesPageComponent } from './secure/main-episodes-page/main-episodes-page.component';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 @NgModule({
     declarations: [
@@ -65,7 +66,8 @@ import { MainEpisodesPageComponent } from './secure/main-episodes-page/main-epis
         PageNotFoundComponent,
         BannerComponent,
         NavbarComponent,
-        MainEpisodesPageComponent
+        MainEpisodesPageComponent,
+        LoadingScreenComponent
     ],
     imports: [
         BrowserModule,

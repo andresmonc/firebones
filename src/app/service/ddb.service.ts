@@ -18,6 +18,41 @@ export class DynamoDBService {
         console.log('DynamoDBService: constructor');
     }
 
+    getLocalStorageSubId() {
+        return localStorage.getItem('userSubId');
+    }
+
+    getLocalStorageContentCount() {
+        return localStorage.getItem('contentCount');
+    }
+
+    getLocalStorageContentWatched() {
+       return localStorage.getItem('contentWatched');
+    }
+
+    getLocalStorageNotifications() {
+        return localStorage.getItem('notifications');
+    }
+
+    getLocalStoragePhoneNumber() {
+        return localStorage.getItem('phoneNumber');
+    }
+
+    getLocalStorageEmail() {
+        return localStorage.getItem('email');
+    }
+
+    setLocalStoragePhoneNumber(phoneInput) {
+        localStorage.setItem('phoneNumber', phoneInput);
+    }
+
+    setLocalStorageNotifications(notificationsBoolean) {
+        localStorage.setItem('notifications', notificationsBoolean);
+    }
+
+    setLocalStorageContentWatchedTrue() {
+        localStorage.setItem('contentWatched', 'TRUE');
+    }
 
     getAWS() {
         return AWS;
@@ -94,7 +129,8 @@ export class DynamoDBService {
         });
     }
 
-    getUserObjectFunc(userSubId) {
+    getUserObjectFunc() {
+        const userSubId = this.getLocalStorageSubId();
         const clientParams: any = {
             params: { TableName: environment.ddbTableName }
         };
@@ -117,18 +153,16 @@ export class DynamoDBService {
                 return err;
             } else {
                 console.log('DynamoDBService got user object: ' + JSON.stringify(result));
+                localStorage.setItem('contentWatched', result.Item.contentWatched.S);
+                localStorage.setItem('contentCount', result.Item.contentCount.N);
             }
         });
     }
 
-
     async getUserObject(): Promise<any> {
         const promise = new Promise((resolve, reject) => {
             setTimeout(() => {
-
-
                 const cognitoUser = this.cognitoUtil.getCurrentUser();
-
                 cognitoUser.getSession(function (err, session) {
                     if (err) {
                         console.log('UserParametersService: Couldn\'t retrieve the user');

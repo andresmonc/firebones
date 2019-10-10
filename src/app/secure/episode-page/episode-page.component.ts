@@ -16,8 +16,8 @@ export class EpisodePageComponent implements OnInit, OnDestroy{
   public episodeTitle: string = this.episodeDetailsService.getEpisodeTitle(this.id);
   public episodeDesc: string = this.episodeDetailsService.getEpisodeDesc(this.id);
   public episodeContent: JSON = this.episodeDetailsService.getEpisodeContentArray(this.id);
-  public contentCount = localStorage.getItem('contentCount');
-  public contentWatched = localStorage.getItem('contentWatched');
+  public contentCount = this.ddb.getLocalStorageContentCount();
+  public contentWatched = this.ddb.getLocalStorageContentWatched();
   public clickInContentKey;
   public episodeVideoId = '';
   public timelineEpisodeCount;
@@ -34,6 +34,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.loadingScreenService.startLoading();
+    this.ddb.getUserObjectFunc();
     (window as any).onYouTubeIframeAPIReady = () => {
       console.log('Youtube Initalized');
       this.player = new (window as any).YT.Player('player', {
@@ -98,7 +99,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy{
         console.log('UPDATING CONTENT WATCH TO TRUE ONCE ONLY');
         // if content count is less than 2
         this.contentWatched = 'TRUE';
-        localStorage.setItem('contentWatched', 'TRUE');
+        this.ddb.setLocalStorageContentWatchedTrue();
         this.ddb.updateUserContentWatched();
       }
     }

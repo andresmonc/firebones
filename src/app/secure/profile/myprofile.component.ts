@@ -1,9 +1,8 @@
 import { UserLoginService } from '../../service/user-login.service';
-import { Callback, CognitoUtil, LoggedInCallback } from '../../service/cognito.service';
+import { LoggedInCallback } from '../../service/cognito.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { Inject, OnInit, Component } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component } from '@angular/core';
 import { DynamoDBService } from '../../service/ddb.service';
 import { LoadingScreenService } from '../../service/loading-screen/loading-screen.service'
 
@@ -12,7 +11,7 @@ import { LoadingScreenService } from '../../service/loading-screen/loading-scree
     templateUrl: './myprofile.html',
     styleUrls: ['./myprofile.css', './toggleswitch.css']
 })
-export class MyProfileComponent implements OnInit, LoggedInCallback {
+export class MyProfileComponent implements LoggedInCallback {
 
     public cognitoId: string;
     public errorMessage: string;

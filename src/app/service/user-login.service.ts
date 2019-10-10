@@ -14,7 +14,6 @@ export class UserLoginService {
     }
 
     private onLoginSuccess = (callback: CognitoCallback, session: CognitoUserSession) => {
-        this.loadingScreenService.startLoading();
         AWS.config.credentials = this.cognitoUtil.buildCognitoCreds(session.getIdToken().getJwtToken());
 
         const clientParams: any = {};
@@ -32,6 +31,7 @@ export class UserLoginService {
                 callback.cognitoCallback(null, session);
            }));
         });
+
     }
 
     private onLoginError = (callback: CognitoCallback, err) => {

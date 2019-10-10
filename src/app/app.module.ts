@@ -89,8 +89,7 @@ import { SupportComponent } from './support/support.component';
         BannerComponent,
         NavbarComponent,
         MainEpisodesPageComponent,
-        loadingScreenForWholeApp
-        LoadingScreenComponent
+        LoadingScreenComponent,
         SupportComponent
     ],
     imports: [

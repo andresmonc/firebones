@@ -3,10 +3,14 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 body {
     width: 100%;
-    height: 100%-90px;
+    height: 100%;
     /* background-image: url("https://s3-us-west-1.amazonaws.com/firebones-lz/paperPattern.png"); */
     background-color: white;
     background-size: cover;
+    margin-top: 60px;
+}
+
+html{
     margin-top: 60px;
 }
 

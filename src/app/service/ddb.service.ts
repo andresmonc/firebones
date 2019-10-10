@@ -18,6 +18,42 @@ export class DynamoDBService {
         console.log('DynamoDBService: constructor');
     }
 
+    getLocalStorageSubId() {
+        return localStorage.getItem('userSubId');
+    }
+
+    getLocalStorageContentCount() {
+        console.log('were rendering the table now by content count');
+        return localStorage.getItem('contentCount');
+    }
+
+    getLocalStorageContentWatched() {
+       return localStorage.getItem('contentWatched');
+    }
+
+    getLocalStorageNotifications() {
+        return localStorage.getItem('notifications');
+    }
+
+    getLocalStoragePhoneNumber() {
+        return localStorage.getItem('phoneNumber');
+    }
+
+    getLocalStorageEmail() {
+        return localStorage.getItem('email');
+    }
+
+    setLocalStoragePhoneNumber(phoneInput) {
+        localStorage.setItem('phoneNumber', phoneInput);
+    }
+
+    setLocalStorageNotifications(notificationsBoolean) {
+        localStorage.setItem('notifications', notificationsBoolean);
+    }
+
+    setLocalStorageContentWatchedTrue() {
+        localStorage.setItem('contentWatched', 'TRUE');
+    }
 
     getAWS() {
         return AWS;
@@ -46,7 +82,7 @@ export class DynamoDBService {
             } else {
                 // print all the movies
                 console.log('DynamoDBService: Query succeeded.');
-                data.Items.forEach(function (logitem) {
+                data.Items.forEach(function(logitem) {
                     // console.log('This is the user object currently in Dynamo DB', logitem)
                     mapArray.push({
                         type: logitem.type,
@@ -73,14 +109,14 @@ export class DynamoDBService {
     }
 
 
-    getUserId(): any {
+    getUserIdCognito(): any {
         const cognitoUser = this.cognitoUtil.getCurrentUser();
 
-        cognitoUser.getSession(function (err, session) {
+        cognitoUser.getSession(function(err, session) {
             if (err) {
                 console.log('UserParametersService: Couldn\'t retrieve the user');
             } else {
-                cognitoUser.getUserAttributes(function (err, result) {
+                cognitoUser.getUserAttributes(function(err, result) {
                     if (err) {
                         console.log('UserParametersService: in getParameters: ' + err);
                     } else {
@@ -94,42 +130,48 @@ export class DynamoDBService {
         });
     }
 
-    getUserObjectFunc(userSubId) {
-        const clientParams: any = {
-            params: { TableName: environment.ddbTableName }
-        };
-        console.log(environment.ddbTableName);
-        if (environment.dynamodb_endpoint) {
-            clientParams.endpoint = environment.dynamodb_endpoint;
-        }
-        const DDB = new DynamoDB(clientParams);
+    async getUserContent(): Promise<any> {
+        const userSubId = this.getLocalStorageSubId();
+        const promise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const clientParams: any = {
+                    params: { TableName: environment.ddbTableName }
+                };
+                console.log(environment.ddbTableName);
+                if (environment.dynamodb_endpoint) {
+                    clientParams.endpoint = environment.dynamodb_endpoint;
+                }
+                const DDB = new DynamoDB(clientParams);
+                const getParams = {
+                    TableName: environment.ddbTableName,
+                    Key: {
+                        userId: { S: userSubId },
+                    }
+                };
 
-        const getParams = {
-            TableName: environment.ddbTableName,
-            Key: {
-                userId: { S: userSubId },
-            }
-        };
-
-        DDB.getItem(getParams, function (err, result) {
-            if (err) {
-                console.log(err);
-                return err;
-            } else {
-                console.log('DynamoDBService got user object: ' + JSON.stringify(result));
-            }
+                DDB.getItem(getParams, function(err, result) {
+                    if (err) {
+                        console.log(err);
+                        return err;
+                    } else {
+                        console.log('DynamoDBService called for user contentWatch!!!!: ' + (result.Item.contentWatched.S));
+                        console.log('DynamoDBService called for user contentCount!!!!: ' + (result.Item.contentCount.N));
+                        localStorage.setItem('contentWatched', result.Item.contentWatched.S);
+                        localStorage.setItem('contentCount', result.Item.contentCount.N);
+                        resolve(result.Item.contentCount.N);
+                    }
+                });
+            }, 1000);
         });
-    }
 
+        return promise;
+    }
 
     async getUserObject(): Promise<any> {
         const promise = new Promise((resolve, reject) => {
             setTimeout(() => {
-
-
                 const cognitoUser = this.cognitoUtil.getCurrentUser();
-
-                cognitoUser.getSession(function (err, session) {
+                cognitoUser.getSession(function(err, session) {
                     if (err) {
                         console.log('UserParametersService: Couldn\'t retrieve the user');
                     } else {
@@ -163,12 +205,12 @@ export class DynamoDBService {
                                     };
                                     // Here we are executing the query
                                     DDB.getItem(getParams,
-                                        function (err, result) {
+                                        function(err, result) {
                                             if (err) {
                                                 console.log(err);
                                             } else {
                                                 // Here we first save our user object key value pairs to local storage to use throughout the app
-                                                console.log('DynamoDBService got user object: ' + JSON.stringify(result));
+                                                // console.log('DynamoDBService got user object: ' + JSON.stringify(result));
                                                 localStorage.setItem('userSubId', result.Item.userId.S);
                                                 localStorage.setItem('name', result.Item.name.S);
                                                 localStorage.setItem('phoneNumber', result.Item.phoneNumber.S);
@@ -191,7 +233,7 @@ export class DynamoDBService {
         return promise;
     }
 
-    //update notifications
+    // update notifications
     updateUserNotifications(notificationInd: boolean): void {
         const userSubId = localStorage.getItem('userSubId');
         const clientParams: any = {
@@ -213,13 +255,13 @@ export class DynamoDBService {
             }
         };
 
-        DDB.updateItem(updateParams, function (result) {
+        DDB.updateItem(updateParams, function(result) {
             console.log('DynamoDBService Updated notifications ' + JSON.stringify(result));
         });
     }
 
 
-    //update user phonenumber
+    // update user phonenumber
 
     updateUserPhoneNumber(phoneNumber): void {
         const userSubId = localStorage.getItem('userSubId');
@@ -242,7 +284,7 @@ export class DynamoDBService {
             }
         };
 
-        DDB.updateItem(updateParams, function (result) {
+        DDB.updateItem(updateParams, function(result) {
             console.log('DynamoDBService Updated Phone Number ' + JSON.stringify(result));
         });
     }
@@ -268,7 +310,7 @@ export class DynamoDBService {
             }
         };
 
-        DDB.updateItem(updateParams, function (result) {
+        DDB.updateItem(updateParams, function(result) {
             console.log('DynamoDBService Updated Content watch ' + JSON.stringify(result));
         });
     }
@@ -297,7 +339,7 @@ export class DynamoDBService {
                 type: { S: type }
             }
         };
-        DDB.putItem(itemParams, function (result) {
+        DDB.putItem(itemParams, function(result) {
             console.log('DynamoDBService: wrote entry: ' + JSON.stringify(result));
         });
     }

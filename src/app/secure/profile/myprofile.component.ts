@@ -1,19 +1,18 @@
-import { Component } from '@angular/core';
 import { UserLoginService } from '../../service/user-login.service';
 import { Callback, CognitoUtil, LoggedInCallback } from '../../service/cognito.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { Inject } from '@angular/core';
+import { Inject, OnInit, Component } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { DynamoDBService } from '../../service/ddb.service';
-
+import { LoadingScreenService } from '../../service/loading-screen/loading-screen.service'
 
 @Component({
     selector: 'awscognito-angular2-app',
     templateUrl: './myprofile.html',
     styleUrls: ['./myprofile.css', './toggleswitch.css']
 })
-export class MyProfileComponent implements LoggedInCallback {
+export class MyProfileComponent implements OnInit, LoggedInCallback {
 
     public cognitoId: string;
     public errorMessage: string;
@@ -29,6 +28,7 @@ export class MyProfileComponent implements LoggedInCallback {
         public userService: UserLoginService,
         private location: Location,
         public ddb: DynamoDBService,
+        private loadingScreen: LoadingScreenService
     ) {
         this.userService.isAuthenticated(this);
     }
@@ -36,6 +36,10 @@ export class MyProfileComponent implements LoggedInCallback {
         if (!isLoggedIn) {
             this.router.navigate(['/home/login']);
         }
+    }
+
+    ngOnInit() {
+        this.loadingScreen.stopLoading();
     }
 
     backClicked() {

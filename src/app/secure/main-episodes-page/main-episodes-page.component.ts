@@ -14,7 +14,7 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
   objectKeys = Object.keys;
   public episodesObj = this.episodeDetailsService.getEpisodes();
   public contentCount = this.ddb.getLocalStorageContentCount();
-  public currentEpisode;
+  public currentEpisode = this.getEpisodes();
 
   constructor(
     public episodeDetailsService: EpisodeDetailsService,

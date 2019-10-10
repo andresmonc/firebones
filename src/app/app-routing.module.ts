@@ -1,19 +1,21 @@
-import {RouterModule, Routes} from "@angular/router";
-import {ModuleWithProviders} from "@angular/core";
-import {AboutComponent, HomeComponent} from "./public/home.component";
-import {SecureHomeComponent} from "./secure/securehome/securehome.component";
-import {MyProfileComponent} from "./secure/profile/myprofile.component";
-import {JwtComponent} from "./secure/jwttokens/jwt.component";
-import {EpisodePageComponent} from "./secure/episode-page/episode-page.component";
-import {UseractivityComponent} from "./secure/useractivity/useractivity.component";
-import {LoginComponent} from "./public/auth/login/login.component";
-import {RegisterComponent} from "./public/auth/register/registration.component";
-import {ForgotPassword2Component, ForgotPasswordStep1Component} from "./public/auth/forgot/forgotPassword.component";
-import {LogoutComponent, RegistrationConfirmationComponent} from "./public/auth/confirm/confirmRegistration.component";
-import {ResendCodeComponent} from "./public/auth/resend/resendCode.component";
-import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.component";
-import { PageNotFoundComponent } from "./public/page-not-found/page-not-found.component";
+import {RouterModule, Routes} from '@angular/router';
+import {ModuleWithProviders} from '@angular/core';
+import {AboutComponent, HomeComponent} from './public/home.component';
+import {SecureHomeComponent} from './secure/securehome/securehome.component';
+import {MyProfileComponent} from './secure/profile/myprofile.component';
+import {JwtComponent} from './secure/jwttokens/jwt.component';
+import {EpisodePageComponent} from './secure/episode-page/episode-page.component';
+import {UseractivityComponent} from './secure/useractivity/useractivity.component';
+import {LoginComponent} from './public/auth/login/login.component';
+import {RegisterComponent} from './public/auth/register/registration.component';
+import {ForgotPassword2Component, ForgotPasswordStep1Component} from './public/auth/forgot/forgotPassword.component';
+import {LogoutComponent, RegistrationConfirmationComponent} from './public/auth/confirm/confirmRegistration.component';
+import {ResendCodeComponent} from './public/auth/resend/resendCode.component';
+import {NewPasswordComponent} from './public/auth/newpassword/newpassword.component';
+import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 import { MainEpisodesPageComponent } from './secure/main-episodes-page/main-episodes-page.component';
+import { SupportComponent } from './support/support.component';
+
 const homeRoutes: Routes = [
     {
         path: '',
@@ -54,6 +56,7 @@ const secureHomeRoutes: Routes = [
         {path: 'useractivity', component: UseractivityComponent},
         {path: 'changepassword', component: ForgotPasswordStep1Component},
         {path: 'changepassword/:email', component: ForgotPassword2Component},
+        {path: 'support', component: SupportComponent},
         {path: '', component: EpisodePageComponent}]
     }
 ];

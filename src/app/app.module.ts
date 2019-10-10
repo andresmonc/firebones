@@ -42,7 +42,7 @@ import { WINDOW_PROVIDERS } from './service/window.service';
 import { NavbarComponent } from './secure/navbar/navbar.component';
 import { MainEpisodesPageComponent } from './secure/main-episodes-page/main-episodes-page.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
-import { SupportComponent } from './support/support.component';
+import { SupportComponent } from './secure/support/support.component';
 
 @NgModule({
     declarations: [

@@ -43,7 +43,8 @@ import { NavbarComponent } from './secure/navbar/navbar.component';
 import { MainEpisodesPageComponent } from './secure/main-episodes-page/main-episodes-page.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 import { SupportComponent } from './secure/support/support.component';
-
+import { EmailService } from './service/email.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
     declarations: [
         NewPasswordComponent,
@@ -110,6 +111,7 @@ import { SupportComponent } from './secure/support/support.component';
         MatFormFieldModule,
         YoutubePlayerModule,
         routing,
+        HttpClientModule
     ],
     providers: [
         CognitoUtil,
@@ -118,6 +120,7 @@ import { SupportComponent } from './secure/support/support.component';
         UserRegistrationService,
         UserLoginService,
         UserParametersService,
+        EmailService,
         WINDOW_PROVIDERS
     ],
     bootstrap: [AppComponent]

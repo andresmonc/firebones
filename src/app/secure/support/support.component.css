@@ -1,0 +1,46 @@
+div {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 4vw;
+    color: black;
+    font-weight: 100;
+    width: 100%;
+}
+
+#header {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-top: 20px;
+    width: fit-content;
+}
+
+hr {
+    width: 100%;
+}
+
+.details-box {
+    display: block;
+}
+
+form {
+    padding-top: 5vh;
+    padding-left: 25vw;
+}
+button{
+    display: block;
+    font-size: 25px;
+    height: 60px;
+    border: 1px solid lightgray;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    padding: 10px;
+    color: #6F6F6F;
+}
+
+textarea {
+    resize: none;
+    height: 30vh;
+    width: 48vw;
+}

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EmailService } from '../../service/email.service';
+import { EmailReturn } from '../../models/emailResponse';
+
 
 @Component({
   selector: 'app-support',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupportComponent implements OnInit {
 
-  constructor() { }
+  public response: EmailReturn;
+
+  constructor(private emailService: EmailService) { }
 
   ngOnInit() {
+
+  }
+
+  submit() {
+    this.emailService.postContact('jaime', 'jaimeamonc@gmail.com', 'Itsame').subscribe((res) => {
+      this.response = res;
+    });
   }
 
 }

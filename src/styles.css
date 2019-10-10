@@ -4,8 +4,8 @@
 body,
 html {
     width: 100%;
-    height: 100%;
-    background-image: url("https://s3-us-west-1.amazonaws.com/firebones-lz/paperPattern.png");
+    height: 100%-90px;
+    /* background-image: url("https://s3-us-west-1.amazonaws.com/firebones-lz/paperPattern.png"); */
     background-size: cover;
     margin-top: 60px;
 }

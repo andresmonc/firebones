@@ -57,7 +57,7 @@ export class RegisterComponent implements CognitoCallback {
     phoneValidation(){
         let phone_num = this.registrationUser.phone_number
         if(phone_num.length < 13){
-            this.errorMessage = "Phone number must be 13 digits in this format +15555555555"
+            this.errorMessage = "Phone number must be 13 digits in this format +015555555555"
             return false;
         }
         let i = 1;
@@ -65,7 +65,7 @@ export class RegisterComponent implements CognitoCallback {
             console.log(phone_num.charAt(i))
             let current_digit = parseInt(phone_num.charAt(i));
             if(isNaN(current_digit)){
-                this.errorMessage = "Please use only numbers in this format +15555555555"
+                this.errorMessage = "Please use only numbers in this format +015555555555"
                 console.log(current_digit);
                 return false;
             };
@@ -73,7 +73,7 @@ export class RegisterComponent implements CognitoCallback {
         } 
         
         if(phone_num.charAt(0) != "+"){
-            this.errorMessage = "Missing '+' symbol; Phone number must be 13 digits in this format +01555555555"
+            this.errorMessage = "Missing '+' symbol; Phone number must be 13 digits in this format +015555555555"
             return false;
         }
         else {

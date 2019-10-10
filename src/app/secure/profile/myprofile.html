@@ -9,18 +9,19 @@
             <p>Account: <i>{{ parameter.value }}</i></p>
         </div>
         <div class="text-center account-field phone-number" *ngIf="parameter.name == 'phone_number'">
+            
             <p>Phone Number: 
-                <i *ngIf="!editMode" >{{ parameter.value }}</i>
-                <input class="edit-field" (submit)="console.log('Hiii')"*ngIf="editMode" value="{{ parameter.value }}">
-                <i (click)="editMode=true" *ngIf="!editMode" class="fas fa-pencil-alt" style="margin-left: 28px;"></i>
-                <i (click)="editMode=false;updatePhoneNumber()" class="fas fa-check" *ngIf="editMode"></i>
+                <i *ngIf="!editMode" [(ngModel)]="phoneInput" ngDefaultControl >{{ phoneNumber }}</i>
+                <input  [(ngModel)]="phoneInput" ngDefaultControl class="edit-field" *ngIf="editMode" value="{{ parameter.value }}" maxlength="13">
+                <i (click)="editMode=true;phoneInput=''" *ngIf="!editMode" class="fas fa-pencil-alt" style="margin-left: 28px;"></i>
+                <i (click)="updatePhoneNumber()" class="fas fa-check" *ngIf="editMode"></i>
             </p>
         </div>
         <div class="text-center account-field" *ngIf="parameter.name == 'phone_number'">
             <p>Notifications
                 <!-- Rounded switch -->
                 <label class="switch">
-                    <input type="checkbox" (click)="updateNotifications()">
+                    <input type="checkbox" (click)="updateNotifications()" [(ngModel)]="notifications">
                     <span class="slider round"></span>
                 </label>
             </p>
@@ -36,6 +37,8 @@
         </div>
     </div>
 </div>
+
+<div *ngIf="errorMessage != null && editMode" id="error-box">{{errorMessage}}</div>
 
 <div id="logout-button-container">
     <div id="logout-button">

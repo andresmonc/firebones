@@ -14,7 +14,7 @@ import {ResendCodeComponent} from './public/auth/resend/resendCode.component';
 import {NewPasswordComponent} from './public/auth/newpassword/newpassword.component';
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 import { MainEpisodesPageComponent } from './secure/main-episodes-page/main-episodes-page.component';
-import { SupportComponent } from './support/support.component';
+import { SupportComponent } from './secure/support/support.component';
 
 const homeRoutes: Routes = [
     {

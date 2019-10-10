@@ -3,12 +3,15 @@ import { EmailService } from '../../service/email.service';
 import { EmailReturn } from '../../models/emailResponse';
 
 
+
 @Component({
   selector: 'app-support',
   templateUrl: './support.component.html',
   styleUrls: ['./support.component.css']
 })
 export class SupportComponent implements OnInit {
+
+  public submitted: boolean = false;
 
   public response: EmailReturn;
 
@@ -19,7 +22,7 @@ export class SupportComponent implements OnInit {
   }
 
   submit() {
-    this.emailService.postContact('jaime', 'jaimeamonc@gmail.com', 'Itsame').subscribe((res) => {
+    this.emailService.postContact('jaime', 'jaimeamonc@gmail.com', 'Help me everything is so broken :-(').subscribe((res) => {
       this.response = res;
     });
   }

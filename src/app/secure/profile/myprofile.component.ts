@@ -38,10 +38,6 @@ export class MyProfileComponent implements OnInit, LoggedInCallback {
         }
     }
 
-    ngOnInit() {
-        this.loadingScreen.stopLoading();
-    }
-
     backClicked() {
         this.location.back();
     }

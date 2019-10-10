@@ -4,20 +4,20 @@
     <h2 class="text-center" id="account-setting-title"><i class="fas fa-chevron-left"
             (click)="backClicked()"></i>Account Settings</h2>
     <hr>
-    <div *ngFor="let parameter of parameters.slice().reverse()" id="profile-info">
-        <div class="text-center account-field" *ngIf="parameter.name == 'email'">
-            <p>Account: <i>{{ parameter.value }}</i></p>
+    <div id="profile-info">
+        <div class="text-center account-field">
+            <p>Account: <i>{{ email }}</i></p>
         </div>
-        <div class="text-center account-field phone-number" *ngIf="parameter.name == 'phone_number'">
+        <div class="text-center account-field phone-number">
             
             <p>Phone Number: 
                 <i *ngIf="!editMode" [(ngModel)]="phoneInput" ngDefaultControl >{{ phoneNumber }}</i>
-                <input  [(ngModel)]="phoneInput" ngDefaultControl class="edit-field" *ngIf="editMode" value="{{ parameter.value }}" maxlength="13">
+                <input  [(ngModel)]="phoneInput" ngDefaultControl class="edit-field" *ngIf="editMode" value="{{ phoneNumber }}" maxlength="13">
                 <i (click)="editMode=true;phoneInput=''" *ngIf="!editMode" class="fas fa-pencil-alt" style="margin-left: 28px;"></i>
                 <i (click)="updatePhoneNumber()" class="fas fa-check" *ngIf="editMode"></i>
             </p>
         </div>
-        <div class="text-center account-field" *ngIf="parameter.name == 'phone_number'">
+        <div class="text-center account-field">
             <p>Notifications
                 <!-- Rounded switch -->
                 <label class="switch">
@@ -26,13 +26,13 @@
                 </label>
             </p>
         </div>
-        <div class="text-center account-field" *ngIf="parameter.name == 'phone_number'">
+        <div class="text-center account-field">
             <p [routerLink]="['/securehome/changepassword']">Change Password</p>
         </div>
-        <div class="text-center account-field" *ngIf="parameter.name == 'phone_number'">
+        <div class="text-center account-field">
             <p><a target="_blank" href="https://firebones.org">Learn More</a></p>
         </div>
-        <div class="text-center account-field" *ngIf="parameter.name == 'phone_number'">
+        <div class="text-center account-field">
             <p>Support</p>
         </div>
     </div>

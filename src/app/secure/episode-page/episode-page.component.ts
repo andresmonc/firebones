@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DynamoDBService } from '../../service/ddb.service';
 import { EpisodeDetailsService } from '../../service/episode-details.service';
+import { LoadingScreenService } from '../../service/loading-screen/loading-screen.service';
+
 
 @Component({
   selector: 'awscognito-angular2-app',
@@ -24,12 +26,14 @@ export class EpisodePageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public ddb: DynamoDBService,
-    public episodeDetailsService: EpisodeDetailsService
+    public episodeDetailsService: EpisodeDetailsService,
+    private loadingScreenService: LoadingScreenService
   ) {
     console.log('in Episode Page');
   }
 
   ngOnInit() {
+    this.loadingScreenService.startLoading();
     this.timelineEpisodeCount = this.getTimelineEpisodeCount();
     const doc = (window as any).document;
     const playerApiScript = doc.createElement('script');
@@ -99,6 +103,7 @@ export class EpisodePageComponent implements OnInit {
     onPlayerReady(event) {
       console.log('what is this', event);
       event.target.playVideo();
+      this.loadingScreenService.stopLoading();
     }
 
   // tslint:disable-next-line:use-lifecycle-interface

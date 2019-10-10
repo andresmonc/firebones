@@ -11,8 +11,7 @@ footer {
     text-align: center;
     padding-top: 24px;
     padding-bottom: 10px;
-    z-index:2;
-    
+    z-index: 1001;
 }
 
 nav {

@@ -10,7 +10,7 @@ import { LoadingScreenService } from '../../service/loading-screen/loading-scree
   templateUrl: './episode-page.component.html',
   styleUrls: ['./episode-page.component.css']
 })
-export class EpisodePageComponent implements OnInit, OnDestroy {
+export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   objectKeys = Object.keys;
   public id = this.route.snapshot.paramMap.get('id');
   public episodeTitle: string = this.episodeDetailsService.getEpisodeTitle(this.id);
@@ -33,45 +33,40 @@ export class EpisodePageComponent implements OnInit, OnDestroy {
     this.loadingScreenService.startLoading();
   }
 
+  isEven(num) { return !(num % 2); }
+
   ngOnInit() {
-    this.ddb.getUserContent().then((data => {
+    (window as any).onYouTubeIframeAPIReady = () => {
+      console.log('Youtube Initalized');
+      this.player = new (window as any).YT.Player('player', {
+        height: '100%',
+        width: '100%',
+        events: {
+          onReady: (event) => {
+            console.log('ARE WE READY FOR VID');
+          },
+          onStateChange: (event) => { this.onPlayerStateChange(event); }
+        },
+        playerVars: {autoplay: 1, controls: 1, modestbranding: 1, rel: 0, showInfo: 0}
+      });
+    };
+
+    this.ddb.getUserContent().then(data => {
       console.log('this is the resolved contentCount!!!', data);
       console.log('getUserObject function execution done!');
       this.contentCount = data;
-
-      (window as any).onYouTubeIframeAPIReady = () => {
-        console.log('Youtube Initalized');
-        this.player = new (window as any).YT.Player('player', {
-          height: '100%',
-          width: '100%',
-          events: {
-            onReady: (event) => {
-              console.log('ARE WE READY FOR VID');
-              this.loadingScreenService.stopLoading();
-              this.onPlayerReady(event);
-            },
-            onStateChange: (event) => { this.onPlayerStateChange(event); }
-          },
-          playerVars: {
-            autoplay: 1,
-            controls: 1,
-            modestbranding: 1,
-            rel: 0,
-            showInfo: 0
-          }
-        });
-      };
-
       this.timelineEpisodeCount = this.getTimelineEpisodeCount();
-      const doc = (window as any).document;
-      const playerApiScript = doc.createElement('script');
-      playerApiScript.type = 'text/javascript';
-      playerApiScript.src = 'https://www.youtube.com/iframe_api';
-      doc.body.appendChild(playerApiScript);
-    }));
+      this.loadingScreenService.stopLoading();
+    });
   }
 
-  isEven(num) { return !(num % 2); }
+  ngAfterViewInit() {
+    const doc = (window as any).document;
+    const playerApiScript = doc.createElement('script');
+    playerApiScript.type = 'text/javascript';
+    playerApiScript.src = 'https://www.youtube.com/iframe_api';
+    doc.body.appendChild(playerApiScript);
+  }
 
   setVideoId(epvideoId, contentKey) {
     this.player.loadVideoById(epvideoId);
@@ -90,7 +85,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy {
         return timelineCount;
       }
     }
-    console.log("last key count", lastKeyCount);
+    console.log('last key count', lastKeyCount);
     return lastKeyCount;
   }
 
@@ -104,18 +99,10 @@ export class EpisodePageComponent implements OnInit, OnDestroy {
         this.ddb.updateUserContentWatched();
       }
     }
-    // The API will call this function when the video player is ready
-    onPlayerReady(event) {
-      event.target.playVideo();
-    }
 
     ngOnDestroy() {
       this.loadingScreenService.stopLoading();
       this.player = null;
       (window as any).YT = null;
     }
-
-  // tslint:disable-next-line:use-lifecycle-interface
-
-
 }

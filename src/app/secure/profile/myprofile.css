@@ -51,7 +51,7 @@ i {
 }
 
 #logout-button-container {
-    margin-top: 14vh;
+    margin-top: 5vh;
     text-align: center;
 }
 
@@ -71,4 +71,21 @@ label{
 
 .phone-number {
     width: 350px;
+}
+
+
+/* Error Box */
+#error-box{
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #a94442;
+    background-color: #f2dede;
+    text-align: center;
+    width: 250px;
 }

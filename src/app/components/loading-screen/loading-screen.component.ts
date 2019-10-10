@@ -29,8 +29,11 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
       console.log(this.router.url);
       if (value === true && this.router.url !== '/home') {
         this.document.body.classList.add('disableScrolling');
+      } else if (value === true && this.router.url === '/home'){
+        this.document.body.classList.add('disableScrollingLogin');
       } else {
         this.document.body.classList.remove('disableScrolling');
+        this.document.body.classList.remove('disableScrollingLogin');
       }
       this.loading = value;
       this.changeDetector.detectChanges();

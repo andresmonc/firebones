@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DynamoDBService } from '../../service/ddb.service';
 import { EpisodeDetailsService } from '../../service/episode-details.service';
@@ -10,7 +10,7 @@ import { LoadingScreenService } from '../../service/loading-screen/loading-scree
   templateUrl: './episode-page.component.html',
   styleUrls: ['./episode-page.component.css']
 })
-export class EpisodePageComponent implements OnInit {
+export class EpisodePageComponent implements OnInit, OnDestroy{
   objectKeys = Object.keys;
   public id = this.route.snapshot.paramMap.get('id');
   public episodeTitle: string = this.episodeDetailsService.getEpisodeTitle(this.id);
@@ -34,19 +34,15 @@ export class EpisodePageComponent implements OnInit {
 
   ngOnInit() {
     this.loadingScreenService.startLoading();
-    this.timelineEpisodeCount = this.getTimelineEpisodeCount();
-    const doc = (window as any).document;
-    const playerApiScript = doc.createElement('script');
-    playerApiScript.type = 'text/javascript';
-    playerApiScript.src = 'https://www.youtube.com/iframe_api';
-    doc.body.appendChild(playerApiScript);
     (window as any).onYouTubeIframeAPIReady = () => {
+      console.log('Youtube Initalized');
       this.player = new (window as any).YT.Player('player', {
         height: '100%',
         width: '100%',
         events: {
           onReady: (event) => {
             console.log('ARE WE READY FOR VID');
+            this.loadingScreenService.stopLoading();
             this.onPlayerReady(event);
           },
           onStateChange: (event) => { this.onPlayerStateChange(event); }
@@ -60,6 +56,13 @@ export class EpisodePageComponent implements OnInit {
         }
       });
     };
+
+    this.timelineEpisodeCount = this.getTimelineEpisodeCount();
+    const doc = (window as any).document;
+    const playerApiScript = doc.createElement('script');
+    playerApiScript.type = 'text/javascript';
+    playerApiScript.src = 'https://www.youtube.com/iframe_api';
+    doc.body.appendChild(playerApiScript);
   }
 
   isEven(num) { return !(num % 2); }
@@ -103,7 +106,11 @@ export class EpisodePageComponent implements OnInit {
     onPlayerReady(event) {
       console.log('what is this', event);
       event.target.playVideo();
-      this.loadingScreenService.stopLoading();
+    }
+
+    ngOnDestroy(){
+      this.player = null;
+      (window as any).YT = null; 
     }
 
   // tslint:disable-next-line:use-lifecycle-interface

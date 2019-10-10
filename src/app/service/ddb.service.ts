@@ -175,6 +175,7 @@ export class DynamoDBService {
                                                 localStorage.setItem('email', result.Item.email.S);
                                                 localStorage.setItem('contentWatched', result.Item.contentWatched.S);
                                                 localStorage.setItem('contentCount', result.Item.contentCount.N);
+                                                localStorage.setItem('notifications', (result.Item.notifications.BOOL).toString());
                                                 resolve(result);
                                             }
                                         }

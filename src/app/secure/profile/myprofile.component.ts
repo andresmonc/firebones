@@ -19,9 +19,9 @@ export class MyProfileComponent implements OnInit, LoggedInCallback {
     public phoneInput = '';
     public editMode: boolean;
 
-    public notifications: boolean = localStorage.getItem('notifications') === 'true';
-    public phoneNumber = localStorage.getItem('phoneNumber');
-    public email: string = localStorage.getItem('email');
+    public notifications: boolean = this.ddb.getLocalStorageNotifications() === 'true';
+    public phoneNumber = this.ddb.getLocalStoragePhoneNumber();
+    public email: string = this.ddb.getLocalStorageEmail();
 
     constructor(
         public router: Router,
@@ -52,7 +52,7 @@ export class MyProfileComponent implements OnInit, LoggedInCallback {
             this.editMode = false;
             this.errorMessage = null;
             this.ddb.updateUserPhoneNumber(this.phoneInput);
-            localStorage.setItem('phoneNumber', this.phoneInput);
+            this.ddb.setLocalStoragePhoneNumber(this.phoneInput);
         }
     }
 
@@ -60,11 +60,11 @@ export class MyProfileComponent implements OnInit, LoggedInCallback {
         if (this.notifications === false) {
             this.notifications = true;
             this.ddb.updateUserNotifications(true);
-            localStorage.setItem('notifications', 'true');
+            this.ddb.setLocalStorageNotifications('true');
         } else if (this.notifications === true) {
             this.notifications = false;
             this.ddb.updateUserNotifications(false);
-            localStorage.setItem('notifications', 'false');
+            this.ddb.setLocalStorageNotifications('false');
         }
 
     }

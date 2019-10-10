@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
-
+import { EpisodeDetailsService } from '../../service/episode-details.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -8,21 +8,24 @@ import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '
 })
 export class NavbarComponent implements OnInit {
 
-  public currentRoute: String = this.router.url;
-  public showTimelineButton: Boolean = false;
-  public showPlaceholderButton: Boolean = true;
-  constructor(private router: Router) {
+  public currentRoute: string = this.router.url;
+  public contentCount: string;
+  public showTimelineButton: Boolean = true;
+  public currentEpisode;
+  
+  constructor(private router: Router, private episodeDetailsService: EpisodeDetailsService) {
 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
+        console.log('navstart');
       }
 
       if (event instanceof NavigationEnd) {
+        console.log('navend');
+        this.contentCount = localStorage.getItem('contentCount');
+        this.episodeDetailsService.getEpisodeIdFromContentCount(this.contentCount);
       }
 
-      if (event instanceof NavigationError) {
-        console.log(event.error);
-      }
     });
 
   }
@@ -31,7 +34,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.currentRoute);
-    console.log(this.router.events.subscribe((event: Event) => { }));
+    // console.log(this.router.events.subscribe((event: Event) => { }));
   }
 
 }

@@ -130,7 +130,18 @@ export class EpisodeDetailsService {
     }
   }
 
-
-
+  getEpisodeIdFromContentCount(contentCount) {
+    const length = Object.keys(this.episodesDetails).length;
+    let i = 1;
+    while (i <= length) {
+      const contentArray: JSON = this.getEpisodeContentArray(i.toString());
+      for (const key in contentArray) {
+        if (key === contentCount) {
+          return i;
+        }
+      }
+      i++;
+    }
+  }
 
 }

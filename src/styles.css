@@ -12,6 +12,12 @@ main{
     margin-top: 120px;
 }
 
+@media screen and (min-width: 896px){
+  main{
+    margin-top: 200px;
+  }
+}
+
 .mat-focused .placeholder {
     color: #00D318;
 }

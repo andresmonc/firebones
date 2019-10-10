@@ -1,4 +1,6 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { LoadingScreenService } from '../../service/loading-screen/loading-screen.service';
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-loading-screen',
@@ -6,14 +8,21 @@ import { Component, OnInit, OnDestroy} from '@angular/core';
   styleUrls: ['./loading-screen.component.css']
 })
 export class LoadingScreenComponent implements OnInit, OnDestroy {
-  loading = true;
 
-  constructor() { }
+  loading: boolean = false;
+  loadingSubscription: Subscription;
 
-  ngOnInit() {
+  constructor(private loadingScreenService: LoadingScreenService) {
   }
 
-  ngOnDestroy(){
+  ngOnInit() {
+    this.loadingSubscription = this.loadingScreenService.loadingStatus.subscribe((value) => {
+      this.loading = value;
+    });
+  }
+
+  ngOnDestroy() {
+    this.loadingSubscription.unsubscribe();
   }
 
 }

@@ -10,24 +10,26 @@ import { LoadingScreenService } from '../../service/loading-screen/loading-scree
   styleUrls: ['./main-episodes-page.component.css']
 })
 export class MainEpisodesPageComponent implements OnInit, OnDestroy {
+
   objectKeys = Object.keys;
   public episodesObj = this.episodeDetailsService.getEpisodes();
   public contentCount = this.ddb.getLocalStorageContentCount();
-
+  public currentEpisode;
 
   constructor(
     public episodeDetailsService: EpisodeDetailsService,
     public ddb: DynamoDBService,
     private loadingScreenService: LoadingScreenService
-    ) {
-      // this.loadingScreenService.startLoading();
-    }
+  ) {
+    // this.loadingScreenService.startLoading();
+  }
 
   ngOnInit() {
     this.ddb.getUserContent().then((data => {
       console.log('this is the resolved contentCount!!!', data);
       console.log('getUserObject function execution done!');
       this.contentCount = data;
+      this.currentEpisode = this.getEpisodes();
       // this.loadingScreenService.stopLoading();
     }));
     console.log('INIT CONTENT COUNT', this.contentCount);
@@ -36,6 +38,11 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.contentCount = null;
     console.log('weve destroyed content count');
+  }
+
+
+  getEpisodes() {
+    return this.episodeDetailsService.getEpisodeIdFromContentCount(this.contentCount);
   }
 
 

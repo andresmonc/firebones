@@ -84,44 +84,46 @@ export class EpisodeDetailsService {
         }
       },
     },
-    3: { episodeTitle: 'Return of the Shirt', episodeDesc: 'loremipsum',
-    contentArray: {
-      10: {
-        contentType: 'snack',
-        contentDesc: 'helloWorld',
-        mediaType: 'audio',
-        iconUrl: 'helloworld.com',
-        videoId: 'BNzc6hG3yN4',
-      },
-      11: {
-        contentType: 'episode',
-        contentDesc: 'helloWorld',
-        mediaType: 'audio',
-        iconUrl: 'helloworld.com',
-        videoId: 'Kbj2Zss-5GY',
-      },
-      12: {
-        contentType: 'snack',
-        contentDesc: 'helloWorld',
-        mediaType: 'audio',
-        iconUrl: 'helloworld.com',
-        videoId: 'GTe57jQX5Eg',
-      },
-      13: {
-        contentType: 'episode',
-        contentDesc: 'helloWorld',
-        mediaType: 'audio',
-        iconUrl: 'helloworld.com',
-        videoId: 'sBvngg87998',
-      },
-      14: {
-        contentType: 'episode',
-        contentDesc: 'helloWorld',
-        mediaType: 'audio',
-        iconUrl: 'helloworld.com',
-        videoId: '93M1QtYDtpU',
-      },
-    } },
+    3: {
+      episodeTitle: 'Return of the Shirt', episodeDesc: 'loremipsum',
+      contentArray: {
+        10: {
+          contentType: 'snack',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'helloworld.com',
+          videoId: 'BNzc6hG3yN4',
+        },
+        11: {
+          contentType: 'episode',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'helloworld.com',
+          videoId: 'Kbj2Zss-5GY',
+        },
+        12: {
+          contentType: 'snack',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'helloworld.com',
+          videoId: 'GTe57jQX5Eg',
+        },
+        13: {
+          contentType: 'episode',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'helloworld.com',
+          videoId: 'sBvngg87998',
+        },
+        14: {
+          contentType: 'episode',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'helloworld.com',
+          videoId: '93M1QtYDtpU',
+        },
+      }
+    },
     4: { episodeTitle: 'The Limo', episodeDesc: 'loremipsum' },
     5: { episodeTitle: 'The Wedding', episodeDesc: 'loremipsum' },
     6: { episodeTitle: 'Game Night', episodeDesc: 'loremipsum' },
@@ -184,5 +186,7 @@ export class EpisodeDetailsService {
       i++;
     }
   }
+
+
 
 }

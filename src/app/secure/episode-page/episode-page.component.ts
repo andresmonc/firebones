@@ -42,9 +42,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
         height: '100%',
         width: '100%',
         events: {
-          onReady: (event) => {
-            console.log('ARE WE READY FOR VID');
-          },
+          onReady: () => {console.log('onReady Event Ready Youtube API'); },
           onStateChange: (event) => { this.onPlayerStateChange(event); }
         },
         playerVars: {autoplay: 1, controls: 1, modestbranding: 1, rel: 0, showInfo: 0}
@@ -89,20 +87,20 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
     return lastKeyCount;
   }
 
-    // The API calls this function when the player's state changes.
-    onPlayerStateChange(event) {
-      if (event.data === 0 && this.contentWatched === 'FALSE' && this.clickInContentKey === this.contentCount) {
-        console.log('UPDATING CONTENT WATCH TO TRUE ONCE ONLY');
-        // if content count is less than 2
-        this.contentWatched = 'TRUE';
-        this.ddb.setLocalStorageContentWatchedTrue();
-        this.ddb.updateUserContentWatched();
-      }
+  // The API calls this function when the player's state changes.
+  onPlayerStateChange(event) {
+    if (event.data === 0 && this.contentWatched === 'FALSE' && this.clickInContentKey === this.contentCount) {
+      console.log('UPDATING CONTENT WATCH TO TRUE ONCE ONLY');
+      // if content count is less than 2
+      this.contentWatched = 'TRUE';
+      this.ddb.setLocalStorageContentWatchedTrue();
+      this.ddb.updateUserContentWatched();
     }
+  }
 
-    ngOnDestroy() {
-      this.loadingScreenService.stopLoading();
-      this.player = null;
-      (window as any).YT = null;
-    }
+  ngOnDestroy() {
+    this.loadingScreenService.stopLoading();
+    this.player = null;
+    (window as any).YT = null;
+  }
 }

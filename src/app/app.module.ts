@@ -29,7 +29,6 @@ import {
     MatExpansionModule, MatListModule, MatProgressBarModule, MatProgressSpinnerModule, MatRippleModule,
     MatSelectModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatStepperModule, MatTooltipModule
 } from '@angular/material';
-import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -109,7 +108,6 @@ import { HttpClientModule } from '@angular/common/http';
         MatPaginatorModule,
         MatSortModule,
         MatFormFieldModule,
-        YoutubePlayerModule,
         routing,
         HttpClientModule
     ],

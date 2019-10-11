@@ -137,7 +137,6 @@ export class DynamoDBService {
                 const clientParams: any = {
                     params: { TableName: environment.ddbTableName }
                 };
-                console.log(environment.ddbTableName);
                 if (environment.dynamodb_endpoint) {
                     clientParams.endpoint = environment.dynamodb_endpoint;
                 }

@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   public contentCount: string;
   public showTimelineButton: Boolean = true;
   public currentEpisode;
-  
+
   constructor(private router: Router, private episodeDetailsService: EpisodeDetailsService) {
 
     this.router.events.subscribe((event: Event) => {
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         console.log('navend');
         this.contentCount = localStorage.getItem('contentCount');
-        this.episodeDetailsService.getEpisodeIdFromContentCount(this.contentCount);
+        this.currentEpisode = this.episodeDetailsService.getEpisodeIdFromContentCount(this.contentCount);
       }
 
     });

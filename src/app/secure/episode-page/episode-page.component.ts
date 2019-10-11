@@ -53,7 +53,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
       });
     };
 
-    if (this.contentWatched === 'FALSE') {
+    if (this.contentWatched === 'TRUE') {
       this.ddb.getUserContent().then(data => {
         console.log('this is the resolved contentCount!!!', data);
         console.log('getUserObject function execution done!');

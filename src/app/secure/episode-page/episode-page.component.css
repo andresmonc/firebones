@@ -183,7 +183,7 @@
   }
 
   .episodeVidModal{
-    z-index:100;
+    z-index: 10004;
     height: 100%;
     padding-top: 0px !important;
   }

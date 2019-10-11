@@ -16,7 +16,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   public episodeTitle: string = this.episodeDetailsService.getEpisodeTitle(this.id);
   public episodeDesc: string = this.episodeDetailsService.getEpisodeDesc(this.id);
   public episodeContent: JSON = this.episodeDetailsService.getEpisodeContentArray(this.id);
-  public contentCount;
+  public contentCount = this.ddb.getLocalStorageContentCount();
   public contentWatched = this.ddb.getLocalStorageContentWatched();
   public clickInContentKey;
   public episodeVideoId = '';
@@ -36,26 +36,32 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   isEven(num) { return !(num % 2); }
 
   ngOnInit() {
+    this.timelineEpisodeCount = this.getTimelineEpisodeCount();
     (window as any).onYouTubeIframeAPIReady = () => {
       console.log('Youtube Initalized');
       this.player = new (window as any).YT.Player('player', {
         height: '100%',
         width: '100%',
         events: {
-          onReady: () => {console.log('onReady Event Ready Youtube API'); },
+          onReady: () => {
+          console.log('onReady Event Ready Youtube API');
+          this.loadingScreenService.stopLoading();
+          },
           onStateChange: (event) => { this.onPlayerStateChange(event); }
         },
         playerVars: {autoplay: 1, controls: 1, modestbranding: 1, rel: 0, showInfo: 0}
       });
     };
 
-    this.ddb.getUserContent().then(data => {
-      console.log('this is the resolved contentCount!!!', data);
-      console.log('getUserObject function execution done!');
-      this.contentCount = data;
-      this.timelineEpisodeCount = this.getTimelineEpisodeCount();
-      this.loadingScreenService.stopLoading();
-    });
+    if (this.contentWatched === 'FALSE') {
+      this.ddb.getUserContent().then(data => {
+        console.log('this is the resolved contentCount!!!', data);
+        console.log('getUserObject function execution done!');
+        this.contentCount = data;
+        this.timelineEpisodeCount = this.getTimelineEpisodeCount();
+        this.loadingScreenService.stopLoading();
+      });
+    }
   }
 
   ngAfterViewInit() {
@@ -71,6 +77,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log('this is the content key clickd in', contentKey);
     this.clickInContentKey = contentKey;
   }
+
 
   getTimelineEpisodeCount() {
     let timelineCount = 0;

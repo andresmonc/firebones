@@ -44,6 +44,7 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
 import { SupportComponent } from './secure/support/support.component';
 import { EmailService } from './service/email.service';
 import { HttpClientModule } from '@angular/common/http';
+import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
 @NgModule({
     declarations: [
         NewPasswordComponent,
@@ -68,7 +69,8 @@ import { HttpClientModule } from '@angular/common/http';
         NavbarComponent,
         MainEpisodesPageComponent,
         LoadingScreenComponent,
-        SupportComponent
+        SupportComponent,
+        YoutubePlayerComponent
     ],
     imports: [
         BrowserModule,

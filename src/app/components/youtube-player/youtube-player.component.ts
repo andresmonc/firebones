@@ -54,7 +54,11 @@ export class YoutubePlayerComponent implements OnInit, AfterViewInit, OnDestroy 
 
   onPlayerStateChange(event) {
     // We need to passs this event data to youtubeService
-      this.youtubeService.setEventDataNumber(event.data);
+      console.log(event.data);
+      if (event.data === 0) {
+        this.youtubeService.setVideoFinished(true);
+        console.log('weve passed the zero right');
+      }
     }
 
   ngOnDestroy() {

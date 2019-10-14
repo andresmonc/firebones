@@ -9,7 +9,7 @@ export class YoutubeService {
   private videoIdSubject = new Subject<any>();
 
 
-  setEventDataNumber(youtubeEventData) {
+  setVideoFinished(youtubeEventData) {
     this.subject.next(youtubeEventData);
   }
 
@@ -17,7 +17,7 @@ export class YoutubeService {
     this.subject.next();
   }
 
-  getEventDataNumber(): Observable<any> {
+  getVideoFinished(): Observable<any> {
     return this.subject.asObservable();
   }
 

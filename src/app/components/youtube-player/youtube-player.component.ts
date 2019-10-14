@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './youtube-player.component.html',
   styleUrls: ['./youtube-player.component.css']
 })
-export class YoutubePlayerComponent implements OnInit, AfterViewInit {
+export class YoutubePlayerComponent implements OnInit, AfterViewInit, OnDestroy {
   player;
   subscription: Subscription;
 
@@ -17,11 +17,10 @@ export class YoutubePlayerComponent implements OnInit, AfterViewInit {
     private loadingScreenService: LoadingScreenService,
     private youtubeService: YoutubeService,
     ) {
-      this.subscription = this.youtubeService.getVideoId().subscribe(message => {
-        if (message) {
-          console.log('Is this the youtube videoId?', message);
-          // this.youtubeEventDataNumber.push(message);
-          // this.player.loadVideoById(epvideoId);
+      this.subscription = this.youtubeService.getVideoId().subscribe(epvideoId => {
+        if (epvideoId) {
+          console.log('Is this the youtube videoId?', epvideoId);
+          this.player.loadVideoById(epvideoId);
         }
       });
     }
@@ -57,4 +56,10 @@ export class YoutubePlayerComponent implements OnInit, AfterViewInit {
     // We need to passs this event data to youtubeService
       this.youtubeService.setEventDataNumber(event.data);
     }
+
+  ngOnDestroy() {
+    console.log('Youtube component destroyed');
+    this.player = null;
+    (window as any).YT = null;
+  }
 }

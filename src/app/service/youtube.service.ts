@@ -6,6 +6,8 @@ import { Observable, Subject } from 'rxjs';
 })
 export class YoutubeService {
   private subject = new Subject<any>();
+  private videoIdSubject = new Subject<any>();
+
 
   setEventDataNumber(youtubeEventData) {
     this.subject.next(youtubeEventData);
@@ -18,5 +20,15 @@ export class YoutubeService {
   getEventDataNumber(): Observable<any> {
     return this.subject.asObservable();
   }
+
+  setVideoId(episodeVideoId) {
+    this.videoIdSubject.next(episodeVideoId);
+  }
+
+  getVideoId(): Observable<any> {
+    return this.videoIdSubject.asObservable();
+  }
+
+
 
 }

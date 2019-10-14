@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from "rxjs";
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +20,11 @@ export class LoadingScreenService {
 
   startLoading() {
     this.loading = true;
-    console.log("were loading now");
+    console.log('were loading now');
   }
 
   stopLoading() {
     this.loading = false;
-    console.log("wevee stopped the load");
+    console.log('wevee stopped the load');
   }
 }

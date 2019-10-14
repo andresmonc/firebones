@@ -44,7 +44,8 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
 import { SupportComponent } from './secure/support/support.component';
 import { EmailService } from './service/email.service';
 import { HttpClientModule } from '@angular/common/http';
-import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
+import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
+
 @NgModule({
     declarations: [
         NewPasswordComponent,

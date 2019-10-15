@@ -20,7 +20,8 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   public episodeContent: JSON = this.episodeDetailsService.getEpisodeContentArray(this.id);
   public contentCount = this.ddb.getLocalStorageContentCount();
   public contentWatched = this.ddb.getLocalStorageContentWatched();
-  public timeStamp = new Date(this.ddb.getLocalStorageTimeStamp());
+  public unformattedTimeStamp = this.ddb.getLocalStorageTimeStamp();
+  public timeStamp = new Date(this.unformattedTimeStamp);
   public clickInContentKey;
   public episodeVideoId = '';
   public timelineEpisodeCount;
@@ -62,7 +63,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
     this.timelineEpisodeCount = this.getTimelineEpisodeCount();
     const currentTime = new Date();
 
-    if (this.contentWatched === 'TRUE' && (currentTime.getTime() > this.timeStamp.getTime())) {
+    if ((this.contentWatched === 'TRUE' && (currentTime.getTime() > this.timeStamp.getTime()))) {
       this.ddb.getUserContent().then(data => {
         console.log('this is the resolved contentCount!!!', data);
         console.log('getUserObject function execution done!');

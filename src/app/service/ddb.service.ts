@@ -183,6 +183,9 @@ export class DynamoDBService {
                         console.log('DynamoDBService called for user contentWatch!!!!: ' + (result.Item.contentWatched.S));
                         console.log('DynamoDBService called for user contentCount!!!!: ' + (result.Item.contentCount.N));
                         localStorage.setItem('contentWatched', result.Item.contentWatched.S);
+                        if (result.Item.contentWatched.S === 'FALSE') {
+                            localStorage.setItem('timeStamp', 'NO DB CALL');
+                        }
                         localStorage.setItem('contentCount', result.Item.contentCount.N);
                         resolve(result.Item.contentCount.N);
                     }

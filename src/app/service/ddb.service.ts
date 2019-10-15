@@ -43,6 +43,10 @@ export class DynamoDBService {
         return localStorage.getItem('email');
     }
 
+    getLocalStorageTimeStamp() {
+        return localStorage.getItem('timeStamp');
+    }
+
     setLocalStoragePhoneNumber(phoneInput) {
         localStorage.setItem('phoneNumber', phoneInput);
     }
@@ -53,6 +57,29 @@ export class DynamoDBService {
 
     setLocalStorageContentWatchedTrue() {
         localStorage.setItem('contentWatched', 'TRUE');
+    }
+
+    setLocalStorageTimeStamp() {
+        const currentTime = new Date();
+        console.log('currentTime', currentTime);
+
+        // Time for content release cron job for current day
+        const contentReleaseTimeToday = new Date();
+        contentReleaseTimeToday.setHours(17);
+
+        // Time for content release cron job for next day
+        const contentReleaseTimeNextDay = new Date();
+        contentReleaseTimeNextDay.setHours(41);
+
+        if (currentTime.getTime() > contentReleaseTimeToday.getTime()) {
+            // set untilTime to nextDay at 6
+            console.log('nextDayAt6', contentReleaseTimeNextDay);
+            localStorage.setItem('timeStamp', contentReleaseTimeNextDay.toString());
+        } else {
+            // set untilTime to currentDay at 6
+            console.log('todayAt6', contentReleaseTimeToday);
+            localStorage.setItem('timeStamp', contentReleaseTimeToday.toString());
+        }
     }
 
     getAWS() {
@@ -156,6 +183,9 @@ export class DynamoDBService {
                         console.log('DynamoDBService called for user contentWatch!!!!: ' + (result.Item.contentWatched.S));
                         console.log('DynamoDBService called for user contentCount!!!!: ' + (result.Item.contentCount.N));
                         localStorage.setItem('contentWatched', result.Item.contentWatched.S);
+                        if (result.Item.contentWatched.S === 'FALSE') {
+                            localStorage.setItem('timeStamp', 'NO DB CALL');
+                        }
                         localStorage.setItem('contentCount', result.Item.contentCount.N);
                         resolve(result.Item.contentCount.N);
                     }
@@ -208,7 +238,8 @@ export class DynamoDBService {
                                             if (err) {
                                                 console.log(err);
                                             } else {
-                                                // Here we first save our user object key value pairs to local storage to use throughout the app
+                                                // Here we first save our user object key value pairs to
+                                                // local storage to use throughout the app
                                                 // console.log('DynamoDBService got user object: ' + JSON.stringify(result));
                                                 localStorage.setItem('userSubId', result.Item.userId.S);
                                                 localStorage.setItem('name', result.Item.name.S);
@@ -260,7 +291,7 @@ export class DynamoDBService {
     }
 
 
-    // update user phonenumber
+
 
     updateUserPhoneNumber(phoneNumber): void {
         const userSubId = localStorage.getItem('userSubId');
@@ -313,9 +344,6 @@ export class DynamoDBService {
             console.log('DynamoDBService Updated Content watch ' + JSON.stringify(result));
         });
     }
-
-    // implemtn DB call to read content count of user
-
 
 
     write(data: string, date: string, type: string): void {

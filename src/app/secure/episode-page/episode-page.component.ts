@@ -57,6 +57,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   isEven(num) { return !(num % 2); }
 
   ngOnInit() {
+    this.loadingScreenService.startLoading();
     this.timelineEpisodeCount = this.getTimelineEpisodeCount();
 
     if (this.contentWatched === 'TRUE') {

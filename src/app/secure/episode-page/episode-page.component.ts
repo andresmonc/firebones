@@ -20,6 +20,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   public episodeContent: JSON = this.episodeDetailsService.getEpisodeContentArray(this.id);
   public contentCount = this.ddb.getLocalStorageContentCount();
   public contentWatched = this.ddb.getLocalStorageContentWatched();
+  public timeStamp = this.ddb.getLocalStorageTimeStamp();
   public clickInContentKey;
   public episodeVideoId = '';
   public timelineEpisodeCount;
@@ -42,12 +43,14 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
         console.log(this.contentWatched);
         console.log(this.clickInContentKey);
         console.log(this.contentCount);
+        console.log(this.timeStamp);
         if (videoFinished === true && this.contentWatched === 'FALSE' && this.clickInContentKey === this.contentCount) {
           console.log('UPDATING CONTENT WATCH TO TRUE ONCE ONLY');
           // if content count is less than 2
           this.contentWatched = 'TRUE';
           this.ddb.setLocalStorageContentWatchedTrue();
           this.ddb.updateUserContentWatched();
+          this.ddb.setLocalStorageTimeStamp();
         }
       }
     });

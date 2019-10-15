@@ -24,7 +24,7 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.loadingScreenService.startLoading();
+    // this.loadingScreenService.startLoading();
 
     if (this.contentWatched === 'TRUE') {
       this.ddb.getUserContent().then((data => {
@@ -32,11 +32,11 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
         console.log('getUserObject function execution done!');
         this.contentCount = data;
         this.currentEpisode = this.getEpisodes();
+        // this.loadingScreenService.stopLoading();
       }));
     }
 
     console.log('INIT CONTENT COUNT', this.contentCount);
-    this.loadingScreenService.stopLoading();
   }
 
   ngOnDestroy() {

@@ -182,31 +182,3 @@
     position: absolute;
   }
 
-  .episodeVidModal{
-    z-index: 10004;
-    height: 100%;
-    padding-top: 0px !important;
-  }
-
-  .episodeDiv{
-    height: auto;
-    /* height: 100%; */
-    border-radius: 0;
-    position:relative;
-  }
-
-
-  .episdoeExit{
-    display: inline-block;
-    padding: 8px 16px;
-    vertical-align: middle;
-    overflow: hidden;
-    text-decoration: none;
-    color: white;
-    background-color: inherit;
-    text-align: center;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-
-  

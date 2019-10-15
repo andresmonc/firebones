@@ -68,6 +68,8 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
         this.timelineEpisodeCount = this.getTimelineEpisodeCount();
         this.loadingScreenService.stopLoading();
       });
+    } else {
+      this.loadingScreenService.stopLoading();
     }
   }
 

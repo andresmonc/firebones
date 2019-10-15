@@ -35,7 +35,6 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
         // this.loadingScreenService.stopLoading();
       }));
     }
-
     console.log('INIT CONTENT COUNT', this.contentCount);
   }
 

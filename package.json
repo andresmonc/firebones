@@ -9,7 +9,8 @@
         "pree2e": "webdriver-manager update",
         "e2e": "protractor",
         "build": "npm install && ng build --prod",
-        "cordova" : "ng build --prod --base-href --output-path ./FireBonesMobileApp/www/"
+        "cordova" : "ng build --prod --base-href --output-path ./FireBonesMobileApp/www/",
+        "android" : "cd ./FireBonesMobileApp && cordova emulate android"
     },
     "angular-cli": {},
     "private": true,

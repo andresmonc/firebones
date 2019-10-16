@@ -36,11 +36,11 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
     }
 
     onLogin() {
-        this.loadingScreenService.startLoading();
         if (this.email == null || this.password == null) {
             this.errorMessage = 'All fields are required';
             return;
         }
+        this.loadingScreenService.startLoading();
         this.errorMessage = null;
         this.userService.authenticate(this.email, this.password, this);
     }

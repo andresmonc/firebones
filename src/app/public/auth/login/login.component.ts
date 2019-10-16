@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserLoginService } from '../../../service/user-login.service';
 import { ChallengeParameters, CognitoCallback, LoggedInCallback } from '../../../service/cognito.service';
@@ -11,7 +11,7 @@ import { LoadingScreenService } from '../../../service/loading-screen/loading-sc
     templateUrl: './login.html',
     styleUrls: ['./login.css']
 })
-export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit {
+export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit, OnChanges {
     email: string;
     password: string;
     hide = false;
@@ -25,7 +25,8 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
     constructor(public router: Router,
                 public ddb: DynamoDBService,
                 public userService: UserLoginService,
-                private loadingScreenService: LoadingScreenService) {
+                private loadingScreenService: LoadingScreenService,
+                private changeDetect: ChangeDetectorRef) {
         console.log('LoginComponent constructor');
     }
 
@@ -33,6 +34,10 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
         this.errorMessage = null;
         console.log('Checking if the user is already authenticated. If so, then redirect to the secure site');
         this.userService.isAuthenticated(this);
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        this.changeDetect.detectChanges();
     }
 
     onLogin() {
@@ -47,6 +52,7 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
 
     cognitoCallback(message: string, result: any) {
         if (message != null) { // error
+            this.loadingScreenService.stopLoading();
             this.errorMessage = message;
             console.log('result: ' + this.errorMessage);
             if (this.errorMessage === 'User is not confirmed.') {
@@ -57,9 +63,8 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
                 this.router.navigate(['/home/newPassword']);
             }
         } else { // success
-
            this.loadingScreenService.stopLoading();
-           console.log("WE SHOULD STOP LOADING NOW");
+           console.log('WE SHOULD STOP LOADING NOW');
            this.router.navigate(['/securehome']);
         }
     }

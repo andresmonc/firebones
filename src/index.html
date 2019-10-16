@@ -41,9 +41,23 @@
     <script src="assets/ui-js/jquery.min.js"></script>
     <script src="assets/ui-js/bootstrap.min.js"></script>
     <!-- /Scripts -->
-
+    <!-- Cordova/Angular Back Button Monkey Patch -->
+    <script>
+        window.addEventListener = function () {
+          (window.EventTarget || Window).prototype.addEventListener.apply(this, arguments);
+        };
+        window.removeEventListener = function () {
+          (window.EventTarget || Window).prototype.removeEventListener.apply(this, arguments);
+        };
+        document.addEventListener = function () {
+          (window.EventTarget || Document).prototype.addEventListener.apply(this, arguments);
+        };
+        document.removeEventListener = function () {
+          (window.EventTarget || Document).prototype.removeEventListener.apply(this, arguments);
+        };
+      </script>
     <!-- Cordova -->
-    <script type="text/javascript" src="cordova.js"></script>
+
     <!-- /Cordova -->
     <!-- Metis Menu Plugin JavaScript -->
     <script src="assets/ui-js/metisMenu.min.js"></script>
@@ -59,7 +73,7 @@
     </app-root>
 
     <noscript>Please enable JavaScript to continue using this application.</noscript>
+    <script type="text/javascript" src="cordova.js"></script>
 
 </body>
-
 </html>

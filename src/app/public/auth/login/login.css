@@ -8,15 +8,15 @@ form {
 
 #login-button{
     transition:.5s;
-    background-color: #167ac6;
-    border-radius: 15px;
+    background-color: #115f9a;
+    border-radius: 6px;
     border: none;
     width: 300px;
     color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 35px;
+    font-size: 24px;
     padding-top: 3px;
     padding-bottom: 3px;
     font-weight: 100;
@@ -30,6 +30,7 @@ a{
 
 
 .form-group {
+    font-family: 'Cormorant Garamond', serif;
     display: flex;
     flex-direction: column;
   }

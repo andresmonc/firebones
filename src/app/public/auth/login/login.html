@@ -11,15 +11,14 @@
             </mat-form-field>
             <mat-form-field hideRequiredMarker>
                 <mat-placeholder style="font-size: 20px;margin-top: 100px;">Password</mat-placeholder>
-                <input matInput id="signupPassword" required [type]="hide ? 'password' : 'text'" maxlength="25"
+                <input  matInput id="signupPassword" required type='password' maxlength="25"
                     length="40" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
-                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </mat-form-field>
         </div>
 
         <div class="form-group">
             <button [disabled]="!email || !password" (click)="onLogin()"  [class.disabledLogin]="!email || !password" id="signupSubmit" type="submit" id="login-button">
-                Login
+                Log in
             </button>
         </div>
         <a [routerLink]="['/home/register']">Register</a>

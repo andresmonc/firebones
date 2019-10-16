@@ -15,23 +15,28 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
   public episodesObj = this.episodeDetailsService.getEpisodes();
   public contentCount = this.ddb.getLocalStorageContentCount();
   public currentEpisode = this.getEpisodes();
+  public contentWatched = this.ddb.getLocalStorageContentWatched();
+  public timeStamp = new Date(this.ddb.getLocalStorageTimeStamp());
 
   constructor(
     public episodeDetailsService: EpisodeDetailsService,
     public ddb: DynamoDBService,
     private loadingScreenService: LoadingScreenService
-  ) {
-    // this.loadingScreenService.startLoading();
-  }
+  ) {}
 
   ngOnInit() {
-    this.ddb.getUserContent().then((data => {
-      console.log('this is the resolved contentCount!!!', data);
-      console.log('getUserObject function execution done!');
-      this.contentCount = data;
-      this.currentEpisode = this.getEpisodes();
-      // this.loadingScreenService.stopLoading();
-    }));
+    // this.loadingScreenService.startLoading();
+    const currentTime = new Date();
+
+    if (this.contentWatched === 'TRUE' && (currentTime.getTime() > this.timeStamp.getTime())) {
+      this.ddb.getUserContent().then((data => {
+        console.log('this is the resolved contentCount!!!', data);
+        console.log('getUserObject function execution done!');
+        this.contentCount = data;
+        this.currentEpisode = this.getEpisodes();
+        // this.loadingScreenService.stopLoading();
+      }));
+    }
     console.log('INIT CONTENT COUNT', this.contentCount);
   }
 

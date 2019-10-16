@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { DynamoDBService } from '../../service/ddb.service';
 import { EpisodeDetailsService } from '../../service/episode-details.service';
 import { LoadingScreenService } from '../../service/loading-screen/loading-screen.service';
+import { YoutubeService } from '../../service/youtube.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -18,42 +20,50 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   public episodeContent: JSON = this.episodeDetailsService.getEpisodeContentArray(this.id);
   public contentCount = this.ddb.getLocalStorageContentCount();
   public contentWatched = this.ddb.getLocalStorageContentWatched();
+  public unformattedTimeStamp = this.ddb.getLocalStorageTimeStamp();
+  public timeStamp = new Date(this.unformattedTimeStamp);
   public clickInContentKey;
   public episodeVideoId = '';
   public timelineEpisodeCount;
-  player;
+  public youtubeEventDataNumber;
+  subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     public ddb: DynamoDBService,
     public episodeDetailsService: EpisodeDetailsService,
-    private loadingScreenService: LoadingScreenService
+    private loadingScreenService: LoadingScreenService,
+    private youtubeService: YoutubeService,
   ) {
     console.log('in Episode Page');
     this.loadingScreenService.startLoading();
+
+    this.subscription = this.youtubeService.getVideoFinished().subscribe(videoFinished => {
+      if (videoFinished) {
+        console.log('Is this the youtube evendata number?', videoFinished);
+        if (videoFinished === true
+          && this.contentWatched === 'FALSE'
+          && this.clickInContentKey === this.contentCount) {
+          console.log('UPDATING CONTENT WATCH TO TRUE ONCE ONLY');
+          // if content count is less than 2
+          this.contentWatched = 'TRUE';
+          this.ddb.setLocalStorageContentWatchedTrue();
+          this.ddb.updateUserContentWatched();
+          this.ddb.setLocalStorageTimeStamp();
+        }
+      }
+    });
+
   }
 
   isEven(num) { return !(num % 2); }
 
   ngOnInit() {
+    this.loadingScreenService.startLoading();
     this.timelineEpisodeCount = this.getTimelineEpisodeCount();
-    (window as any).onYouTubeIframeAPIReady = () => {
-      console.log('Youtube Initalized');
-      this.player = new (window as any).YT.Player('player', {
-        height: '100%',
-        width: '100%',
-        events: {
-          onReady: () => {
-          console.log('onReady Event Ready Youtube API');
-          this.loadingScreenService.stopLoading();
-          },
-          onStateChange: (event) => { this.onPlayerStateChange(event); }
-        },
-        playerVars: {autoplay: 1, controls: 1, modestbranding: 1, rel: 0, showInfo: 0}
-      });
-    };
+    const currentTime = new Date();
 
-    if (this.contentWatched === 'TRUE') {
+    if ((this.contentWatched === 'TRUE' && (currentTime.getTime() > this.timeStamp.getTime()))) {
       this.ddb.getUserContent().then(data => {
         console.log('this is the resolved contentCount!!!', data);
         console.log('getUserObject function execution done!');
@@ -61,23 +71,19 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
         this.timelineEpisodeCount = this.getTimelineEpisodeCount();
         this.loadingScreenService.stopLoading();
       });
+    } else {
+      this.loadingScreenService.stopLoading();
     }
   }
 
-  ngAfterViewInit() {
-    const doc = (window as any).document;
-    const playerApiScript = doc.createElement('script');
-    playerApiScript.type = 'text/javascript';
-    playerApiScript.src = 'https://www.youtube.com/iframe_api';
-    doc.body.appendChild(playerApiScript);
-  }
+  ngAfterViewInit() { }
 
   setVideoId(epvideoId, contentKey) {
-    this.player.loadVideoById(epvideoId);
+    // this.player.loadVideoById(epvideoId);
+    this.youtubeService.setVideoId(epvideoId);
     console.log('this is the content key clickd in', contentKey);
     this.clickInContentKey = contentKey;
   }
-
 
   getTimelineEpisodeCount() {
     let timelineCount = 0;
@@ -94,20 +100,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
     return lastKeyCount;
   }
 
-  // The API calls this function when the player's state changes.
-  onPlayerStateChange(event) {
-    if (event.data === 0 && this.contentWatched === 'FALSE' && this.clickInContentKey === this.contentCount) {
-      console.log('UPDATING CONTENT WATCH TO TRUE ONCE ONLY');
-      // if content count is less than 2
-      this.contentWatched = 'TRUE';
-      this.ddb.setLocalStorageContentWatchedTrue();
-      this.ddb.updateUserContentWatched();
-    }
-  }
-
   ngOnDestroy() {
     this.loadingScreenService.stopLoading();
-    this.player = null;
-    (window as any).YT = null;
   }
 }

@@ -18,7 +18,7 @@
         </div>
 
         <div class="form-group">
-            <button [disabled]="!email || !password" (click)="onLogin()" id="signupSubmit" type="submit" id="login-button">
+            <button [disabled]="!email || !password" (click)="onLogin()"  [class.disabledLogin]="!email || !password" id="signupSubmit" type="submit" id="login-button">
                 Login
             </button>
         </div>

@@ -7,7 +7,8 @@ form {
 }
 
 #login-button{
-    background-color: black;
+    transition:.5s;
+    background-color: #167ac6;
     border-radius: 15px;
     border: none;
     width: 300px;
@@ -35,4 +36,10 @@ a{
 
 .form-group > * {
 width: 100%;
+}
+
+.disabledLogin{
+    transition:.5s;
+    background-color: #0d395a !important;
+    color:#989797 !important;
 }

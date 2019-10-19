@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i');
 #container-logo {
     text-align: center;
+    padding-top: 50px;
 }
 
 #logo {
@@ -24,11 +25,11 @@ a {
 }
 
 #fire{
-    vertical-align: -15px;
+    vertical-align: -10px;
 }
 
 #bones{
-    vertical-align: -15px;
+    vertical-align: -10px;
 }
 
 @media screen and (max-width: 600px) {

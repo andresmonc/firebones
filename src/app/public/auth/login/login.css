@@ -1,14 +1,65 @@
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i');
 
+
 form {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: black;
+    /* font-style: italic; */
+    color: #4e4e4e;
 }
+
+.form-signin input[type="text"] {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-signin input[type="email"] {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #4e4e4e !important;
+}
+
+::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #4e4e4e!important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: #4e4e4e !important;
+}
+
+/* ::ng-deep.w3-animate-opacity {
+    animation: opac 1s !important;
+} */
+
+.mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+    /*change color of underline when focused*/
+    caret-color: #4e4e4e!important;
+}
+
+.mat-icon{
+    font-size: 18px !important;
+}
+
 
 #login-button{
     transition:.5s;
-    background-color: #115f9a;
+    background-color: #0d5e9a;
     border-radius: 6px;
     border: none;
     width: 300px;
@@ -16,10 +67,16 @@ form {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 24px;
+    font-size: 22px;
     padding-top: 3px;
     padding-bottom: 3px;
     font-weight: 100;
+    outline: none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#login-button:hover{
+    background-color: #115f9a;
 }
 
 a{
@@ -44,3 +101,4 @@ width: 100%;
     background-color: #0d395a !important;
     color:#989797 !important;
 }
+

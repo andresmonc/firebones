@@ -76,9 +76,17 @@ form {
 }
 
 
-#login-button:hover{
+/* #login-button:hover{
     background: rgb(0, 162, 255);
-}
+    outline: none;
+} */
+
+#login-button:active
+#login-button:focus {
+    outline: none !important;
+    background: rgb(0, 162, 255);
+  }
+  
 
 a{
     color:black;

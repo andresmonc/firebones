@@ -29,28 +29,12 @@
 }
 
 .form-signin input[type="email"] {
-    margin-bottom: 5px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
 
 .form-signin input[type="password"] {
-    margin-bottom: 5px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 
-::ng-deep .mat-focused .mat-form-field-label {
-    /*change color of label*/
-    color: green !important;
-   }
-  
-   ::ng-deep.mat-form-field-underline {
-    /*change color of underline*/
-    background-color: green !important;
-  } 
-  
-  ::ng-deep.mat-form-field-ripple {
-   /*change color of underline when focused*/
-   background-color: green !important;;
-  }

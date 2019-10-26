@@ -1,24 +1,38 @@
 <form class="form-signin" method="POST" action="#" role="form">
     <div *ngIf="errorMessage!=null">
-        <div id="id01" class="w3-modal-content w3-animate-opacity">
-            <div>
-                {{ errorMessage }}
-            </div>
-        </div>
+            <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                  
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Modal Header</h4>
+                        </div>
+                        <div class="modal-body">
+                          <p>Some text in the modal.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                  
+                    </div>
+                  </div>
     </div>
     <div *ngIf="!mfaStep">
         <div class="form-group">
             <mat-form-field hideRequiredMarker>
-                <mat-placeholder style="color: #4e4e4e !important; font-family: 'Cormorant Garamond', serif; font-size: 20px;">Email</mat-placeholder>
-                <input matInput id="signupEmail" required type="email" maxlength="100" style="color: #4e4e4e !important; font-family: 'Cormorant Garamond', serif;"
+                <mat-placeholder style="color: #4e4e4e !important; font-family: 'Jomolhari', serif; font-size: 17px;">Email</mat-placeholder>
+                <input matInput id="signupEmail" required type="email" maxlength="100" style="color: #4e4e4e !important; font-family: 'Jomolhari', serif;"
                     [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             <mat-form-field hideRequiredMarker>
-                <mat-placeholder style="color: #4e4e4e !important; font-family: 'Cormorant Garamond', serif; font-size: 20px;">Password</mat-placeholder>
-                <input matInput id="signupPassword" [type]="hide ? 'password' : 'text'" required maxlength="25" style="color: #4e4e4e !important;font-family: 'Cormorant Garamond', serif;"
+                <mat-placeholder style="color: #4e4e4e !important; font-family: 'Jomolhari', serif; font-size: 17px;">Password</mat-placeholder>
+                <input matInput id="signupPassword" [type]="hide ? 'password' : 'text'" required maxlength="25" style="color: #4e4e4e !important;font-family: 'Jomolhari', serif;"
                     length="40" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
-                <button mat-icon-button matSuffix (click)="hide = !hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <button mat-icon-button matSuffix (click)="hide = !hide"> 
+                    <mat-icon style="height: 1.4em;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
             </mat-form-field>
         </div>
@@ -30,7 +44,7 @@
             </button>
         </div>
         <a [routerLink]="['/home/register']">Register</a>
-        <a [routerLink]="['/home/forgotPassword']" style="margin-left: 75px;">Forgot Password?</a><br />
+        <a [routerLink]="['/home/forgotPassword']" style="margin-left: 105px;">Forgot Password?</a><br />
         <!-- <a [routerLink]="['/home/resendCode']">Resend Confirmation</a> -->
     </div>
 

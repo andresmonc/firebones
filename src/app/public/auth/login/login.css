@@ -1,31 +1,30 @@
-@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i');
 
 
 form {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Jomolhari', serif;
     /* font-style: italic; */
     color: #4e4e4e;
 }
 
 .form-signin input[type="text"] {
-    margin-top: 5px !important;
-    margin-bottom: 5px !important;
+
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    height: 100%;
 }
 
 .form-signin input[type="password"] {
-    margin-top: 5px !important;
-    margin-bottom: 5px !important;
+
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    height: 100%;
 }
 
 .form-signin input[type="email"] {
-    margin-top: 5px !important;
-    margin-bottom: 5px !important;
+
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    height: 100% !important;
 }
 
 ::ng-deep .mat-focused .mat-form-field-label {
@@ -67,7 +66,8 @@ form {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 22px;
+    height: 43px;
+    font-size: 20px;
     padding-top: 3px;
     padding-bottom: 3px;
     font-weight: 100;
@@ -75,19 +75,20 @@ form {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
+
 #login-button:hover{
-    background-color: #115f9a;
+    background: rgb(0, 162, 255);
 }
 
 a{
     color:black;
     font-weight: 100;
-    font-size: 19px;
+    font-size: 15px;
 }
 
 
 .form-group {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Jomolhari', serif;
     display: flex;
     flex-direction: column;
   }

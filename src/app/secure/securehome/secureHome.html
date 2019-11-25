@@ -1,15 +1,7 @@
 <header>
     <app-banner></app-banner>
 </header>
-<main [@routeAnimations]="prepareRoute(outlet)" >
-    <router-outlet #outlet="outlet"></router-outlet>    
+<main [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
 </main>
-<!-- 
-<main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">
-    <router-outlet #o="outlet"></router-outlet>    
-</main> -->
-
 <app-navbar></app-navbar>
-
-
-

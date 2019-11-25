@@ -1,9 +1,9 @@
-import {Component, OnInit, AfterViewInit} from '@angular/core';
-import {AwsUtil} from './service/aws.service';
-import {UserLoginService} from './service/user-login.service';
-import {CognitoUtil, LoggedInCallback} from './service/cognito.service';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { AwsUtil } from './service/aws.service';
+import { UserLoginService } from './service/user-login.service';
+import { CognitoUtil, LoggedInCallback } from './service/cognito.service';
 import { LoadingScreenService } from './service/loading-screen/loading-screen.service';
-import { fadeAnimation,slide, slideLeft } from './animations';
+import { slideInAnimation } from './animations';
 
 @Component({
     selector: 'app-root',
@@ -12,9 +12,9 @@ import { fadeAnimation,slide, slideLeft } from './animations';
 export class AppComponent implements OnInit, LoggedInCallback, AfterViewInit {
 
     constructor(private loadingScreenService: LoadingScreenService,
-                public awsUtil: AwsUtil,
-                public userService: UserLoginService,
-                public cognito: CognitoUtil) {
+        public awsUtil: AwsUtil,
+        public userService: UserLoginService,
+        public cognito: CognitoUtil) {
         // this.loadingScreenService.startLoading();
         console.log('AppComponent: constructor');
     }

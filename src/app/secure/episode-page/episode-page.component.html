@@ -16,10 +16,10 @@
                     <!-- <div class='block'>
                         <hr [ngClass]="isEven(contentKey) ?' lineRight':'lineLeft'" />
                     </div> -->
-                    <img [ngClass]="isEven(contentKey) ?' episodeIconImg-left':'episodeIconImg-right'" 
+                    <img class="responsive-tl-icon" [ngClass]="isEven(contentKey) ?' episodeIconImg-left':'episodeIconImg-right'" 
                     onclick="document.getElementById('id01').style.display='block'"
                     (click) = "setVideoId(episodeContent[contentKey].videoId, contentKey)"
-                    src="https://via.placeholder.com/100">
+                    src='/assets/img/snacks/{{episodeContent[contentKey].iconUrl}}'>
                 </div>
             </div>
         </div>

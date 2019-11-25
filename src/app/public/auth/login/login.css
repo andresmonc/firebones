@@ -29,17 +29,17 @@ form {
 
 ::ng-deep .mat-focused .mat-form-field-label {
     /*change color of label*/
-    color: #4e4e4e !important;
+    color: #332f2f !important;
 }
 
 ::ng-deep.mat-form-field-underline {
     /*change color of underline*/
-    background-color: #4e4e4e!important;
+    background-color: #332f2f!important;
 } 
 
 ::ng-deep.mat-form-field-ripple {
     /*change color of underline when focused*/
-    background-color: #4e4e4e !important;
+    background-color: #332f2f !important;
 }
 
 /* ::ng-deep.w3-animate-opacity {
@@ -48,7 +48,7 @@ form {
 
 .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
     /*change color of underline when focused*/
-    caret-color: #4e4e4e!important;
+    caret-color: #332f2f!important;
 }
 
 .mat-icon{
@@ -89,7 +89,7 @@ form {
   
 
 a{
-    color:black;
+    color:#332f2f !important;
     font-weight: 100;
     font-size: 15px;
 }

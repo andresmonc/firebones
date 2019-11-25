@@ -45,6 +45,7 @@ import { SupportComponent } from './secure/support/support.component';
 import { EmailService } from './service/email.service';
 import { HttpClientModule } from '@angular/common/http';
 import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
+import { GlobalMessageModalComponent } from './global-message-modal/global-message-modal.component';
 
 @NgModule({
     declarations: [
@@ -71,7 +72,8 @@ import { YoutubePlayerComponent } from './components/youtube-player/youtube-play
         MainEpisodesPageComponent,
         LoadingScreenComponent,
         SupportComponent,
-        YoutubePlayerComponent
+        YoutubePlayerComponent,
+        GlobalMessageModalComponent
     ],
     imports: [
         BrowserModule,
@@ -124,7 +126,8 @@ import { YoutubePlayerComponent } from './components/youtube-player/youtube-play
         EmailService,
         WINDOW_PROVIDERS
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [GlobalMessageModalComponent]
 })
 export class AppModule {
 }

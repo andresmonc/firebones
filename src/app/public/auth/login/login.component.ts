@@ -4,7 +4,8 @@ import { UserLoginService } from '../../../service/user-login.service';
 import { ChallengeParameters, CognitoCallback, LoggedInCallback } from '../../../service/cognito.service';
 import { DynamoDBService } from '../../../service/ddb.service';
 import { LoadingScreenService } from '../../../service/loading-screen/loading-screen.service';
-
+import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { GlobalMessageModalComponent } from '../../../global-message-modal/global-message-modal.component';
 
 @Component({
     selector: 'awscognito-angular2-app',
@@ -17,6 +18,7 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
     hide = false;
     errorMessage: string;
     mfaStep = false;
+    showModal: boolean;
     mfaData = {
         destination: '',
         callback: null
@@ -26,11 +28,13 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
                 public ddb: DynamoDBService,
                 public userService: UserLoginService,
                 private loadingScreenService: LoadingScreenService,
-                private changeDetect: ChangeDetectorRef) {
+                private changeDetect: ChangeDetectorRef,
+                private dialog: MatDialog) {
         console.log('LoginComponent constructor');
     }
 
     ngOnInit() {
+        this.showModal = true;
         this.errorMessage = null;
         console.log('Checking if the user is already authenticated. If so, then redirect to the secure site');
         this.userService.isAuthenticated(this);
@@ -40,9 +44,22 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
         this.changeDetect.detectChanges();
     }
 
+    openDialog() {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        dialogConfig.height = '180px';
+        dialogConfig.width = '250px';
+
+        this.dialog.open(GlobalMessageModalComponent, dialogConfig);
+    }
+
     onLogin() {
         if (this.email == null || this.password == null) {
             this.errorMessage = 'All fields are required';
+            this.openDialog();
             return;
         }
         this.loadingScreenService.startLoading();
@@ -54,6 +71,7 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
         if (message != null) { // error
             this.loadingScreenService.stopLoading();
             this.errorMessage = message;
+            this.openDialog();
             console.log('result: ' + this.errorMessage);
             if (this.errorMessage === 'User is not confirmed.') {
                 console.log('redirecting');

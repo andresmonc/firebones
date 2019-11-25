@@ -8,6 +8,7 @@ export class EpisodeDetailsService {
     1: {
       episodeTitle: 'Pilot',
       episodeDesc: 'loremipsum',
+      image: 'ep 00 -how to go show.svg',
       contentArray: {
         1: {
           contentType: 'snack',
@@ -49,6 +50,7 @@ export class EpisodeDetailsService {
     2: {
       episodeTitle: 'Purple Giraffe',
       episodeDesc: 'loremipsum',
+      image: 'ep 00 -how to go show.svg',
       contentArray: {
         6: {
           contentType: 'snack',
@@ -85,7 +87,9 @@ export class EpisodeDetailsService {
       },
     },
     3: {
-      episodeTitle: 'Return of the Shirt', episodeDesc: 'loremipsum',
+      episodeTitle: 'Return of the Shirt',
+      episodeDesc: 'loremipsum',
+      image: 'ep 00 -how to go show.svg',
       contentArray: {
         10: {
           contentType: 'snack',
@@ -124,11 +128,19 @@ export class EpisodeDetailsService {
         },
       }
     },
-    4: { episodeTitle: 'The Limo', episodeDesc: 'loremipsum' },
-    5: { episodeTitle: 'The Wedding', episodeDesc: 'loremipsum' },
-    6: { episodeTitle: 'Game Night', episodeDesc: 'loremipsum' },
-    7: { episodeTitle: 'Milk', episodeDesc: 'loremipsum' },
-    8: { episodeTitle: 'Come On', episodeDesc: 'loremipsum' }
+    4: { episodeTitle: 'The Limo',
+    episodeDesc: 'loremipsum',
+    image: 'ep 00 -how to go show.svg'
+    },
+    5: { episodeTitle: 'The Wedding', episodeDesc: 'loremipsum',
+    image: 'ep 00 -how to go show.svg',
+    },
+    6: { episodeTitle: 'Game Night', episodeDesc: 'loremipsum',
+    image: 'ep 00 -how to go show.svg'},
+    7: { episodeTitle: 'Milk', episodeDesc: 'loremipsum',
+    image: 'ep 00 -how to go show.svg'},
+    8: { episodeTitle: 'Come On', episodeDesc: 'loremipsum',
+    image: 'ep 00 -how to go show.svg'}
   } as unknown as JSON;
 
   constructor() { }

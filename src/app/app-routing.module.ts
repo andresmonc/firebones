@@ -48,7 +48,7 @@ const secureHomeRoutes: Routes = [
     },
     {
         path: 'securehome', component: SecureHomeComponent, children: [
-            { path: '', component: MainEpisodesPageComponent, data: { animation: 'MainPAge' } },
+            { path: '', component: MainEpisodesPageComponent, data: { animation: 'MainPage' } },
             { path: 'logout', component: LogoutComponent },
             { path: 'jwttokens', component: JwtComponent },
             { path: 'episode-page/:id', component: EpisodePageComponent, data: { animation: 'EpisodePage' } },

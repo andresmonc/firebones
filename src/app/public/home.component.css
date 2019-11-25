@@ -1,20 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i');
 #container-logo {
     text-align: center;
+    padding-top: 50px;
 }
 
 #logo {
     margin: 0 auto;
     color: black;
     display: inline-block;
-    font-size: 65px;
+    font-size: 32px;
     font-weight: 100;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
 }
 
 #brand {
-    width: 30vw;
+    width: 23vw;
     max-width: 300px;
 }
 
@@ -24,15 +25,15 @@ a {
 }
 
 #fire{
-    vertical-align: 40px;
+    vertical-align: -10px;
 }
 
 #bones{
-    vertical-align: 40px;
+    vertical-align: -10px;
 }
 
 @media screen and (max-width: 600px) {
     #logo {
-        font-size: 55px;
+        font-size: 40px;
     }
 }

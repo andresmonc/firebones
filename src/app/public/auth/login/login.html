@@ -1,29 +1,32 @@
 <form class="form-signin" method="POST" action="#" role="form">
-    <div *ngIf="errorMessage!=null" class="alert alert-danger">
-        {{ errorMessage }}
-    </div>
+    <!-- <div *ngIf="errorMessage!=null">
+        {{Login fail}}
+    </div> -->
     <div *ngIf="!mfaStep">
         <div class="form-group">
             <mat-form-field hideRequiredMarker>
-                <mat-placeholder style="font-size: 20px;">Email</mat-placeholder>
-                <input matInput id="signupEmail" required type="email" maxlength="100" 
+                <mat-placeholder style="color: #4e4e4e !important; font-family: 'Jomolhari', serif; font-size: 17px;">Email</mat-placeholder>
+                <input matInput id="signupEmail" required type="email" maxlength="100" style="color: #4e4e4e !important; font-family: 'Jomolhari', serif;"
                     [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             <mat-form-field hideRequiredMarker>
-                <mat-placeholder style="font-size: 20px;margin-top: 100px;">Password</mat-placeholder>
-                <input matInput id="signupPassword" required [type]="hide ? 'password' : 'text'" maxlength="25"
+                <mat-placeholder style="color: #4e4e4e !important; font-family: 'Jomolhari', serif; font-size: 17px;">Password</mat-placeholder>
+                <input matInput id="signupPassword" [type]="hide ? 'password' : 'text'" required maxlength="25" style="color: #4e4e4e !important;font-family: 'Jomolhari', serif;"
                     length="40" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
-                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <button mat-icon-button matSuffix (click)="hide = !hide"> 
+                    <mat-icon style="height: 1.4em;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
             </mat-form-field>
         </div>
 
         <div class="form-group">
-            <button (click)="onLogin()" id="signupSubmit" type="submit" id="login-button">
-                Login
+            <button [disabled]="!email || !password" (click)="onLogin()" [class.disabledLogin]="!email || !password" id="signupSubmit"
+                type="submit" id="login-button">
+                Log in
             </button>
         </div>
         <a [routerLink]="['/home/register']">Register</a>
-        <a [routerLink]="['/home/forgotPassword']" style="margin-left: 75px;">Forgot Password?</a><br />
+        <a [routerLink]="['/home/forgotPassword']" style="margin-left: 105px;">Forgot Password?</a><br />
         <!-- <a [routerLink]="['/home/resendCode']">Resend Confirmation</a> -->
     </div>
 

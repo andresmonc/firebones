@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserLoginService } from '../../../service/user-login.service';
 import { ChallengeParameters, CognitoCallback, LoggedInCallback } from '../../../service/cognito.service';
 import { DynamoDBService } from '../../../service/ddb.service';
 import { LoadingScreenService } from '../../../service/loading-screen/loading-screen.service';
-
+import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { GlobalMessageModalComponent } from '../../../global-message-modal/global-message-modal.component';
 
 @Component({
     selector: 'awscognito-angular2-app',
     templateUrl: './login.html',
     styleUrls: ['./login.css']
 })
-export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit {
+export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit, OnChanges {
     email: string;
     password: string;
     hide = false;
     errorMessage: string;
     mfaStep = false;
+    showModal: boolean;
     mfaData = {
         destination: '',
         callback: null
@@ -25,19 +27,39 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
     constructor(public router: Router,
                 public ddb: DynamoDBService,
                 public userService: UserLoginService,
-                private loadingScreenService: LoadingScreenService) {
+                private loadingScreenService: LoadingScreenService,
+                private changeDetect: ChangeDetectorRef,
+                private dialog: MatDialog) {
         console.log('LoginComponent constructor');
     }
 
     ngOnInit() {
+        this.showModal = true;
         this.errorMessage = null;
         console.log('Checking if the user is already authenticated. If so, then redirect to the secure site');
         this.userService.isAuthenticated(this);
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+        this.changeDetect.detectChanges();
+    }
+
+    openDialog() {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        dialogConfig.height = '180px';
+        dialogConfig.width = '250px';
+
+        this.dialog.open(GlobalMessageModalComponent, dialogConfig);
+    }
+
     onLogin() {
         if (this.email == null || this.password == null) {
             this.errorMessage = 'All fields are required';
+            this.openDialog();
             return;
         }
         this.loadingScreenService.startLoading();
@@ -47,7 +69,9 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
 
     cognitoCallback(message: string, result: any) {
         if (message != null) { // error
+            this.loadingScreenService.stopLoading();
             this.errorMessage = message;
+            this.openDialog();
             console.log('result: ' + this.errorMessage);
             if (this.errorMessage === 'User is not confirmed.') {
                 console.log('redirecting');
@@ -57,9 +81,8 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
                 this.router.navigate(['/home/newPassword']);
             }
         } else { // success
-
            this.loadingScreenService.stopLoading();
-           console.log("WE SHOULD STOP LOADING NOW");
+           console.log('WE SHOULD STOP LOADING NOW');
            this.router.navigate(['/securehome']);
         }
     }

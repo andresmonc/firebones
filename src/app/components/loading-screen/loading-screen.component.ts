@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-loading-screen',
   templateUrl: './loading-screen.component.html',
-  styleUrls: ['./loading-screen.component.css']
+  styleUrls: ['./loading-screen.component.scss']
 })
 export class LoadingScreenComponent implements OnInit, OnDestroy {
 

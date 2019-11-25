@@ -15,9 +15,9 @@ export class GlobalMessageModalComponent implements OnInit {
     constructor(
         private dialogRef: MatDialogRef<GlobalMessageModalComponent>,
         @Inject(MAT_DIALOG_DATA) data) {
-        // this.modalHeader = data.modalHeader;
-        // this.modalText = data.modalText;
-        // this.modalButtonText = data.modalButtonText;
+        this.modalHeader = data.modalHeader;
+        this.modalText = data.modalText;
+        this.modalButtonText = data.modalButtonText;
     }
 
     ngOnInit() {

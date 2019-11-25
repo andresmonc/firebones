@@ -44,7 +44,7 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
         this.changeDetect.detectChanges();
     }
 
-    openDialog() {
+    openDialog(headerText: string, text: string, buttonText: string) {
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = true;
@@ -53,13 +53,19 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
         dialogConfig.height = '180px';
         dialogConfig.width = '250px';
 
+        dialogConfig.data = {
+            modalHeader: headerText,
+            modalText: text,
+            modalButtonText: buttonText
+        };
+
         this.dialog.open(GlobalMessageModalComponent, dialogConfig);
     }
 
     onLogin() {
         if (this.email == null || this.password == null) {
             this.errorMessage = 'All fields are required';
-            this.openDialog();
+            this.openDialog('Login Failed', this.errorMessage, 'Close');
             return;
         }
         this.loadingScreenService.startLoading();
@@ -71,7 +77,7 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
         if (message != null) { // error
             this.loadingScreenService.stopLoading();
             this.errorMessage = message;
-            this.openDialog();
+            this.openDialog('Login Failed', this.errorMessage, 'Close');
             console.log('result: ' + this.errorMessage);
             if (this.errorMessage === 'User is not confirmed.') {
                 console.log('redirecting');
@@ -82,7 +88,6 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
             }
         } else { // success
            this.loadingScreenService.stopLoading();
-           console.log('WE SHOULD STOP LOADING NOW');
            this.router.navigate(['/securehome']);
         }
     }

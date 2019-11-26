@@ -1,12 +1,12 @@
 <form class="form-signin" method="POST" action="#" role="form">
-    <div *ngIf="errorMessage!=null" class="alert alert-danger">
+    <!-- <div *ngIf="errorMessage!=null" class="alert alert-danger">
         {{ errorMessage }}
-    </div>
+    </div> -->
 
 
     <div class="form-group">
         <mat-form-field hideRequiredMarker>
-            <mat-placeholder style="font-size: 20px;">Name</mat-placeholder>
+            <mat-placeholder style="color: #4e4e4e !important; font-family: 'Jomolhari', serif; font-size: 17px;">Name</mat-placeholder>
             <input matInput id="signupName" required type="text" maxlength="50" [(ngModel)]="registrationUser.name"
                 [ngModelOptions]="{standalone: true}">
         </mat-form-field>
@@ -15,7 +15,7 @@
 
     <div class="form-group">
         <mat-form-field hideRequiredMarker>
-            <mat-placeholder style="font-size: 20px;">Email</mat-placeholder>
+            <mat-placeholder style="color: #4e4e4e !important; font-family: 'Jomolhari', serif; font-size: 17px;">Email</mat-placeholder>
             <input matInput id="signupEmail" required type="email" maxlength="50" [(ngModel)]="registrationUser.email"
                 [ngModelOptions]="{standalone: true}">
         </mat-form-field>
@@ -23,24 +23,32 @@
 
     <div class="form-group">
         <mat-form-field hideRequiredMarker>
-            <mat-placeholder style="font-size: 20px;">Password</mat-placeholder>
-            <input matInput id="signupPassword" required type="password" maxlength="40"
-                [(ngModel)]="registrationUser.password" [ngModelOptions]="{standalone: true}">
+            <mat-placeholder style="color: #4e4e4e !important; font-family: 'Jomolhari', serif; font-size: 17px;">Password</mat-placeholder>
+            <input matInput id="signupPassword" [type]="hide ? 'password' : 'text'" maxlength="40" [(ngModel)]="registrationUser.password"
+                [ngModelOptions]="{standalone: true}">
+            <button mat-icon-button matSuffix (click)="hide = !hide">
+                <mat-icon style="height: 1.4em;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
         </mat-form-field>
     </div>
 
     <div class="form-group">
         <mat-form-field hideRequiredMarker>
-            <mat-placeholder style="font-size: 20px;">Phone Number</mat-placeholder>
-            <input matInput id="signupPhone" required type="text" maxlength="13"
-                [(ngModel)]="registrationUser.phone_number" [ngModelOptions]="{standalone: true}">
+            <mat-placeholder style="color: #4e4e4e !important; font-family: 'Jomolhari', serif; font-size: 17px;">Phone
+                Number</mat-placeholder>
+            <input matInput id="signupPhone" required type="tel" maxlength="10" [(ngModel)]="registrationUser.phone_number"
+                [ngModelOptions]="{standalone: true}">
         </mat-form-field>
     </div>
     <div class="form-group">
-        <button (click)="onRegister()" id="register-button" type="submit">
+        <button [disabled]="!registrationUser.name || !registrationUser.phone_number || !registrationUser.password || !registrationUser.email"
+            [class.disabledRegister]="!registrationUser.name || !registrationUser.phone_number || !registrationUser.password || !registrationUser.email"
+            (click)="onRegister()" id="register-button" type="submit">
             Register
         </button>
     </div>
     <hr>
-    <p>Already have an account? <a [routerLink]="['/home/']"> <i class="fa fa-fw fa-lock"></i>Login</a></p>
+    <a [routerLink]="['/home/']">
+        <p>Already have an account?</p>
+    </a>
 </form>

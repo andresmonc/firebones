@@ -1,7 +1,10 @@
-import {Component} from "@angular/core";
-import {Router} from "@angular/router";
-import {UserRegistrationService} from "../../../service/user-registration.service";
-import {CognitoCallback} from "../../../service/cognito.service";
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {UserRegistrationService} from '../../../service/user-registration.service';
+import {CognitoCallback} from '../../../service/cognito.service';
+import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { GlobalMessageModalComponent } from '../../../global-message-modal/global-message-modal.component';
+
 
 export class RegistrationUser {
     name: string;
@@ -23,8 +26,9 @@ export class RegisterComponent implements CognitoCallback {
     router: Router;
     errorMessage: string;
     validated = false;
+    phoneNumberEntered: string;
 
-    constructor(public userRegistration: UserRegistrationService, router: Router) {
+    constructor(public userRegistration: UserRegistrationService, router: Router, private dialog: MatDialog) {
         this.router = router;
         this.onInit();
     }
@@ -34,71 +38,70 @@ export class RegisterComponent implements CognitoCallback {
         this.errorMessage = null;
     }
 
+    openDialog(headerText: string, text: string, buttonText: string) {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        // dialogConfig.height = '180px';
+        // dialogConfig.width = '250px';
+
+        dialogConfig.data = {
+            modalHeader: headerText,
+            modalText: text,
+            modalButtonText: buttonText
+        };
+
+        this.dialog.open(GlobalMessageModalComponent, dialogConfig);
+    }
+
     onRegister() {
         this.errorMessage = null;
-        this.validation()
-        if (this.validated == true){
+        this.validation();
+        if (this.validated === true) {
+            this.phoneNumberEntered = this.registrationUser.phone_number;
+            this.registrationUser.phone_number = '+1' + this.registrationUser.phone_number;
             this.userRegistration.register(this.registrationUser, this);
         }
 
     }
 
     cognitoCallback(message: string, result: any) {
-        if (message != null) { //error
+        if (message != null) { // error
+            this.registrationUser.phone_number = this.phoneNumberEntered;
             this.errorMessage = message;
-            console.log("result: " + this.errorMessage);
-        } else { //success
-            //move to the next step
-            console.log("redirecting");
+            this.openDialog('', this.errorMessage, 'Close');
+            console.log('result: ' + this.errorMessage);
+        } else { // success
+            // move to the next step
+            console.log('redirecting');
             this.router.navigate(['/home/confirmRegistration', result.user.username]);
         }
     }
 
-    phoneValidation(){
-        let phone_num = this.registrationUser.phone_number
-        if(phone_num.length < 13){
-            this.errorMessage = "Phone number must be 13 digits in this format +015555555555"
-            return false;
-        }
-        let i = 1;
-        while (i <= phone_num.length - 1){
-            console.log(phone_num.charAt(i))
-            let current_digit = parseInt(phone_num.charAt(i));
-            if(isNaN(current_digit)){
-                this.errorMessage = "Please use only numbers in this format +015555555555"
-                console.log(current_digit);
-                return false;
-            };
-            i++;
-        } 
-        
-        if(phone_num.charAt(0) != "+"){
-            this.errorMessage = "Missing '+' symbol; Phone number must be 13 digits in this format +015555555555"
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-
-    nameValidation(){
+    phoneValidation() {
         return true;
     }
 
-    emailValidation(){
+    nameValidation() {
         return true;
     }
 
-    passwordValidation(){
+    emailValidation() {
         return true;
     }
 
-    validation(){
+    passwordValidation() {
+        return true;
+    }
+
+    validation() {
         if (
-            this.nameValidation() == true &&
-            this.phoneValidation() == true && 
-            this.emailValidation() == true && 
-            this.passwordValidation() == true){
+            this.nameValidation() === true &&
+            this.phoneValidation() === true &&
+            this.emailValidation() === true &&
+            this.passwordValidation() === true) {
                 this.validated = true;
             }
     }

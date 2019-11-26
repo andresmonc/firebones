@@ -1,14 +1,19 @@
 .modalButton{
     background-color: #0d5e9a;
     color: white;
+    font-family: 'Jomolhari', serif;
 }
 
 .mat-dialog-title{
     text-align: center;
+    color: #4e4e4e !important; 
+    font-family: 'Jomolhari', serif;
 }
 
 .mat-dialog-content{
     text-align: center;
+    color: #4e4e4e !important; 
+    font-family: 'Jomolhari', serif;
 }
 
 .mat-dialog-actions{

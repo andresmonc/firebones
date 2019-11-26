@@ -1,30 +1,73 @@
-@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i');
 
 form {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: black;
+    color: #4e4e4e !important;
+    font-family: 'Gentium Basic', serif;
+}
+
+.confirmationCodeText{
+    text-align: center;
+    color: #4e4e4e !important;
+    font-family: 'Gentium Basic', serif;
+    font-size: 16px;
+}
+
+.forgotHeader2{
+    font-family: 'Gentium Basic', serif !important;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+.codeBox{
+    text-align: center;
+}
+
+.confirmForm{
+    padding-top:60px;
 }
 
 #confirmRegistration{
-    background-color: black;
-    border-radius: 15px;
+    transition:.5s;
+    background-color: #0d5e9a;
+    border-radius: 6px;
     border: none;
     width: 300px;
     color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 35px;
+    height: 43px;
+    font-size: 18px;
+    font-family: 'Cabin', sans-serif;
     padding-top: 3px;
     padding-bottom: 3px;
     font-weight: 100;
+    outline: none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#confirmRegistration:hover{
+    background: rgb(0, 162, 255);
+    outline: none;
+} 
+
+#confirmRegistration:active
+#confirmRegistration:focus {
+    outline: none !important;
+    background: rgb(0, 162, 255);
+  }
+  
+  .disabledConfirm{
+    transition:.5s;
+    background-color: #0d395a !important;
+    color:#989797 !important;
 }
 
 a{
-    color:black;
+    color:#332f2f !important;
     font-weight: 100;
-    font-size: 19px;
+    font-size: 16px;
+    font-family: 'Gentium Basic', serif;
 }
 
 

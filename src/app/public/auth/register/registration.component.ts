@@ -27,8 +27,12 @@ export class RegisterComponent implements CognitoCallback {
     errorMessage: string;
     validated = false;
     phoneNumberEntered: string;
+    hide: any;
 
-    constructor(public userRegistration: UserRegistrationService, router: Router, private dialog: MatDialog) {
+    constructor(
+        public userRegistration: UserRegistrationService,
+        router: Router,
+        private dialog: MatDialog) {
         this.router = router;
         this.onInit();
     }
@@ -43,9 +47,6 @@ export class RegisterComponent implements CognitoCallback {
 
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-
-        // dialogConfig.height = '180px';
-        // dialogConfig.width = '250px';
 
         dialogConfig.data = {
             modalHeader: headerText,

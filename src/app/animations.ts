@@ -16,7 +16,7 @@ export function query(s, a) {
 
 export const slideInAnimation =
     trigger('routeAnimations', [
-        transition('* <=> *', [
+        transition('fuck <=> fuck', [
             style({ position: 'relative' }),
             query(':enter, :leave', [
                 style({
@@ -40,7 +40,7 @@ export const slideInAnimation =
             ]),
             query(':enter', animateChild()),
         ]),
-        transition('* <=> *', [
+        transition('fuck <=> fuck', [
             style({ position: 'relative' }),
             query(':enter, :leave', [
                 style({
@@ -63,5 +63,20 @@ export const slideInAnimation =
                 ])
             ]),
             query(':enter', animateChild()),
+        ]), transition('* => *', [
+            query(
+                ':enter',
+                [style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' })]
+            ),
+            query(
+                ':leave',
+                [style({ opacity: 1, position: 'absolute', width: '100%', height: '100%' }),
+                animate('0.9s', style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' }))]
+            ),
+            query(
+                ':enter',
+                [style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' }),
+                animate('0.9s', style({ opacity: 1, position: 'absolute', width: '100%', height: '100%' }))]
+            )
         ])
     ]);

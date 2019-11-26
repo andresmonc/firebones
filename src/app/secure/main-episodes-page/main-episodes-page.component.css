@@ -1,14 +1,13 @@
-.episodes-page{
+.episodes-page {
    padding-top: 0px;
    padding-bottom: 0px;
    margin-top: 0px;
    margin-bottom: 0px;
 }
 
-.episode-tiles{
+.episode-tiles {
    text-align: justify;
    padding-bottom: 100px;
-
 }
 
 .episode-tiles img {
@@ -27,16 +26,17 @@
    font-size: 4vw;
    margin-bottom: 0;
 }
-.episode-tile{
+
+.episode-tile {
    padding-bottom: 25px;
 }
 
-.disable{
+.disable {
    pointer-events: none;
    filter: blur(3px)
 }
 
-@media screen and (min-width: 972px){
+@media screen and (min-width: 972px) {
    .episode-tiles p {
       font-size: 2.5vw;
    }

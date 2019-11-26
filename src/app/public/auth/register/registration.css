@@ -1,34 +1,60 @@
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i');
 
 form {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: black;
+    font-family: 'Jomolhari', serif;
+    /* font-style: italic; */
+    color: #4e4e4e;
 }
 
-#register-button{
-    background-color: black;
-    border-radius: 15px;
-    border: none;
-    width: 300px;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 35px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    font-weight: 100;
+.form-signin input[type="text"] {
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    height: 100%;
 }
 
-a{
-    color:black;
-    font-weight: 100;
-    font-size: 19px;
+.form-signin input[type="password"] {
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    height: 100%;
 }
+
+.form-signin input[type="email"] {
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    height: 100% !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #332f2f !important;
+}
+
+::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #332f2f!important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: #332f2f !important;
+}
+
+/* ::ng-deep.w3-animate-opacity {
+    animation: opac 1s !important;
+} */
+
+.mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+    /*change color of underline when focused*/
+    caret-color: #332f2f!important;
+}
+
 
 
 .form-group {
+    font-family: 'Jomolhari', serif;
     display: flex;
     flex-direction: column;
   }
@@ -36,3 +62,47 @@ a{
 .form-group > * {
 width: 100%;
 }
+
+#register-button{
+    transition:.5s;
+    background-color: #0d5e9a;
+    border-radius: 6px;
+    border: none;
+    width: 300px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    height: 43px;
+    font-size: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-weight: 100;
+    outline: none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+
+#register-button:hover{
+    background: rgb(0, 162, 255);
+    outline: none;
+} 
+
+#register-button:active
+#register-button:focus {
+    outline: none !important;
+    background: rgb(0, 162, 255);
+  }
+  
+  .disabledRegister{
+    transition:.5s;
+    background-color: #0d395a !important;
+    color:#989797 !important;
+}
+
+a{
+    color:#332f2f !important;
+    font-weight: 100;
+    font-size: 15px;
+}
+

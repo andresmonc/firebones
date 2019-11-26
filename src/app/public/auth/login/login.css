@@ -55,6 +55,10 @@ form {
     font-size: 18px !important;
 }
 
+.loginForm{
+    padding-top:60px;
+}
+
 
 #login-button{
     transition:.5s;

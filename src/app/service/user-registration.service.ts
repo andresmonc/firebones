@@ -1,9 +1,9 @@
-import {Inject, Injectable} from "@angular/core";
-import {CognitoCallback, CognitoUtil} from "./cognito.service";
-import {AuthenticationDetails, CognitoUser, CognitoUserAttribute} from "amazon-cognito-identity-js";
-import {RegistrationUser} from "../public/auth/register/registration.component";
-import {NewPasswordUser} from "../public/auth/newpassword/newpassword.component";
-import * as AWS from "aws-sdk/global";
+import {Inject, Injectable} from '@angular/core';
+import {CognitoCallback, CognitoUtil} from './cognito.service';
+import {AuthenticationDetails, CognitoUser, CognitoUserAttribute} from 'amazon-cognito-identity-js';
+import {RegistrationUser} from '../public/auth/register/registration.component';
+import {NewPasswordUser} from '../public/auth/newpassword/newpassword.component';
+import * as AWS from 'aws-sdk/global';
 
 @Injectable()
 export class UserRegistrationService {
@@ -13,15 +13,15 @@ export class UserRegistrationService {
     }
 
     register(user: RegistrationUser, callback: CognitoCallback): void {
-        console.log("UserRegistrationService: user is " + user);
+        console.log('UserRegistrationService: user is ' + user);
 
-        let attributeList = [];
+        const attributeList = [];
 
-        let dataEmail = {
+        const dataEmail = {
             Name: 'email',
             Value: user.email
         };
-        let dataNickname = {
+        const dataNickname = {
             Name: 'nickname',
             Value: user.name
         };
@@ -32,11 +32,11 @@ export class UserRegistrationService {
             Value: user.phone_number
         }));
 
-        this.cognitoUtil.getUserPool().signUp(user.email, user.password, attributeList, null, function (err, result) {
+        this.cognitoUtil.getUserPool().signUp(user.email, user.password, attributeList, null, function(err, result) {
             if (err) {
                 callback.cognitoCallback(err.message, null);
             } else {
-                console.log("UserRegistrationService: registered user is " + result);
+                console.log('UserRegistrationService: registered user is ' + result);
                 callback.cognitoCallback(null, result);
             }
         });
@@ -45,14 +45,14 @@ export class UserRegistrationService {
 
     confirmRegistration(username: string, confirmationCode: string, callback: CognitoCallback): void {
 
-        let userData = {
+        const userData = {
             Username: username,
             Pool: this.cognitoUtil.getUserPool()
         };
 
-        let cognitoUser = new CognitoUser(userData);
+        const cognitoUser = new CognitoUser(userData);
 
-        cognitoUser.confirmRegistration(confirmationCode, true, function (err, result) {
+        cognitoUser.confirmRegistration(confirmationCode, true, function(err, result) {
             if (err) {
                 callback.cognitoCallback(err.message, null);
             } else {
@@ -62,14 +62,14 @@ export class UserRegistrationService {
     }
 
     resendCode(username: string, callback: CognitoCallback): void {
-        let userData = {
+        const userData = {
             Username: username,
             Pool: this.cognitoUtil.getUserPool()
         };
 
-        let cognitoUser = new CognitoUser(userData);
+        const cognitoUser = new CognitoUser(userData);
 
-        cognitoUser.resendConfirmationCode(function (err, result) {
+        cognitoUser.resendConfirmationCode(function(err, result) {
             if (err) {
                 callback.cognitoCallback(err.message, null);
             } else {
@@ -81,23 +81,23 @@ export class UserRegistrationService {
     newPassword(newPasswordUser: NewPasswordUser, callback: CognitoCallback): void {
         console.log(newPasswordUser);
         // Get these details and call
-        //cognitoUser.completeNewPasswordChallenge(newPassword, userAttributes, this);
-        let authenticationData = {
+        // cognitoUser.completeNewPasswordChallenge(newPassword, userAttributes, this);
+        const authenticationData = {
             Username: newPasswordUser.username,
             Password: newPasswordUser.existingPassword,
         };
-        let authenticationDetails = new AuthenticationDetails(authenticationData);
+        const authenticationDetails = new AuthenticationDetails(authenticationData);
 
-        let userData = {
+        const userData = {
             Username: newPasswordUser.username,
             Pool: this.cognitoUtil.getUserPool()
         };
 
-        console.log("UserLoginService: Params set...Authenticating the user");
-        let cognitoUser = new CognitoUser(userData);
-        console.log("UserLoginService: config is " + AWS.config);
+        console.log('UserLoginService: Params set...Authenticating the user');
+        const cognitoUser = new CognitoUser(userData);
+        console.log('UserLoginService: config is ' + AWS.config);
         cognitoUser.authenticateUser(authenticationDetails, {
-            newPasswordRequired: function (userAttributes, requiredAttributes) {
+            newPasswordRequired(userAttributes, requiredAttributes) {
                 // User was signed up by an admin and must provide new
                 // password and required attributes, if any, to complete
                 // authentication.
@@ -105,18 +105,18 @@ export class UserRegistrationService {
                 // the api doesn't accept this field back
                 delete userAttributes.email_verified;
                 cognitoUser.completeNewPasswordChallenge(newPasswordUser.password, requiredAttributes, {
-                    onSuccess: function (result) {
+                    onSuccess(result) {
                         callback.cognitoCallback(null, userAttributes);
                     },
-                    onFailure: function (err) {
+                    onFailure(err) {
                         callback.cognitoCallback(err, null);
                     }
                 });
             },
-            onSuccess: function (result) {
+            onSuccess(result) {
                 callback.cognitoCallback(null, result);
             },
-            onFailure: function (err) {
+            onFailure(err) {
                 callback.cognitoCallback(err, null);
             }
         });

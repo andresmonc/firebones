@@ -63,7 +63,7 @@ export const slideInAnimation =
                 ])
             ]),
             query(':enter', animateChild()),
-        ]), transition('* <=> *', [
+        ]), transition('MainPage <=> ProfilePage', [
             query(
                 ':enter',
                 [style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' })]

@@ -100,6 +100,11 @@ width: 100%;
     color:#989797 !important;
 }
 
+.mat-icon{
+    font-size: 18px !important;
+}
+
+
 a{
     color:#332f2f !important;
     font-weight: 100;

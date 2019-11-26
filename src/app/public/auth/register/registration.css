@@ -1,9 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i');
 
 form {
-    font-family: 'Jomolhari', serif;
+    font-family: 'Gentium Basic', serif;
     /* font-style: italic; */
     color: #4e4e4e;
+}
+
+p{
+    text-align: center;
 }
 
 .form-signin input[type="text"] {
@@ -54,7 +57,7 @@ form {
 
 
 .form-group {
-    font-family: 'Jomolhari', serif;
+    font-family: 'Gentium Basic', serif;
     display: flex;
     flex-direction: column;
   }
@@ -74,8 +77,9 @@ width: 100%;
     text-decoration: none;
     display: inline-block;
     height: 43px;
-    font-size: 20px;
+    font-size: 18px;
     padding-top: 3px;
+    font-family: 'Cabin', sans-serif;
     padding-bottom: 3px;
     font-weight: 100;
     outline: none;
@@ -108,6 +112,7 @@ width: 100%;
 a{
     color:#332f2f !important;
     font-weight: 100;
-    font-size: 15px;
+    font-size: 16px;
+    font-family: 'Gentium Basic', serif;
 }
 

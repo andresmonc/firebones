@@ -1,10 +1,11 @@
 
 
 form {
-    font-family: 'Jomolhari', serif;
+    font-family: 'Gentium Basic', serif;
     /* font-style: italic; */
     color: #4e4e4e;
 }
+
 
 .form-signin input[type="text"] {
 
@@ -70,8 +71,9 @@ form {
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    font-family: 'Cabin', sans-serif;
     height: 43px;
-    font-size: 20px;
+    font-size: 18px;
     padding-top: 3px;
     padding-bottom: 3px;
     font-weight: 100;
@@ -95,12 +97,13 @@ form {
 a{
     color:#332f2f !important;
     font-weight: 100;
-    font-size: 15px;
+    font-size: 16px;
+    font-family: 'Gentium Basic', serif;
 }
 
 
 .form-group {
-    font-family: 'Jomolhari', serif;
+    font-family: 'Gentium Basic', serif;
     display: flex;
     flex-direction: column;
   }

@@ -1,7 +1,9 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { UserLoginService } from "../../../service/user-login.service";
-import { CognitoCallback } from "../../../service/cognito.service";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserLoginService } from '../../../service/user-login.service';
+import { CognitoCallback } from '../../../service/cognito.service';
+import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { GlobalMessageModalComponent } from '../../../global-message-modal/global-message-modal.component';
 
 
 @Component({
@@ -18,7 +20,8 @@ export class ForgotPasswordStep1Component implements CognitoCallback {
     errorMessage: string;
 
     constructor(public router: Router,
-        public userService: UserLoginService) {
+                private dialog: MatDialog,
+                public userService: UserLoginService) {
         this.errorMessage = null;
         this.createName();
     }
@@ -28,20 +31,37 @@ export class ForgotPasswordStep1Component implements CognitoCallback {
         this.userService.forgotPassword(this.email, this);
     }
 
+    openDialog(headerText: string, text: string, buttonText: string) {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        dialogConfig.data = {
+            modalHeader: headerText,
+            modalText: text,
+            modalButtonText: buttonText
+        };
+
+        this.dialog.open(GlobalMessageModalComponent, dialogConfig);
+    }
+
+
     cognitoCallback(message: string, result: any) {
-        if (message == null && result == null) { //error
+        if (message == null && result == null) { // error
             this.router.navigate([this.nextRoute, this.email]);
-        } else { //success
+        } else { // success
             this.errorMessage = message;
+            this.openDialog('', this.errorMessage, 'Close');
         }
     }
 
-    createName(){
-        if(this.currentRoute.search('change') != -1){
-            this.componentName = "Change Password"
-            this.nextRoute = "/securehome/changepassword"
+    createName() {
+        if (this.currentRoute.search('change') !== -1) {
+            this.componentName = 'Change Password';
+            this.nextRoute = '/securehome/changepassword';
         } else {
-            this.componentName = "Forgot Password"
+            this.componentName = 'Forgot Password';
         }
     }
 
@@ -68,14 +88,14 @@ export class ForgotPassword2Component implements CognitoCallback, OnInit, OnDest
     errorMessage: string;
     private sub: any;
 
-    constructor(public router: Router, public route: ActivatedRoute,
-        public userService: UserLoginService) {
-        console.log("email from the url: " + this.email);
+    constructor(public router: Router, public route: ActivatedRoute, private dialog: MatDialog,
+                public userService: UserLoginService) {
+        console.log('email from the url: ' + this.email);
     }
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
-            this.email = params['email'];
+            this.email = params.email;
 
         });
         this.errorMessage = null;
@@ -86,25 +106,42 @@ export class ForgotPassword2Component implements CognitoCallback, OnInit, OnDest
         this.sub.unsubscribe();
     }
 
+    openDialog(headerText: string, text: string, buttonText: string) {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        dialogConfig.data = {
+            modalHeader: headerText,
+            modalText: text,
+            modalButtonText: buttonText
+        };
+
+        this.dialog.open(GlobalMessageModalComponent, dialogConfig);
+    }
+
     onNext() {
         this.errorMessage = null;
         this.userService.confirmNewPassword(this.email, this.verificationCode, this.password, this);
     }
 
     cognitoCallback(message: string) {
-        if (message != null) { //error
+        if (message != null) { // error
             this.errorMessage = message;
-            console.log("result: " + this.errorMessage);
-        } else { //success
+            this.openDialog('', this.errorMessage, 'Close');
+            console.log('result: ' + this.errorMessage);
+        } else { // success
+            this.errorMessage = message;
             this.router.navigate(['/home/login']);
         }
     }
 
-    createName(){
-        if(this.currentRoute.search('change') != -1){
-            this.componentName = "Change Password"
+    createName() {
+        if (this.currentRoute.search('change') !== -1) {
+            this.componentName = 'Change Password';
         } else {
-            this.componentName = "Forgot Password"
+            this.componentName = 'Forgot Password';
         }
     }
 

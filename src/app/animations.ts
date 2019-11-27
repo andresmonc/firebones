@@ -16,12 +16,12 @@ export const fadeInAnimation =
             query(
                 ':leave',
                 [style({ opacity: 1, position: 'absolute', width: '100%', height: '100%' }),
-                animate('0.3s', style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' }))]
+                animate('0.5s', style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' }))]
             ),
             query(
                 ':enter',
                 [style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' }),
-                animate('0.3s', style({ opacity: 1, position: 'absolute', width: '100%', height: '100%' }))]
+                animate('0.5s', style({ opacity: 1, position: 'absolute', width: '100%', height: '100%' }))]
             )
         ]),
         transition('EpisodePage <=> ProfilePage', [
@@ -32,12 +32,12 @@ export const fadeInAnimation =
             query(
                 ':leave',
                 [style({ opacity: 1, position: 'absolute', width: '100%', height: '100%' }),
-                animate('0.3s', style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' }))]
+                animate('0.5s', style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' }))]
             ),
             query(
                 ':enter',
                 [style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' }),
-                animate('0.3s', style({ opacity: 1, position: 'absolute', width: '100%', height: '100%' }))]
+                animate('0.5s', style({ opacity: 1, position: 'absolute', width: '100%', height: '100%' }))]
             )
         ]),
         transition('MainPage <=> ProfilePage', [
@@ -48,12 +48,12 @@ export const fadeInAnimation =
             query(
                 ':leave',
                 [style({ opacity: 1, position: 'absolute', width: '100%', height: '100%' }),
-                animate('0.15s', style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' }))]
+                animate('0.25s', style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' }))]
             ),
             query(
                 ':enter',
                 [style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' }),
-                animate('0.15s', style({ opacity: 1, position: 'absolute', width: '100%', height: '100%' }))]
+                animate('0.25s', style({ opacity: 1, position: 'absolute', width: '100%', height: '100%' }))]
             )
         ])
     ]);

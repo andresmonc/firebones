@@ -1,12 +1,11 @@
 <div id="profile-page" class="container">
 
 
-    <h2 class="text-center" id="account-setting-title"><i class="fas fa-chevron-left"
-            (click)="backClicked()"></i>Account Settings</h2>
-    <hr>
+    <!-- <h2 class="text-center" id="account-setting-title">Account Settings</h2>
+    <hr> -->
     <div id="profile-info">
         <div class="text-center account-field">
-            <p>Account: <i>{{ email }}</i></p>
+            <p>Account: {{ email }}</p>
         </div>
         <div class="text-center account-field phone-number">
             
@@ -36,7 +35,7 @@
             <p><a [routerLink]="['/securehome/support']">Support</a></p>
         </div>
         <div class="text-center account-field">
-            <a [routerLink]="['/securehome/logout']">Log out</a>
+            <a style="color: rgb(6, 151, 234)" [routerLink]="['/securehome/logout']">Log out</a>
         </div>
     </div>
 </div>

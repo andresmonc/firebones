@@ -16,7 +16,7 @@ export function query(s, a) {
 
 export const fadeInAnimation =
     trigger('routeAnimations', [
-        transition('MainPage <=> ProfilePage', [
+        transition('* <=> *', [
             query(
                 ':enter',
                 [style({ opacity: 0, position: 'absolute', width: '100%', height: '100%' })]

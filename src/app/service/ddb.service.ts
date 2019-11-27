@@ -6,6 +6,8 @@ import { Stuff } from '../secure/useractivity/useractivity.component';
 import * as AWS from 'aws-sdk/global';
 import * as DynamoDB from 'aws-sdk/clients/dynamodb';
 import { integer } from 'aws-sdk/clients/lightsail';
+import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { GlobalMessageModalComponent } from '../global-message-modal/global-message-modal.component';
 
 /**
  * Created by Vladimir Budilov
@@ -14,8 +16,23 @@ import { integer } from 'aws-sdk/clients/lightsail';
 @Injectable()
 export class DynamoDBService {
 
-    constructor(public cognitoUtil: CognitoUtil) {
+    constructor(public cognitoUtil: CognitoUtil, private dialog: MatDialog) {
         console.log('DynamoDBService: constructor');
+    }
+
+    openDialog(headerText: string, text: string, buttonText: string) {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        dialogConfig.data = {
+            modalHeader: headerText,
+            modalText: text,
+            modalButtonText: buttonText
+        };
+
+        this.dialog.open(GlobalMessageModalComponent, dialogConfig);
     }
 
     getLocalStorageSubId() {

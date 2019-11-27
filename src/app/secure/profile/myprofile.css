@@ -1,7 +1,6 @@
 
 #profile-info {
     color: #4e4e4e;
-    padding-top: 18px;
 }
 
 .account-field {
@@ -14,9 +13,16 @@
     height: 50px;
 }
 
-i {
-    margin-left: 10px;
+#account-setting-title{
+    color: #4e4e4e !important;
+    font-family: 'Eczar', serif;
+    font-style: normal;
+
 }
+
+/* i {
+    margin-left: 10px;
+} */
 
 #profile-page {
     /* width: fit-content; */
@@ -25,10 +31,20 @@ i {
     font-weight: 300;
 }
 
+.paddingRight{
+    padding-right: 8px
+}
+
 
 a {
     text-decoration: none;
     color: #4e4e4e;
+}
+
+.logoutButton{
+    text-align: center;
+    margin-top: 34px;
+    font-size: 25px;
 }
 
 
@@ -38,6 +54,7 @@ label{
 
 .edit-field{
     width: 150px;
+    margin-left: 6px;
 }
 
 .phone-number {

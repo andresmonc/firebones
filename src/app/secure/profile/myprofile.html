@@ -35,13 +35,8 @@
         <div class="text-center account-field">
             <p><a [routerLink]="['/securehome/support']">Support</a></p>
         </div>
-    </div>
-</div>
-
-<div *ngIf="errorMessage != null && editMode" id="error-box">{{errorMessage}}</div>
-
-<div id="logout-button-container">
-    <div id="logout-button">
-        <a [routerLink]="['/securehome/logout']">Log out</a>
+        <div class="text-center account-field">
+            <a [routerLink]="['/securehome/logout']">Log out</a>
+        </div>
     </div>
 </div>

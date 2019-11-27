@@ -1,7 +1,6 @@
 #account-setting-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: #6F6F6F;
+    font-family: 'Eczar', serif;
+    color: #4e4e4e;
     font-size: 40px;
     font-weight: 100;
 }
@@ -12,12 +11,13 @@
 }
 
 #profile-info {
-    color: #6F6F6F;
+    color: #4e4e4e;
 }
 
 .account-field {
     margin-bottom: 10px;
-    font-family: 'Cormorant Garamond', serif;
+    color: #4e4e4e !important;
+    font-family: 'Gentium Basic', serif;
     font-style: normal;
     font-size: 22.5px;
     text-align: left;
@@ -45,7 +45,7 @@ i {
     font-weight: 300;
     padding: 10px;
     border-radius: 25px;
-    color: #6F6F6F;
+    color: #4e4e4e;
     display: inline-block;
 }
 
@@ -56,7 +56,7 @@ i {
 
 a {
     text-decoration: none;
-    color: #6F6F6F;
+    color: #4e4e4e;
 }
 
 

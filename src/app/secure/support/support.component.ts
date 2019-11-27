@@ -11,9 +11,10 @@ import { EmailReturn } from '../../models/emailResponse';
 })
 export class SupportComponent implements OnInit {
 
-  public submitted: boolean = false;
-
+  public submitted = false;
+  public supportTextData: string;
   public response: EmailReturn;
+  public supportEmail: 'jaimeamonc@gmail.com';
 
   constructor(private emailService: EmailService) { }
 
@@ -22,8 +23,9 @@ export class SupportComponent implements OnInit {
   }
 
   submit() {
-    this.emailService.postContact('jaime', 'jaimeamonc@gmail.com', 'Help me everything is so broken :-(').subscribe((res) => {
+    this.emailService.postContact(this.supportEmail, this.supportTextData).subscribe((res) => {
       this.response = res;
+      console.log(res);
     });
   }
 

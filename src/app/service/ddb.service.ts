@@ -60,6 +60,10 @@ export class DynamoDBService {
         return localStorage.getItem('email');
     }
 
+    getLocalStorageName() {
+        return localStorage.getItem('name');
+    }
+
     getLocalStorageTimeStamp() {
         return localStorage.getItem('timeStamp');
     }

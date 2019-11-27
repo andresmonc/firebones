@@ -1,31 +1,46 @@
-div {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 4vw;
-    color: black;
-    font-weight: 100;
-    width: 100%;
-}
-
-#header {
+#support-page {
+    /* width: fit-content; */
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
-    padding-top: 20px;
-    width: fit-content;
+    font-weight: 300;
 }
+
+
 
 hr {
     width: 100%;
+}
+
+
+#support-title{
+    color: #4e4e4e !important;
+    font-family: 'Eczar', serif;
+    font-style: normal;
+    text-align: center;
+    font-size: 30px;
+    display: block;
+    margin-top: 12px !important;
+    margin-bottom: -12px !important;
+
 }
 
 .details-box {
     display: block;
 }
 
+.provideDetails{
+    font-family: 'Gentium Basic', serif;
+}
+
+.textBox{
+    border-color: #4e4e4e;
+    border-radius:5px;
+}
+
 form {
-    padding-top: 5vh;
-    padding-left: 25vw;
+    /* padding-top: 5vh;
+    padding-left: 25vw; */
+    text-align:center;
 }
 button{
     display: block;
@@ -40,7 +55,25 @@ button{
 }
 
 textarea {
-    resize: none;
+    /* resize: none;
     height: 30vh;
-    width: 48vw;
+    width: 48vw; */
 }
+
+
+::ng-deep.mat-form-field-flex {
+    /*change color of underline*/
+    height: 186px !important;
+    width: 250px !important;
+} 
+
+textarea{
+    height: 145px !important;
+}
+
+
+::ng-deep.mat-form-field-outline-thick {
+    /*change color of underline when focused*/
+    color: #332f2f !important;
+}
+

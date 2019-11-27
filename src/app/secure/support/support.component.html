@@ -1,14 +1,19 @@
-<div id="header">
-    <h1>Request Support</h1>
-    <hr>
-</div>
+<div id="support-page" class="container">
 
-<div id="details-box">
-    <form>
-        <label>Please provide details of issue:</label>
-        <textarea placeholder="Type details here..."></textarea>
-        <button>Submit</button>
+    <span class="text-center" id="support-title">Request Support</span>
+    <hr>
+
+    <form class="form-signin" method="POST" action="#" role="form">
+        <div class="form-group">
+
+
+            <mat-form-field hideRequiredMarker appearance="outline">
+                <mat-label style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;font-size: 18px;">Details</mat-label>
+                <textarea matInput id="supportText" required type="text" maxlength="500" [(ngModel)]="supportTextData"
+                style="font-family: 'Gentium Basic', serif;" [ngModelOptions]="{standalone: true}">
+                </textarea>
+              </mat-form-field>
+        </div>
+
     </form>
 </div>
-
-{{response?.statusCode}}

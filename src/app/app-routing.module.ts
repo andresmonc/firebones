@@ -48,7 +48,6 @@ const secureHomeRoutes: Routes = [
     },
     {
         path: 'securehome', component: SecureHomeComponent, children: [
-            { path: '', component: MainEpisodesPageComponent, data: { animation: 'MainPage' } },
             { path: 'logout', component: LogoutComponent },
             { path: 'jwttokens', component: JwtComponent },
             { path: 'episode-page/:id', component: EpisodePageComponent, data: { animation: 'EpisodePage' } },
@@ -57,7 +56,7 @@ const secureHomeRoutes: Routes = [
             { path: 'changepassword', component: ForgotPasswordStep1Component, data: { animation: 'ChangePasswordPage' } },
             { path: 'changepassword/:email', component: ForgotPassword2Component, data: { animation: 'ChangePasswordEmailPage' } },
             { path: 'support', component: SupportComponent, data: { animation: 'SupportPage' } },
-            { path: '', component: EpisodePageComponent, data: { animation: 'EpisodePage' } }]
+            { path: '', component: MainEpisodesPageComponent, data: { animation: 'MainPage' } }]
     }
 ];
 

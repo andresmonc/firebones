@@ -25,7 +25,7 @@
 
 /* Container around content */
 
-.container {
+.containerr {
   margin-top: 70px;
   margin-bottom: 70px;
   margin-right: 0px !important;
@@ -34,12 +34,11 @@
   position: relative;
   background-color: inherit;
   width: 50%;
-  /* border: 1px solid #FF9F55; */
 }
 
 /* The circles on the timeline */
 
-.container::after {
+.containerr::after {
   content: '';
   position: absolute;
   width: 18px;

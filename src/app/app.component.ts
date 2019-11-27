@@ -3,7 +3,7 @@ import { AwsUtil } from './service/aws.service';
 import { UserLoginService } from './service/user-login.service';
 import { CognitoUtil, LoggedInCallback } from './service/cognito.service';
 import { LoadingScreenService } from './service/loading-screen/loading-screen.service';
-import { slideInAnimation } from './animations';
+import { fadeInAnimation } from './animations';
 
 @Component({
     selector: 'app-root',

@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { UserLoginService } from '../../service/user-login.service';
 import { LoggedInCallback } from '../../service/cognito.service';
-import { slideInAnimation } from '../../animations';
+import { fadeInAnimation } from '../../animations';
 
 @Component({
     selector: 'awscognito-angular2-app',
     templateUrl: './secureHome.html',
-    animations: [slideInAnimation]
+    animations: [fadeInAnimation]
     // styleUrls: ['/assets/css/sb-admin.css']
 })
 export class SecureHomeComponent implements OnInit, LoggedInCallback {

@@ -95,6 +95,7 @@
     margin-right: -50px;
     /* Use this to position vertically due to inline block */
     vertical-align: -1px;
+    margin-left: 25px;
     /*  */
   }
   .bringTextCloserLeft {

@@ -17,6 +17,11 @@
     color: #4e4e4e !important;
     font-family: 'Eczar', serif;
     font-style: normal;
+    text-align: center;
+    font-size: 30px;
+    display: block;
+    margin-top: 12px !important;
+    margin-bottom: -12px !important;
 
 }
 
@@ -42,9 +47,9 @@ a {
 }
 
 .logoutButton{
-    position: absolute;
+    position: fixed;
     margin-top: 34px;
-    left: 38%;
+    left: 39%;
     bottom: 12%;
     font-size: 25px;
     font-family: 'Gentium Basic', serif;

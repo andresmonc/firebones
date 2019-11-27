@@ -10,10 +10,13 @@ export class NavbarComponent implements OnInit {
 
   public currentRoute: string = this.router.url;
   public contentCount: string;
-  public showTimelineButton: Boolean = true;
   public currentEpisode;
+  public homeHilight;
+  public fireHilight;
+  public profileHilight;
 
   constructor(private router: Router, private episodeDetailsService: EpisodeDetailsService) {
+
 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
@@ -21,7 +24,21 @@ export class NavbarComponent implements OnInit {
       }
 
       if (event instanceof NavigationEnd) {
-        console.log('navend');
+        if (this.router.url === '/securehome/myprofile') {
+          this.profileHilight = true;
+          this.homeHilight = false;
+          this.fireHilight = false;
+        }
+        if (this.router.url === '/securehome') {
+          this.profileHilight = false;
+          this.homeHilight = true;
+          this.fireHilight = false;
+        }
+        if (this.router.url.startsWith('/securehome/episode-page')) {
+          this.profileHilight = false;
+          this.homeHilight = false;
+          this.fireHilight = true;
+        }
         this.contentCount = localStorage.getItem('contentCount');
         this.currentEpisode = this.episodeDetailsService.getEpisodeIdFromContentCount(this.contentCount);
       }
@@ -29,8 +46,6 @@ export class NavbarComponent implements OnInit {
     });
 
   }
-
-
 
   ngOnInit() {
     console.log(this.currentRoute);

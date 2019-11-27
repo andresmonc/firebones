@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { DynamoDBService } from '../../service/ddb.service';
-import { LoadingScreenService } from '../../service/loading-screen/loading-screen.service'
+import { LoadingScreenService } from '../../service/loading-screen/loading-screen.service';
 
 @Component({
     selector: 'awscognito-angular2-app',

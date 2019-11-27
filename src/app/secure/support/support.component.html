@@ -6,13 +6,22 @@
     <form class="form-signin" method="POST" action="#" role="form">
         <div class="form-group">
 
+            <label class="lightGrey control-label" for="signupEmail">Please provide details of your issue</label>
+
 
             <mat-form-field hideRequiredMarker appearance="outline">
                 <mat-label style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;font-size: 18px;">Details</mat-label>
                 <textarea matInput id="supportText" required type="text" maxlength="500" [(ngModel)]="supportTextData"
-                style="font-family: 'Gentium Basic', serif;" [ngModelOptions]="{standalone: true}">
+                    style="font-family: 'Gentium Basic', serif;" [ngModelOptions]="{standalone: true}">
                 </textarea>
-              </mat-form-field>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <button [disabled]="!supportTextData" [class.disabledSubmit]="!supportTextData" (click)="submit()" id="submit-button"
+                type="submit">
+                Submit
+            </button>
         </div>
 
     </form>

@@ -42,16 +42,40 @@ form {
     padding-left: 25vw; */
     text-align:center;
 }
-button{
-    display: block;
-    font-size: 25px;
-    height: 60px;
-    border: 1px solid lightgray;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 300;
-    padding: 10px;
-    color: #6F6F6F;
+#submit-button{
+    transition:.5s;
+    background-color: #0d5e9a;
+    border-radius: 6px;
+    border: none;
+    width: 250px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    height: 43px;
+    font-size: 18px;
+    font-family: 'Cabin', sans-serif;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-weight: 100;
+    outline: none;
+}
+
+#submit-button:hover{
+    background: rgb(0, 162, 255);
+    outline: none;
+} 
+
+#submit-button:active
+#submit-button:focus {
+    outline: none !important;
+    background: rgb(0, 162, 255);
+  }
+  
+  .disabledSubmit{
+    transition:.5s;
+    background-color: #0d395a !important;
+    color:#989797 !important;
 }
 
 textarea {
@@ -60,20 +84,29 @@ textarea {
     width: 48vw; */
 }
 
+.lightGrey{
+    color:#9c9797;
+}
 
-::ng-deep.mat-form-field-flex {
-    /*change color of underline*/
-    height: 186px !important;
-    width: 250px !important;
-} 
+
 
 textarea{
-    height: 145px !important;
+    height:145px;
 }
+
+mat-form-field {
+    width: 250px;
+  }
 
 
 ::ng-deep.mat-form-field-outline-thick {
     /*change color of underline when focused*/
-    color: #332f2f !important;
+    color: #4e4e4e !important;
 }
+
+form {
+    color: #4e4e4e !important;
+    font-family: 'Gentium Basic', serif;
+}
+
 

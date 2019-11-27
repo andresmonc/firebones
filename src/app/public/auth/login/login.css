@@ -78,7 +78,6 @@ form {
     padding-bottom: 3px;
     font-weight: 100;
     outline: none;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 
@@ -100,7 +99,6 @@ a{
     font-size: 16px;
     font-family: 'Gentium Basic', serif;
 }
-
 
 .form-group {
     font-family: 'Gentium Basic', serif;

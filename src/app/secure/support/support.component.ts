@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailService } from '../../service/email.service';
 import { EmailReturn } from '../../models/emailResponse';
-
-
+import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { GlobalMessageModalComponent } from '../../global-message-modal/global-message-modal.component';
 
 @Component({
   selector: 'app-support',
@@ -11,19 +11,43 @@ import { EmailReturn } from '../../models/emailResponse';
 })
 export class SupportComponent implements OnInit {
 
-  public submitted: boolean = false;
-
+  public submitted = false;
+  public supportTextData: string;
   public response: EmailReturn;
+  public supportEmail: 'jaimeamonc@gmail.com';
 
-  constructor(private emailService: EmailService) { }
+  constructor(private emailService: EmailService, private dialog: MatDialog) { }
+
+  openDialog(headerText: string, text: string, buttonText: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+        modalHeader: headerText,
+        modalText: text,
+        modalButtonText: buttonText
+    };
+
+    this.dialog.open(GlobalMessageModalComponent, dialogConfig);
+}
 
   ngOnInit() {
 
   }
 
   submit() {
-    this.emailService.postContact('jaime', 'jaimeamonc@gmail.com', 'Help me everything is so broken :-(').subscribe((res) => {
+    this.emailService.postContact(this.supportEmail, this.supportTextData).subscribe((res) => {
       this.response = res;
+      if (res.statusCode === 200) {
+        this.openDialog('', 'Support request sucessfully sent!', 'Close');
+
+        this.supportTextData = '';
+      } else {
+        this.openDialog('', 'An Error occured', 'Close');
+      }
+      console.log(res);
     });
   }
 

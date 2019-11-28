@@ -60,6 +60,10 @@ form {
     padding-top:60px;
 }
 
+.forgotPasswordText{
+    float: right;
+}
+
 
 #login-button{
     transition:.5s;
@@ -96,7 +100,7 @@ form {
 a{
     color:#332f2f !important;
     font-weight: 100;
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Gentium Basic', serif;
 }
 

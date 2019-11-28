@@ -1,10 +1,13 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { DynamoDBService } from '../../service/ddb.service';
 import { EpisodeDetailsService } from '../../service/episode-details.service';
 import { LoadingScreenService } from '../../service/loading-screen/loading-screen.service';
 import { YoutubeService } from '../../service/youtube.service';
 import { Subscription } from 'rxjs';
+import { PlatformLocation, DOCUMENT } from '@angular/common';
+import { Inject } from '@angular/core';
+
 
 
 @Component({
@@ -29,6 +32,9 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   subscription: Subscription;
 
   constructor(
+    @Inject(DOCUMENT) private document: Document,
+    public router: Router,
+    private location: PlatformLocation,
     private route: ActivatedRoute,
     public ddb: DynamoDBService,
     public episodeDetailsService: EpisodeDetailsService,

@@ -51,6 +51,8 @@ export class MyProfileComponent implements LoggedInCallback {
             this.errorMessage = null;
             this.ddb.updateUserPhoneNumber('+1' + this.phoneInput);
             this.ddb.setLocalStoragePhoneNumber('+1' + this.phoneInput);
+            console.log('fuck');
+            this.openDialog('', 'Successfully updated phone number', 'Close');
         } else {
             this.openDialog('', this.errorMessage, 'Close');
         }

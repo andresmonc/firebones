@@ -11,12 +11,13 @@
         <div class="text-center account-field phone-number">
 
             <p><i class="paddingRight fas fa-phone-alt"></i>Phone Number:
-                <i *ngIf="!editMode" [(ngModel)]="phoneInput" ngDefaultControl>{{ phoneNumber }}</i>
+                <a *ngIf="!editMode" [(ngModel)]="phoneInput" ngDefaultControl>{{ phoneNumber }}</a>
                 <input [(ngModel)]="phoneInput" ngDefaultControl class="edit-field" *ngIf="editMode"
-                    value="{{ phoneNumber }}" maxlength="10" type="tel">
-                <a class="button-color" (click)="editMode=true;phoneInput=''" *ngIf="!editMode" style="padding-left: 10px;">Edit</a>
-                <button [disabled]="!phoneInput" (click)="updatePhoneNumber()" *ngIf="editMode">ok</button>
-                <button (click)="editMode=false" *ngIf="editMode">cancel</button>
+                    value="{{ phoneNumber }}" maxlength="10" type="tel" size="10" width="10">
+                <a class="button-color" (click)="editMode=true;phoneInput=''" *ngIf="!editMode"
+                    style="padding-left: 10px;">Edit</a>
+                <button class="text-button button-color disabled" [disabled]="!phoneInput" [class.disabled]="!phoneInput" (click)="updatePhoneNumber()" *ngIf="editMode">ok</button>
+                <button class="text-button" style='color:red;' (click)="editMode=false" *ngIf="editMode">cancel</button>
             </p>
         </div>
         <div class="text-center account-field">

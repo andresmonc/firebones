@@ -4,17 +4,19 @@
     <span class="text-center" id="account-setting-title">Account</span>
     <hr>
     <div id="profile-info">
-        
+
         <div class="text-center account-field">
             <p><i class="paddingRight fas fa-envelope"></i>Email: {{ email }}</p>
         </div>
         <div class="text-center account-field phone-number">
-            
+
             <p><i class="paddingRight fas fa-phone-alt"></i>Phone Number:
-                <i *ngIf="!editMode" [(ngModel)]="phoneInput" ngDefaultControl >{{ phoneNumber }}</i>
-                <input  [(ngModel)]="phoneInput" ngDefaultControl class="edit-field" *ngIf="editMode" value="{{ phoneNumber }}" maxlength="13">
-                <i (click)="editMode=true;phoneInput=''" *ngIf="!editMode" class="fas fa-pencil-alt" style="margin-right: 28px;"></i>
-                <i (click)="updatePhoneNumber()" class="fas fa-check" *ngIf="editMode"></i>
+                <i *ngIf="!editMode" [(ngModel)]="phoneInput" ngDefaultControl>{{ phoneNumber }}</i>
+                <input [(ngModel)]="phoneInput" ngDefaultControl class="edit-field" *ngIf="editMode"
+                    value="{{ phoneNumber }}" maxlength="10" type="tel">
+                <a class="button-color" (click)="editMode=true;phoneInput=''" *ngIf="!editMode" style="padding-left: 10px;">Edit</a>
+                <button [disabled]="!phoneInput" (click)="updatePhoneNumber()" *ngIf="editMode">ok</button>
+                <button (click)="editMode=false" *ngIf="editMode">cancel</button>
             </p>
         </div>
         <div class="text-center account-field">
@@ -40,6 +42,6 @@
         </div>
     </div>
     <div class="logoutButton">
-            <a style="color: rgb(6, 151, 234)" [routerLink]="['/securehome/logout']">Log out</a>
-        </div>
+        <a class="button-color" [routerLink]="['/securehome/logout']">Log out</a>
+    </div>
 </div>

@@ -1,36 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-body,html {
+body, html {
     width: 100%;
     /* background-image: url("https://s3-us-west-1.amazonaws.com/firebones-lz/paperPattern.png"); */
     background-color: white;
     background-size: cover;
-    margin:0;
+    margin: 0;
 }
 
-main{
+main {
     margin-top: 120px;
 }
 
-@media screen and (min-width: 896px){
-  main{
-    margin-top: 200px;
-  }
+@media screen and (min-width: 896px) {
+    main {
+        margin-top: 200px;
+    }
 }
 
 .mat-focused .placeholder {
     color: #00D318;
 }
 
-.disableScrolling{
+.disableScrolling {
     overflow: hidden;
     height: 10px;
 }
 
-.disableScrollingLogin{
+.disableScrollingLogin {
     overflow: hidden;
 }
 
-
-
+input {
+    outline: none;
+}

@@ -14,6 +14,7 @@
                 <i *ngIf="!editMode" [(ngModel)]="phoneInput" ngDefaultControl >{{ phoneNumber }}</i>
                 <input  [(ngModel)]="phoneInput" ngDefaultControl class="edit-field" *ngIf="editMode" value="{{ phoneNumber }}" maxlength="13">
                 <i (click)="editMode=true;phoneInput=''" *ngIf="!editMode" class="fas fa-pencil-alt" style="margin-right: 28px;"></i>
+                <i (click)="updatePhoneNumber()" class="fas fa-check" *ngIf="editMode"></i>
             </p>
         </div>
         <div class="text-center account-field">

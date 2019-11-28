@@ -11,21 +11,21 @@ export class EpisodeDetailsService {
       image: 'ep 00 -how to go show.svg',
       contentArray: {
         1: {
-          contentType: 'snack',
+          contentType: 'This is episode 1',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',
           videoId: 'HaWjwKhLu2g',
         },
         2: {
-          contentType: 'episode',
+          contentType: 'Episode 2 Some Text',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',
           videoId: 'HaWjwKhLu2g',
         },
         3: {
-          contentType: 'snack',
+          contentType: 'Episode 3 This text',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',

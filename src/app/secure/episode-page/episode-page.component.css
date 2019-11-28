@@ -44,7 +44,7 @@
   width: 18px;
   height: 18px;
   right: -11px;
-  background-color: #908e8e;
+  background-color: #777777;
   top: 15px;
   border-radius: 50%;
   z-index: 1;
@@ -71,7 +71,7 @@
   width: 22px;
   height: 22px;
   right: -13px;
-  background-color: #5B5B5B;
+  background-color: #777777;
   top: 15px;
   border-radius: 50%;
   z-index: 1;
@@ -146,7 +146,9 @@
   margin-top: 0px;
   margin-bottom: 0px;
   text-align: center;
-  padding-top: 25px;
+  font-family: 'Gentium Basic', serif;
+  /* font-style: italic; */
+  color: #4e4e4e;
 }
 
 /* .block {

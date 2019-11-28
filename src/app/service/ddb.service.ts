@@ -262,6 +262,7 @@ export class DynamoDBService {
                                                 // Here we first save our user object key value pairs to
                                                 // local storage to use throughout the app
                                                 // console.log('DynamoDBService got user object: ' + JSON.stringify(result));
+                                                console.log("We got the result for an api call!", result);
                                                 localStorage.setItem('userSubId', result.Item.userId.S);
                                                 localStorage.setItem('name', result.Item.name.S);
                                                 localStorage.setItem('phoneNumber', result.Item.phoneNumber.S);

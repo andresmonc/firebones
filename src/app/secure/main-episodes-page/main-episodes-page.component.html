@@ -4,7 +4,10 @@
             *ngFor="let key of objectKeys(episodesObj)">
             <img src='/assets/img/episodes/{{episodesObj[key].image}}' [routerLink]="['/securehome/episode-page',key]">
             <p>Episode {{key}}:</p>
-            <p>{{episodesObj[key].episodeTitle}}</p>
+            <p>{{episodesObj[key].episodeTitle}}  
+            <!--will add flag for new content un watch-->
+            <span class="dot"></span>
+            </p>
         </div>
     </div>
 </div>

@@ -7,7 +7,7 @@ import { LoadingScreenService } from '../../service/loading-screen/loading-scree
 @Component({
   selector: 'app-main-episodes-page',
   templateUrl: './main-episodes-page.component.html',
-  styleUrls: ['./main-episodes-page.component.css']
+  styleUrls: ['./main-episodes-page.component.scss']
 })
 export class MainEpisodesPageComponent implements OnInit, OnDestroy {
 

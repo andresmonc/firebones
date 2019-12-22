@@ -60,6 +60,10 @@ form {
     padding-top:60px;
 }
 
+.forgotPasswordText{
+    float: right;
+}
+
 
 #login-button{
     transition:.5s;

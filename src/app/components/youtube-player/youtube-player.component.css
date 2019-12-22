@@ -1,29 +1,45 @@
 .episodeVidModal{
-    z-index: 10004;
+    z-index: 10;
     height: 100%;
     padding-top: 0px !important;
   }
 
   .episodeDiv{
-    height: auto;
-    /* height: 100%; */
     border-radius: 0;
-    position:relative;
-    height: 100%;
+    position: relative;
+    height: 50%;
+    top: 15%;
   }
 
   .iconSize{
-    font-size: 26px;
+    font-size: 27px;
+    top: 50%;
     /* float: right; */
     text-align: center;
     display: block;
-    margin: 10px;
+    /* margin: 10px; */
   }
 
-  .coverDiv{
-    background-color: red;
+  .episodeHeaderDiv{
+    background-color: black;
     width: 100%;
-    z-index: 100;
     height: 44px;
     position: absolute;
   }
+
+  #id01 > div > div > p{
+    text-align: center;
+    color: #4e4e4e !important;
+    font-family: 'Gentium Basic', serif;
+    font-size: 24px;
+  }
+
+  .episodeFooterDiv{
+    background-color: black;
+    width: 100%;
+    top: 100%;
+    height: 44px;
+    position: absolute;
+  }
+
+

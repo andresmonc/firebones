@@ -40,7 +40,6 @@ export class DynamoDBService {
     }
 
     getLocalStorageContentCount() {
-        console.log('were rendering the table now by content count');
         return localStorage.getItem('contentCount');
     }
 
@@ -64,8 +63,64 @@ export class DynamoDBService {
         return localStorage.getItem('name');
     }
 
+    getLocalStoragePrevContentCount() {
+        return localStorage.getItem('prevContentCount');
+    }
+
+    getLocalStorageContentArrayEpisode(contentIndex) {
+        const contentArray = JSON.parse(localStorage.getItem('contentWatchedArray'));
+        const contentEpisode = 'content'.concat(contentIndex.toString());
+        return contentArray[contentEpisode].BOOL;
+    }
+
+    contentIsInPacket(contentIndex) {
+        // First we get previousContent Count and Content Count (our bounds for what packet were on)
+        const prevContentCount = +this.getLocalStoragePrevContentCount();
+        const contentCount = +this.getLocalStorageContentCount();
+        // If you current episode index is within the packet through this check
+        if (contentIndex >= prevContentCount && contentIndex <= contentCount) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Returns true if only ep left in packet unwatched
+    lastContentInPacket() {
+        // First we get previousContent Count and Content Count (our bounds for what packet were on)
+        const prevContentCount = +this.getLocalStoragePrevContentCount();
+        const contentCount = +this.getLocalStorageContentCount();
+        // Here we loop through to get count of number of episodes watched
+        let count = 0;
+        let packetSize = 0;
+        for (let i = prevContentCount - 1; i < contentCount; i++) {
+            packetSize++;
+            if (i > 0) {
+                if (this.getLocalStorageContentArrayEpisode(i)) {
+                    count++;
+                }
+            }
+        }
+        console.log('packetSize', packetSize);
+        console.log('count', count);
+        // Here we check that the count is one away from episodes needed to complete packet
+        if (count === (packetSize - 1)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     getLocalStorageTimeStamp() {
         return localStorage.getItem('timeStamp');
+    }
+
+    // Changes the episode flag in local storage contentWatchedArray to true
+    setLocalStorageContentEpisode(contentIndex) {
+        const contentArray = JSON.parse(localStorage.getItem('contentWatchedArray'));
+        const contentEpisode = 'content'.concat(contentIndex.toString());
+        contentArray[contentEpisode].BOOL = true;
+        localStorage.setItem('contentWatchedArray', JSON.stringify(contentArray));
     }
 
     setLocalStoragePhoneNumber(phoneInput) {
@@ -262,14 +317,17 @@ export class DynamoDBService {
                                                 // Here we first save our user object key value pairs to
                                                 // local storage to use throughout the app
                                                 // console.log('DynamoDBService got user object: ' + JSON.stringify(result));
-                                                console.log("We got the result for an api call!", result);
+                                                console.log('We got the result for an api call!', result);
+                                                const contentWatchedArray = result.Item.contentWatchedArray.M;
+                                                localStorage.setItem('contentWatchedArray', JSON.stringify(contentWatchedArray));
                                                 localStorage.setItem('userSubId', result.Item.userId.S);
                                                 localStorage.setItem('name', result.Item.name.S);
                                                 localStorage.setItem('phoneNumber', result.Item.phoneNumber.S);
                                                 localStorage.setItem('email', result.Item.email.S);
                                                 localStorage.setItem('contentWatched', result.Item.contentWatched.S);
-                                                localStorage.setItem('contentCount', result.Item.contentCount.N);
                                                 localStorage.setItem('notifications', (result.Item.notifications.BOOL).toString());
+                                                localStorage.setItem('contentCount', result.Item.contentCount.N);
+                                                localStorage.setItem('prevContentCount', result.Item.contentCount.N);
                                                 resolve(result);
                                             }
                                         }

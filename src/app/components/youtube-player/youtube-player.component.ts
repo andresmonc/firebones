@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, isDevMode } from '@angular/core';
 import { LoadingScreenService } from '../../service/loading-screen/loading-screen.service';
 import { YoutubeService } from '../../service/youtube.service';
 import { Subscription } from 'rxjs';
@@ -42,6 +42,11 @@ export class YoutubePlayerComponent implements OnInit, AfterViewInit, OnDestroy 
         playerVars: {autoplay: 1, controls: 1, modestbranding: 1, rel: 0, showInfo: 0}
       });
     };
+  }
+
+  public pauseEpisode() {
+    console.log('we paused the vid');
+    this.player.pauseVideo();
   }
 
   ngAfterViewInit() {

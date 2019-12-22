@@ -11,6 +11,10 @@
                 <div [ngClass]="isEven(contentKey) ?'containerr right':'containerr left'">
                     <div class="content">
                         <p class="episodeText">{{episodeContent[contentKey].contentType}}</p>
+                        <div *ngIf="isNewContent(contentKey)" class="newEpisodeBadge">
+                            <p>New</p>
+                        </div>
+                    
                         <!-- <div class='block'>
                         <hr [ngClass]="isEven(contentKey) ?' lineRight':'lineLeft'" />
                     </div> -->
@@ -23,13 +27,4 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- <div id="id01" class="w3-modal episodeVidModal">
-            <div class="w3-animate-opacity episodeDiv">
-                <span onclick="document.getElementById('id01').style.display='none'"
-                    class="w3-button w3-display-topright">&times;</span>
-                <h2>Modal Header</h2>
-            </div>
-        </div> -->
     </div>

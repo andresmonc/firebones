@@ -50,9 +50,6 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
 
-        dialogConfig.height = '180px';
-        dialogConfig.width = '250px';
-
         dialogConfig.data = {
             modalHeader: headerText,
             modalText: text,

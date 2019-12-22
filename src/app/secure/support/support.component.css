@@ -85,7 +85,9 @@ textarea {
 }
 
 .lightGrey{
-    color:#9c9797;
+    font-size: 14px;
+    color: #b2b6bb !important;
+    font-family: 'Cabin', sans-serif;
 }
 
 

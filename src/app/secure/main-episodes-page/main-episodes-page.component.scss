@@ -8,6 +8,7 @@
 .episode-tiles {
    text-align: justify;
    padding-bottom: 100px;
+   margin-top: 0px;
 }
 
 .episode-tiles img {
@@ -21,7 +22,7 @@
 
 .episode-tiles p {
    text-align: center;
-   font-family: 'Love Ya Like A Sister', cursive;
+   font-family: 'Gentium Basic', serif !important;
    font-style: initial;
    font-size: 4vw;
    margin-bottom: 0;
@@ -35,6 +36,20 @@
    pointer-events: none;
    filter: blur(3px)
 }
+
+.mat-badge-content {
+  width: auto;
+  display: grid;
+  min-width: 32px;
+  min-height: 28px;
+  text-align: center;
+  align-items: center;
+  padding: 5px 3px;
+  font-family: 'Eczar', serif;
+  top: -18px !important;
+  right: -32px !important;
+  background-color: green
+  }
 
 @media screen and (min-width: 972px) {
    .episode-tiles p {

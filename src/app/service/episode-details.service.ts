@@ -11,40 +11,26 @@ export class EpisodeDetailsService {
       image: 'ep 00 -how to go show.svg',
       contentArray: {
         1: {
-          contentType: 'This is episode 1',
+          contentType: 'Episode 1: Pilot',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',
           videoId: 'HaWjwKhLu2g',
         },
         2: {
-          contentType: 'Episode 2 Some Text',
+          contentType: 'Episode 2: Some Text',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',
           videoId: 'HaWjwKhLu2g',
         },
         3: {
-          contentType: 'Episode 3 This text',
+          contentType: 'Episode 3: This text',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',
           videoId: 'HaWjwKhLu2g',
-        },
-        4: {
-          contentType: 'episode',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-        5: {
-          contentType: 'episode',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
+        }
       }
     },
     2: {

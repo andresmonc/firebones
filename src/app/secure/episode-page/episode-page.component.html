@@ -11,6 +11,10 @@
                 <div [ngClass]="isEven(contentKey) ?'containerr right':'containerr left'">
                     <div class="content">
                         <p class="episodeText">{{episodeContent[contentKey].contentType}}</p>
+                        <div *ngIf="isNewContent(contentKey)" class="newEpisodeBadge">
+                            <p>New</p>
+                        </div>
+                    
                         <!-- <div class='block'>
                         <hr [ngClass]="isEven(contentKey) ?' lineRight':'lineLeft'" />
                     </div> -->

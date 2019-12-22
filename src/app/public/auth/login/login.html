@@ -5,12 +5,12 @@
     <div *ngIf="!mfaStep">
         <div class="form-group">
             <mat-form-field hideRequiredMarker>
-                <mat-placeholder style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;font-size: 20px;">Email</mat-placeholder>
+                <mat-placeholder style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;font-size: 18px;">Email</mat-placeholder>
                 <input matInput id="signupEmail" required type="email" maxlength="100" style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;"
                     [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             <mat-form-field hideRequiredMarker>
-                <mat-placeholder style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif; font-size: 20px;">Password</mat-placeholder>
+                <mat-placeholder style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif; font-size: 18px;">Password</mat-placeholder>
                 <input matInput id="signupPassword" [type]="hide ? 'password' : 'text'" required maxlength="25" style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;"
                     length="40" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
                 <button mat-icon-button matSuffix (click)="hide = !hide"> 

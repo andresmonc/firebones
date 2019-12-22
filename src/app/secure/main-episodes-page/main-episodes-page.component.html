@@ -2,11 +2,12 @@
     <div class="row episode-tiles">
         <div class="col-xs-6 episode-tile" [class.disable]="key>currentEpisode"
             *ngFor="let key of objectKeys(episodesObj)">
-            <img matBadge="22" matBadgePosition="above after" src='/assets/img/episodes/{{episodesObj[key].image}}' [routerLink]="['/securehome/episode-page',key]">
-            <p>Episode {{key}}:</p>
+            <img matBadge="22" matBadgePosition="above after"src='/assets/img/episodes/{{episodesObj[key].image}}' [routerLink]="['/securehome/episode-page',key]">
+            <p>
+            <span matBadge="New" matBadgeOverlap="false">Episode {{key}}:</span>
+            </p>
             <p>{{episodesObj[key].episodeTitle}}  
             <!--will add flag for new content un watch-->
-            <span class="dot"></span>
             </p>
         </div>
     </div>

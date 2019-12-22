@@ -27,7 +27,7 @@ import {
     MatRadioModule, MatGridListModule, MatCardModule, MatMenuModule, MatPaginatorModule,
     MatSortModule, MatAutocompleteModule, MatButtonToggleModule, MatChipsModule, MatDialogModule,
     MatExpansionModule, MatListModule, MatProgressBarModule, MatProgressSpinnerModule, MatRippleModule,
-    MatSelectModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatStepperModule, MatTooltipModule
+    MatSelectModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatStepperModule, MatTooltipModule, MatBadgeModule
 } from '@angular/material';
 
 
@@ -113,6 +113,7 @@ import { GlobalMessageModalComponent } from './global-message-modal/global-messa
         MatPaginatorModule,
         MatSortModule,
         MatFormFieldModule,
+        MatBadgeModule,
         routing,
         HttpClientModule
     ],

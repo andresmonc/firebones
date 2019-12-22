@@ -1,33 +1,31 @@
-
 form {
     color: #4e4e4e !important;
     font-family: 'Gentium Basic', serif;
 }
 
-.confirmationCodeText{
+.confirmationCodeText {
     text-align: center;
-    color: #4e4e4e !important;
-    font-family: 'Gentium Basic', serif;
-    font-size: 16px;
+    color:#b2b6bb;
+    font-size: 14px;
+    font-family: 'Cabin', sans-serif;
 }
 
-.forgotHeader2{
+.forgotHeader2 {
     font-family: 'Gentium Basic', serif !important;
     font-size: 20px;
     text-align: center;
 }
 
-
-.codeBox{
+.codeBox {
     text-align: center;
 }
 
-.confirmForm{
-    padding-top:60px;
+.confirmForm {
+    padding-top: 60px;
 }
 
-#confirmRegistration{
-    transition:.5s;
+#confirmRegistration {
+    transition: .5s;
     background-color: #0d5e9a;
     border-radius: 6px;
     border: none;
@@ -45,36 +43,34 @@ form {
     outline: none;
 }
 
-#confirmRegistration:hover{
+#confirmRegistration:hover {
     background: rgb(0, 162, 255);
     outline: none;
-} 
-
-#confirmRegistration:active
-#confirmRegistration:focus {
-    outline: none !important;
-    background: rgb(0, 162, 255);
-  }
-  
-  .disabledConfirm{
-    transition:.5s;
-    background-color: #0d395a !important;
-    color:#989797 !important;
 }
 
-a{
-    color:#332f2f !important;
+#confirmRegistration:active #confirmRegistration:focus {
+    outline: none !important;
+    background: rgb(0, 162, 255);
+}
+
+.disabledConfirm {
+    transition: .5s;
+    background-color: #0d395a !important;
+    color: #989797 !important;
+}
+
+a {
+    color: #332f2f !important;
     font-weight: 100;
     font-size: 16px;
     font-family: 'Gentium Basic', serif;
 }
 
-
 .form-group {
     display: flex;
     flex-direction: column;
-  }
+}
 
-.form-group > * {
-width: 100%;
+.form-group>* {
+    width: 100%;
 }

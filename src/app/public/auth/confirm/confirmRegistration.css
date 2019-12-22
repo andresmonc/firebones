@@ -48,6 +48,11 @@ form {
     outline: none;
 }
 
+.pushDown{
+    margin-top:20px;
+}
+
+
 #confirmRegistration:active #confirmRegistration:focus {
     outline: none !important;
     background: rgb(0, 162, 255);

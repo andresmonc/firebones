@@ -36,7 +36,6 @@ form {
     display: inline-block;
     height: 43px;
     font-size: 18px;
-    font-family: 'Cabin', sans-serif;
     padding-top: 3px;
     padding-bottom: 3px;
     font-weight: 100;
@@ -47,6 +46,11 @@ form {
     background: rgb(0, 162, 255);
     outline: none;
 }
+
+.pushDown{
+    margin-top:20px;
+}
+
 
 #confirmRegistration:active #confirmRegistration:focus {
     outline: none !important;

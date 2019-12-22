@@ -13,15 +13,20 @@ hr {
 
 
 #support-title{
+
     color: #4e4e4e !important;
-    font-family: 'Eczar', serif;
-    font-style: normal;
+    font-family: 'Gentium Basic', serif !important;
     text-align: center;
-    font-size: 30px;
+    font-size: 32px;
     display: block;
-    margin-top: 12px !important;
+    margin-top: 10px;
     margin-bottom: -12px !important;
 
+
+}
+
+.pushDown{
+    margin-top: 60px
 }
 
 .details-box {
@@ -87,7 +92,6 @@ textarea {
 .lightGrey{
     font-size: 14px;
     color: #b2b6bb !important;
-    font-family: 'Cabin', sans-serif;
 }
 
 

@@ -1,5 +1,6 @@
 #profile-info {
     color: #4e4e4e;
+    margin-top: 60px;
 }
 
 .account-field {
@@ -14,11 +15,11 @@
 
 #account-setting-title {
     color: #4e4e4e !important;
-    font-family: 'Eczar', serif;
-    font-style: normal;
+    font-family: 'Gentium Basic', serif !important;
     text-align: center;
-    font-size: 30px;
+    font-size: 32px;
     display: block;
+    margin-top: 10px;
     margin-bottom: -12px !important;
 }
 

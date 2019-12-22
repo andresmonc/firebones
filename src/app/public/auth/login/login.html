@@ -25,15 +25,15 @@
                 Log in
             </button>
         </div>
-        <hr>
-        <a [routerLink]="['/home/register']">Register</a>
-        <a [routerLink]="['/home/forgotPassword']" class="forgotPasswordText">Forgot Password?</a><br />
+        <div class="pushDown">
+            <a [routerLink]="['/home/register']">Register</a>
+            <a [routerLink]="['/home/forgotPassword']" class="forgotPasswordText">Forgot Password?</a><br />
+        </div>
         <!-- <a [routerLink]="['/home/resendCode']">Resend Confirmation</a> -->
     </div>
 
     <div class="form-group" *ngIf="mfaStep">
         <awscognito-mfa [destination]="mfaData.destination" [onSubmit]="mfaData.callback"></awscognito-mfa>
-        <hr>
         <a (click)="cancelMFA()" href="">Cancel</a>
     </div>
 </form>

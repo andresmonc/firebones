@@ -135,6 +135,10 @@ export class DynamoDBService {
         localStorage.setItem('contentWatched', 'TRUE');
     }
 
+    setLocalStorageContentWatchedFalse() {
+        localStorage.setItem('contentWatched', 'FALSE');
+    }
+
     setLocalStorageTimeStamp() {
         const currentTime = new Date();
         console.log('currentTime', currentTime);

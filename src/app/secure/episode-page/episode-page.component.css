@@ -143,15 +143,9 @@
 
 .newEpisodeBadge {
   text-align: center;
-  background-color: #cb3333;
-  color:white;
-  font-family: 'Cabin', sans-serif;
-  border-radius: 10px;
-  margin-left: 25%;
-  width: 50%;
-  font-size: 14px;
-
-  
+  color: #cb3333;
+  font-family: 'Gentium Basic', serif;
+  font-size: 16px;
 }
 
 .episodeText {

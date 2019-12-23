@@ -102,6 +102,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
       this.ddb.getUserContent().then(data => {
         console.log('this is the resolved contentCount!!!', data);
         console.log('getUserObject function execution done!');
+        this.ddb.setLocalStorageContentWatchedFalse();
         this.contentCount = data;
         this.timelineEpisodeCount = this.getTimelineEpisodeCount();
         this.loadingScreenService.stopLoading();

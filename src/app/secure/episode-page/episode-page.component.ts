@@ -29,6 +29,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   public episodeVideoId = '';
   public timelineEpisodeCount;
   public youtubeEventDataNumber;
+  public currentImageUrl;
   subscription: Subscription;
 
   constructor(
@@ -123,6 +124,16 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
     this.youtubeService.setVideoId(epvideoId);
     this.clickInContentKey = contentKey;
   }
+
+  setImageUrl(imageUrl, contentKey) {
+    console.log(imageUrl);
+    this.currentImageUrl = imageUrl;
+    (document.querySelector('.img-tag') as HTMLImageElement).src = imageUrl;
+    if (this.ddb.getLocalStorageContentArrayEpisode(contentKey) === false) {
+      this.ddb.setLocalStorageContentEpisode(contentKey);
+    }
+  }
+
 
   getTimelineEpisodeCount() {
     let timelineCount = 0;

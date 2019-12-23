@@ -26,10 +26,10 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   public unformattedTimeStamp = this.ddb.getLocalStorageTimeStamp();
   public timeStamp = new Date(this.unformattedTimeStamp);
   public clickInContentKey;
+  public currentAudioKey;
   public episodeVideoId = '';
   public timelineEpisodeCount;
   public youtubeEventDataNumber;
-  public currentImageUrl;
   subscription: Subscription;
 
   constructor(
@@ -85,12 +85,8 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       }
     });
-
-    // this.ddb.setLocalStorageContentWatchedTrue();
-    // this.ddb.updateUserContentWatched();
-    // this.ddb.setLocalStorageTimeStamp();
-
   }
+
 
   isEven(num) { return !(num % 2); }
 
@@ -126,11 +122,21 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   setImageUrl(imageUrl, contentKey) {
-    console.log(imageUrl);
-    this.currentImageUrl = imageUrl;
     (document.querySelector('.img-tag') as HTMLImageElement).src = imageUrl;
     if (this.ddb.getLocalStorageContentArrayEpisode(contentKey) === false) {
       this.ddb.setLocalStorageContentEpisode(contentKey);
+    }
+  }
+
+  setAudioUrl(audioUrl, contentKey) {
+    (document.querySelector('.audio-tag') as HTMLImageElement).src = audioUrl;
+    this.currentAudioKey = contentKey;
+  }
+
+  audioEnded() {
+    console.log('ended!!');
+    if (this.ddb.getLocalStorageContentArrayEpisode(this.currentAudioKey) === false) {
+      this.ddb.setLocalStorageContentEpisode(this.currentAudioKey);
     }
   }
 

@@ -33,6 +33,7 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
         console.log('this is the resolved contentCount!!!', data);
         console.log('getUserObject function execution done!');
         this.contentCount = data;
+        this.ddb.setLocalStorageContentWatchedFalse();
         this.currentEpisode = this.getEpisodes();
         // this.loadingScreenService.stopLoading();
       }));
@@ -43,6 +44,19 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.contentCount = null;
     console.log('weve destroyed content count');
+  }
+
+  isCurrentPacket(key) {
+    const jsonObj = this.episodesObj[key].contentArray;
+    const episodeKeys = Object.keys(jsonObj);
+    const contentCount = this.ddb.getLocalStorageContentCount();
+    const prevContentCount = this.ddb.getLocalStoragePrevContentCount();
+    console.log("this is contentCount", contentCount)
+    if (episodeKeys.includes(contentCount) && episodeKeys.includes(prevContentCount)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 

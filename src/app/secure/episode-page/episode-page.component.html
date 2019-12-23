@@ -3,7 +3,6 @@
         {{episodeTitle}}
     </h1>
 
-    <!-- <div id="player"></div> -->
 
     <div class="timeline">
         <div *ngFor="let contentKey of objectKeys(episodeContent); let i=index">
@@ -12,12 +11,10 @@
                     <div class="content">
                         <p class="episodeText">{{episodeContent[contentKey].contentType}}</p>
                         <div *ngIf="isNewContent(contentKey)" class="newEpisodeBadge">
-                            <p>New</p>
+                            <p>(New)</p>
                         </div>
                     
-                        <!-- <div class='block'>
-                        <hr [ngClass]="isEven(contentKey) ?' lineRight':'lineLeft'" />
-                    </div> -->
+                            <!-- Logic here to how to handle images,vid,audio -->
                         <img class="responsive-tl-icon"
                             [ngClass]="isEven(contentKey) ?' episodeIconImg-left':'episodeIconImg-right'"
                             onclick="document.getElementById('id01').style.display='block'"

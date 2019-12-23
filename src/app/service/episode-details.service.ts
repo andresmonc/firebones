@@ -114,19 +114,90 @@ export class EpisodeDetailsService {
         },
       }
     },
-    4: { episodeTitle: 'The Limo',
-    episodeDesc: 'loremipsum',
-    image: 'ep 00 -how to go show.svg'
+    4: {
+      episodeTitle: 'Return of the Shirt',
+      episodeDesc: 'loremipsum',
+      image: 'ep 00 -how to go show.svg',
+      contentArray: {
+        15: {
+          contentType: 'snack',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        16: {
+          contentType: 'episode',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        17: {
+          contentType: 'snack',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        18: {
+          contentType: 'episode',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        19: {
+          contentType: 'episode',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+      }
     },
-    5: { episodeTitle: 'The Wedding', episodeDesc: 'loremipsum',
-    image: 'ep 00 -how to go show.svg',
-    },
-    6: { episodeTitle: 'Game Night', episodeDesc: 'loremipsum',
-    image: 'ep 00 -how to go show.svg'},
-    7: { episodeTitle: 'Milk', episodeDesc: 'loremipsum',
-    image: 'ep 00 -how to go show.svg'},
-    8: { episodeTitle: 'Come On', episodeDesc: 'loremipsum',
-    image: 'ep 00 -how to go show.svg'}
+    5: {
+      episodeTitle: 'Return of the Shirt',
+      episodeDesc: 'loremipsum',
+      image: 'ep 00 -how to go show.svg',
+      contentArray: {
+        20: {
+          contentType: 'snack',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        21: {
+          contentType: 'episode',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        22: {
+          contentType: 'snack',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        23: {
+          contentType: 'episode',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        24: {
+          contentType: 'episode',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+      }
+    }
   } as unknown as JSON;
 
   constructor() { }

@@ -51,8 +51,7 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
     const episodeKeys = Object.keys(jsonObj);
     const contentCount = this.ddb.getLocalStorageContentCount();
     const prevContentCount = this.ddb.getLocalStoragePrevContentCount();
-    console.log("this is contentCount", contentCount)
-    if (episodeKeys.includes(contentCount) && episodeKeys.includes(prevContentCount)) {
+    if (episodeKeys.includes(contentCount) && episodeKeys.includes(prevContentCount) && this.contentWatched === 'FALSE') {
       return true;
     } else {
       return false;

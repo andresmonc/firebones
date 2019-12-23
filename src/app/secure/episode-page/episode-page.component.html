@@ -13,15 +13,28 @@
                         <div *ngIf="isNewContent(contentKey)" class="newEpisodeBadge">
                             <p>(New)</p>
                         </div>
-                    
-                            <!-- Logic here to how to handle images,vid,audio -->
-                        <img class="responsive-tl-icon"
-                            [ngClass]="isEven(contentKey) ?' episodeIconImg-left':'episodeIconImg-right'"
-                            onclick="document.getElementById('id01').style.display='block'"
-                            (click)="setVideoId(episodeContent[contentKey].videoId, contentKey)"
+
+                        <!-- Logic here to how to handle images,vid,audio -->
+                        <img *ngIf="episodeContent[contentKey].imageUrl" class="responsive-tl-icon" [ngClass]="isEven(contentKey) ?' episodeIconImg-left':'episodeIconImg-right'"
+                            onclick="document.getElementById('id02').style.display='block'" (click)="setImageUrl(episodeContent[contentKey].imageUrl, contentKey)"
+                            src='/assets/img/snacks/{{episodeContent[contentKey].iconUrl}}'>
+                        <img *ngIf="episodeContent[contentKey].videoId" class="responsive-tl-icon" [ngClass]="isEven(contentKey) ?' episodeIconImg-left':'episodeIconImg-right'"
+                            onclick="document.getElementById('id01').style.display='block'" (click)="setVideoId(episodeContent[contentKey].videoId, contentKey)"
                             src='/assets/img/snacks/{{episodeContent[contentKey].iconUrl}}'>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="id02" class="w3-modal episodeVidModal">
+            <div class="w3-animate-zoom episodeDiv">
+        
+                <img class="center img-tag" src="">
+                <div class="episodeFooterDiv">
+                    <p onclick="document.getElementById('id02').style.display='none'" class="closebutton">
+                        Close
+                    </p>
+                </div>
+            </div>
+        </div>

@@ -22,7 +22,7 @@ export class EpisodeDetailsService {
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
+          imageUrl: "https://www.gstatic.com/webp/gallery/4.sm.jpg"
         },
         3: {
           contentType: 'Episode 3: This text',

@@ -22,14 +22,14 @@ export class EpisodeDetailsService {
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',
-          imageUrl: "https://www.gstatic.com/webp/gallery/4.sm.jpg"
+          imageUrl: 'https://www.gstatic.com/webp/gallery/4.sm.jpg'
         },
         3: {
           contentType: 'Episode 3: This text',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
+          audioUrl: 'https://www.w3schools.com/html/horse.ogg'
         }
       }
     },

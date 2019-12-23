@@ -21,6 +21,9 @@
                         <img *ngIf="episodeContent[contentKey].videoId" class="responsive-tl-icon" [ngClass]="isEven(contentKey) ?' episodeIconImg-left':'episodeIconImg-right'"
                             onclick="document.getElementById('id01').style.display='block'" (click)="setVideoId(episodeContent[contentKey].videoId, contentKey)"
                             src='/assets/img/snacks/{{episodeContent[contentKey].iconUrl}}'>
+                        <img *ngIf="episodeContent[contentKey].audioUrl" class="responsive-tl-icon" [ngClass]="isEven(contentKey) ?' episodeIconImg-left':'episodeIconImg-right'"
+                            onclick="document.getElementById('id03').style.display='block'" (click)="setAudioUrl(episodeContent[contentKey].audioUrl, contentKey)"
+                            src='/assets/img/snacks/{{episodeContent[contentKey].iconUrl}}'>
                     </div>
                 </div>
             </div>
@@ -28,13 +31,27 @@
     </div>
 
     <div id="id02" class="w3-modal episodeVidModal">
-            <div class="w3-animate-zoom episodeDiv">
-        
-                <img class="center img-tag" src="">
-                <div class="episodeFooterDiv">
-                    <p onclick="document.getElementById('id02').style.display='none'" class="closebutton">
-                        Close
-                    </p>
-                </div>
+        <div class="w3-animate-zoom episodeDiv">
+
+            <img class="center img-tag" src="">
+            <div class="episodeFooterDiv">
+                <p onclick="document.getElementById('id02').style.display='none'">
+                    Close
+                </p>
             </div>
         </div>
+    </div>
+
+    <div id="id03" class="w3-modal episodeVidModal">
+        <div class="w3-animate-zoom episodeDivAudio">
+            <audio (ended)="audioEnded()" class="audio-tag" controls>
+                <source src="" type="audio/ogg">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="episodeFooterDivAudio">
+                <p onclick="document.getElementById('id03').style.display='none'" class="closebutton">
+                    Close
+                </p>
+            </div>
+        </div>
+    </div>

@@ -8,26 +8,20 @@
             <p><i class="paddingRight fas fa-envelope"></i>Email: {{ email }}</p>
         </div>
 
-        
-        <div class="text-center account-field phone-number">
 
-            <!-- <p><i class="paddingRight fas fa-phone-alt"></i>Phone Number:
-                <a *ngIf="!editMode" [(ngModel)]="phoneInput" ngDefaultControl>{{ phoneNumber }}</a>
-                <input [(ngModel)]="phoneInput" ngDefaultControl class="edit-field" *ngIf="editMode"
-                    value="{{ phoneNumber }}" maxlength="10" type="tel" size="10" width="10">
-                <a class="button-color" (click)="editMode=true;phoneInput=''" *ngIf="!editMode"
-                    style="padding-left: 10px;">Edit</a>
-                <button class="text-button button-color disabled" [disabled]="!phoneInput" [class.disabled]="!phoneInput" (click)="updatePhoneNumber()" *ngIf="editMode">OK</button>
-                <button class="text-button" style='color:red;' (click)="editMode=false" *ngIf="editMode">CANCEL</button>
-            </p> -->
+        <div class="text-center account-field">
             <p><i class="paddingRight fas fa-phone-alt"></i>Phone Number:
-            <mat-form-field class="edit-field">
+                <mat-form-field class="edit-field">
                     <span style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;" matPrefix>+1 &nbsp;</span>
-                    <input [readonly]="!editMode" maxlength="10" type="tel" style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;" type="tel" [(ngModel)]="phoneInput" matInput>
-                    <mat-icon style="font-size:140%;" (click)="editMode=true; phoneInput=''" *ngIf="!editMode" matSuffix>mode_edit</mat-icon>
-                    <mat-icon style="padding-left:5px; color:#5cb85c; font-size:140%;" [class.disabled]="!phoneInput" (click)="updatePhoneNumber()" *ngIf="editMode" matSuffix>check</mat-icon>
-                    <mat-icon style="padding-left:10px; color:#cb3333; font-size:140%;" (click)="editMode=false; phoneInput=phoneNumber" *ngIf="editMode" matSuffix>cancel</mat-icon>
-                  </mat-form-field>
+                    <input [readonly]="!editMode" maxlength="10" type="tel" style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;"
+                        type="tel" [(ngModel)]="phoneInput" matInput>
+                    <mat-icon style="font-size:140%;" (click)="editMode=true; phoneInput=''" *ngIf="!editMode"
+                        matSuffix>mode_edit</mat-icon>
+                    <mat-icon style="padding-left:5px; color:#5cb85c; font-size:140%;" [class.disabled]="!phoneInput"
+                        (click)="updatePhoneNumber()" *ngIf="editMode" matSuffix>check</mat-icon>
+                    <mat-icon style="padding-left:10px; color:#cb3333; font-size:140%;" (click)="editMode=false; phoneInput=phoneNumber"
+                        *ngIf="editMode" matSuffix>cancel</mat-icon>
+                </mat-form-field>
         </div>
 
 

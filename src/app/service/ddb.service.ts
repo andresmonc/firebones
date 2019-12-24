@@ -93,13 +93,16 @@ export class DynamoDBService {
         // Here we loop through to get count of number of episodes watched
         let count = 0;
         let packetSize = 0;
-        for (let i = prevContentCount - 1; i < contentCount; i++) {
+        console.log('prevCount start loop', prevContentCount - 1);
+        console.log('end loop', contentCount);
+        for (let i = prevContentCount; i <= contentCount; i++) {
             packetSize++;
-            if (i > 0) {
-                if (this.getLocalStorageContentArrayEpisode(i)) {
+            if (this.getLocalStorageContentArrayEpisode(i)) {
+                    console.log(this.getLocalStorageContentArrayEpisode(i));
                     count++;
+                    console.log('increment count', count);
                 }
-            }
+
         }
         console.log('packetSize', packetSize);
         console.log('count', count);
@@ -262,11 +265,13 @@ export class DynamoDBService {
                     } else {
                         console.log('DynamoDBService called for user contentWatch!!!!: ' + (result.Item.contentWatched.S));
                         console.log('DynamoDBService called for user contentCount!!!!: ' + (result.Item.contentCount.N));
+                        console.log('DynamoDBService called for user prevContentCount!!!!: ' + (result.Item.prevContentCount.N));
                         localStorage.setItem('contentWatched', result.Item.contentWatched.S);
                         if (result.Item.contentWatched.S === 'FALSE') {
                             localStorage.setItem('timeStamp', 'NO DB CALL');
                         }
                         localStorage.setItem('contentCount', result.Item.contentCount.N);
+                        localStorage.setItem('prevContentCount', result.Item.prevContentCount.N);
                         resolve(result.Item.contentCount.N);
                     }
                 });
@@ -331,7 +336,7 @@ export class DynamoDBService {
                                                 localStorage.setItem('contentWatched', result.Item.contentWatched.S);
                                                 localStorage.setItem('notifications', (result.Item.notifications.BOOL).toString());
                                                 localStorage.setItem('contentCount', result.Item.contentCount.N);
-                                                localStorage.setItem('prevContentCount', result.Item.contentCount.N);
+                                                localStorage.setItem('prevContentCount', result.Item.prevContentCount.N);
                                                 resolve(result);
                                             }
                                         }

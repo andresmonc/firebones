@@ -59,33 +59,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.subscription = this.youtubeService.getVideoFinished().subscribe(videoFinished => {
       if (videoFinished) {
-        console.log('Is this the youtube evendata number?', videoFinished);
-        // Check if content is Packet
-        if (this.ddb.contentIsInPacket(this.clickInContentKey)) {
-          // Check if current packet is complete
-          if (this.contentWatched === 'FALSE') {
-            console.log("are we getting here at least?")
-            // Checking if episode is unwatched
-            if (this.isNewContent(this.clickInContentKey)) {
-              console.log("are we getting here though?")
-                // Here we check if this episode is the last episode in the packet
-              if (this.ddb.lastContentInPacket()) {
-                // Here we do our API call to dyanmo DB
-                // set our local values for contentWatch and contentArray
-                // and assign our timestamp
-                console.log('this is the last content In packet!!!!');
-                this.ddb.setLocalStorageContentWatchedTrue();
-                this.ddb.updateUserContentWatched();
-                this.ddb.setLocalStorageTimeStamp();
-                this.ddb.setLocalStorageContentEpisode(this.clickInContentKey);
-              } else {
-                console.log("are we getting here?")
-                // here we just set the local storage content array value to true
-                this.ddb.setLocalStorageContentEpisode(this.clickInContentKey);
-              }
-            }
-          }
-        }
+       this.contentWatchAPICallIfLast();
       }
     });
   }
@@ -98,6 +72,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
     this.timelineEpisodeCount = this.getTimelineEpisodeCount();
     const currentTime = new Date();
 
+    // Checks to see if it is time to check again for a db call to get new packet
     if ((this.contentWatched === 'TRUE' && (currentTime.getTime() > this.timeStamp.getTime()))) {
       this.ddb.getUserContent().then(data => {
         console.log('this is the resolved contentCount!!!', data);
@@ -119,27 +94,53 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   setVideoId(epvideoId, contentKey) {
-    // this.player.loadVideoById(epvideoId);
-    this.youtubeService.setVideoId(epvideoId);
     this.clickInContentKey = contentKey;
+    this.youtubeService.setVideoId(epvideoId);
   }
 
   setImageUrl(imageUrl, contentKey) {
+    this.clickInContentKey = contentKey;
     (document.querySelector('.img-tag') as HTMLImageElement).src = imageUrl;
-    if (this.ddb.getLocalStorageContentArrayEpisode(contentKey) === false) {
-      this.ddb.setLocalStorageContentEpisode(contentKey);
-    }
+    this.contentWatchAPICallIfLast();
   }
 
   setAudioUrl(audioUrl, contentKey) {
+    this.clickInContentKey = contentKey;
     (document.querySelector('.audio-tag') as HTMLImageElement).src = audioUrl;
-    this.currentAudioKey = contentKey;
   }
 
   audioEnded() {
-    console.log('ended!!');
-    if (this.ddb.getLocalStorageContentArrayEpisode(this.currentAudioKey) === false) {
-      this.ddb.setLocalStorageContentEpisode(this.currentAudioKey);
+    this.contentWatchAPICallIfLast();
+  }
+
+  contentWatchAPICallIfLast() {
+    console.log('this is the clicked in content key', this.clickInContentKey);
+    // Check if content is Packet
+    if (this.ddb.contentIsInPacket(this.clickInContentKey)) {
+      console.log('this content is in the packet');
+      // Check if current packet is complete
+      if (this.contentWatched === 'FALSE') {
+        console.log('this content watch flag is false');
+        // Checking if episode is unwatched
+        if (this.isNewContent(this.clickInContentKey)) {
+          console.log('this new content');
+            // Here we check if this episode is the last episode in the packet
+          if (this.ddb.lastContentInPacket()) {
+            // Here we do our API call to dyanmo DB
+            // set our local values for contentWatch and contentArray
+            // and assign our timestamp
+            console.log('this is the last content In packet!!!!');
+            this.ddb.setLocalStorageContentWatchedTrue();
+            this.ddb.updateUserContentWatched();
+            this.ddb.setLocalStorageTimeStamp();
+            this.ddb.setLocalStorageContentEpisode(this.clickInContentKey);
+          } else {
+            console.log('this is not the last content in the packet!!!!');
+            // here we just set the local storage content array value to true
+            this.ddb.setLocalStorageContentEpisode(this.clickInContentKey);
+          }
+        }
+      }
     }
   }
 

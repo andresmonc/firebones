@@ -29,7 +29,7 @@ export class EpisodeDetailsService {
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',
-          audioUrl: 'https://www.w3schools.com/html/horse.ogg'
+          audioUrl: 'https://www.html5tutorial.info/media/vincent.mp3'
         }
       }
     },

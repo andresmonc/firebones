@@ -38,6 +38,7 @@
     padding-right: 8px
 }
 
+
 a {
     text-decoration: none;
     color: #4e4e4e;
@@ -57,8 +58,9 @@ label {
 }
 
 .edit-field {
-    width: 150px;
+    width: 160px;
     margin-left: 6px;
+    margin-top: -20px;
 }
 
 .phone-number {
@@ -80,8 +82,28 @@ label {
     width: 250px;
 }
 
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #332f2f !important;
+}
+
+::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #332f2f!important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: #332f2f !important;
+}
+
+
 input[type=tel] {
     width: 100px;
+}
+
+.inline{
+    display: inline;
 }
 
 .text-button {
@@ -101,9 +123,13 @@ input[type=tel] {
 }
 
 .button-color {
-    color: rgb(6, 151, 234);
+    color:#cb3333;
 }
 
 .disabled{
     color:#989797 !important;
+}
+
+#profile-info > div.text-center.account-field.phone-number > p > mat-form-field > div > div.mat-form-field-flex {
+    width:103% !important;
 }

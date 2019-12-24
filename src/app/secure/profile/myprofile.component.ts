@@ -17,11 +17,11 @@ export class MyProfileComponent implements LoggedInCallback {
 
     public cognitoId: string;
     public errorMessage: string;
-    public phoneInput = '';
     public editMode: boolean;
 
     public notifications: boolean = this.ddb.getLocalStorageNotifications() === 'true';
-    public phoneNumber = this.ddb.getLocalStoragePhoneNumber();
+    public phoneNumber = this.ddb.getLocalStoragePhoneNumber().substr(2);
+    public phoneInput = this.phoneNumber;
     public email: string = this.ddb.getLocalStorageEmail();
 
     constructor(
@@ -51,7 +51,6 @@ export class MyProfileComponent implements LoggedInCallback {
             this.errorMessage = null;
             this.ddb.updateUserPhoneNumber('+1' + this.phoneInput);
             this.ddb.setLocalStoragePhoneNumber('+1' + this.phoneInput);
-            console.log('fuck');
             this.openDialog('', 'Successfully updated phone number', 'Close');
         } else {
             this.openDialog('', this.errorMessage, 'Close');

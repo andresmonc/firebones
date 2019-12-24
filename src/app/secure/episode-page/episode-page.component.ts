@@ -64,8 +64,10 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
         if (this.ddb.contentIsInPacket(this.clickInContentKey)) {
           // Check if current packet is complete
           if (this.contentWatched === 'FALSE') {
+            console.log("are we getting here at least?")
             // Checking if episode is unwatched
             if (this.isNewContent(this.clickInContentKey)) {
+              console.log("are we getting here though?")
                 // Here we check if this episode is the last episode in the packet
               if (this.ddb.lastContentInPacket()) {
                 // Here we do our API call to dyanmo DB
@@ -77,6 +79,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.ddb.setLocalStorageTimeStamp();
                 this.ddb.setLocalStorageContentEpisode(this.clickInContentKey);
               } else {
+                console.log("are we getting here?")
                 // here we just set the local storage content array value to true
                 this.ddb.setLocalStorageContentEpisode(this.clickInContentKey);
               }

@@ -2,6 +2,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EpisodeDetailsService } from '../../service/episode-details.service';
 import { DynamoDBService } from '../../service/ddb.service';
 import { LoadingScreenService } from '../../service/loading-screen/loading-screen.service';
+import { Router} from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { GlobalMessageModalComponent } from '../../global-message-modal/global-message-modal.component';
+
 
 
 @Component({
@@ -21,17 +25,19 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
   public prevContentCountForBadge;
 
   constructor(
+    private router: Router,
     public episodeDetailsService: EpisodeDetailsService,
     public ddb: DynamoDBService,
-    private loadingScreenService: LoadingScreenService
+    private loadingScreenService: LoadingScreenService,
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit() {
     this.contentCountForBadge = this.ddb.getLocalStorageContentCount();
     this.prevContentCountForBadge = this.ddb.getLocalStoragePrevContentCount();
     const currentTime = new Date();
-    if (this.contentWatched === 'TRUE' && (currentTime.getTime() > this.timeStamp.getTime())) {
-    // if (this.contentWatched === 'TRUE') {
+    // if (this.contentWatched === 'TRUE' && (currentTime.getTime() > this.timeStamp.getTime())) {
+    if (this.contentWatched === 'TRUE') {
       this.loadingScreenService.startLoading();
       this.ddb.getUserContent().then((data => {
         console.log('this is the resolved contentCount!!!', data);
@@ -40,7 +46,9 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
         this.currentEpisode = this.getEpisodes();
         this.contentCountForBadge = this.ddb.getLocalStorageContentCount();
         this.prevContentCountForBadge = this.ddb.getLocalStoragePrevContentCount();
+        this.router.navigate(['/securehome/episode-page/', this.currentEpisode]);
         this.loadingScreenService.stopLoading();
+        this.openDialog('', 'You have new content!', 'Close');
       }));
     }
     console.log('INIT CONTENT COUNT', this.contentCount);
@@ -72,6 +80,21 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
   getEpisodes() {
     return this.episodeDetailsService.getEpisodeIdFromContentCount(this.contentCount);
   }
+
+  openDialog(headerText: string, text: string, buttonText: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+        modalHeader: headerText,
+        modalText: text,
+        modalButtonText: buttonText
+    };
+
+    this.dialog.open(GlobalMessageModalComponent, dialogConfig);
+}
 
 
 

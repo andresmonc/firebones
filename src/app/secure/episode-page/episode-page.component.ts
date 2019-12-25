@@ -7,7 +7,8 @@ import { YoutubeService } from '../../service/youtube.service';
 import { Subscription } from 'rxjs';
 import { PlatformLocation, DOCUMENT } from '@angular/common';
 import { Inject } from '@angular/core';
-
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { GlobalMessageModalComponent } from '../../global-message-modal/global-message-modal.component';
 
 
 @Component({
@@ -35,6 +36,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     public router: Router,
+    private dialog: MatDialog,
     private location: PlatformLocation,
     private route: ActivatedRoute,
     public ddb: DynamoDBService,
@@ -78,7 +80,10 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
         console.log('getUserObject function execution done!');
         this.contentCount = data;
         this.timelineEpisodeCount = this.getTimelineEpisodeCount();
+        const currentEpisode = this.episodeDetailsService.getEpisodeIdFromContentCount(this.contentCount);
+        this.router.navigate(['/securehome/episode-page/', currentEpisode]);
         this.loadingScreenService.stopLoading();
+        this.openDialog('', 'You have new content!', 'Close');
       });
     }
   }
@@ -155,6 +160,21 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log('last key count', lastKeyCount);
     return lastKeyCount;
   }
+
+  openDialog(headerText: string, text: string, buttonText: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+        modalHeader: headerText,
+        modalText: text,
+        modalButtonText: buttonText
+    };
+
+    this.dialog.open(GlobalMessageModalComponent, dialogConfig);
+}
 
   ngOnDestroy() {
     this.loadingScreenService.stopLoading();

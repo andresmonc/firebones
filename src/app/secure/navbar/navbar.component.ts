@@ -18,8 +18,12 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, private episodeDetailsService: EpisodeDetailsService) {
 
 
+
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
+        this.contentCount = localStorage.getItem('contentCount');
+        this.currentEpisode = this.episodeDetailsService.getEpisodeIdFromContentCount(this.contentCount);
+        console.log('This is the content count being used for the fire epsidoe button', this.contentCount);
         console.log('navstart');
       }
 
@@ -40,16 +44,18 @@ export class NavbarComponent implements OnInit {
           this.fireHilight = true;
         }
         this.contentCount = localStorage.getItem('contentCount');
+        console.log('This is the content count being used for the fire epsidoe button', this.contentCount);
         this.currentEpisode = this.episodeDetailsService.getEpisodeIdFromContentCount(this.contentCount);
       }
 
     });
-
   }
 
   ngOnInit() {
     console.log(this.currentRoute);
-    // console.log(this.router.events.subscribe((event: Event) => { }));
   }
+
+
+
 
 }

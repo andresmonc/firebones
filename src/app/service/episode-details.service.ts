@@ -34,7 +34,7 @@ export class EpisodeDetailsService {
       }
     },
     2: {
-      episodeTitle: 'Purple Giraffe',
+      episodeTitle: 'Blue Giraffe',
       episodeDesc: 'loremipsum',
       image: 'ep 00 -how to go show.svg',
       contentArray: {
@@ -62,7 +62,7 @@ export class EpisodeDetailsService {
       },
     },
     3: {
-      episodeTitle: 'Purple Giraffe',
+      episodeTitle: 'Red Giraffe',
       episodeDesc: 'loremipsum',
       image: 'ep 00 -how to go show.svg',
       contentArray: {
@@ -90,7 +90,7 @@ export class EpisodeDetailsService {
       },
     },
     4: {
-      episodeTitle: 'Purple Giraffe',
+      episodeTitle: 'Green Giraffe',
       episodeDesc: 'loremipsum',
       image: 'ep 00 -how to go show.svg',
       contentArray: {

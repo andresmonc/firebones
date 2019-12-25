@@ -328,8 +328,6 @@ export class DynamoDBService {
                                                 // local storage to use throughout the app
                                                 // console.log('DynamoDBService got user object: ' + JSON.stringify(result));
                                                 console.log('We got the result for an api call!', result);
-                                                const contentWatchedArray = result.Item.contentWatchedArray.M;
-                                                localStorage.setItem('contentWatchedArray', JSON.stringify(contentWatchedArray));
                                                 localStorage.setItem('userSubId', result.Item.userId.S);
                                                 localStorage.setItem('name', result.Item.name.S);
                                                 localStorage.setItem('phoneNumber', result.Item.phoneNumber.S);

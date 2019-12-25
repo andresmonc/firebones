@@ -86,6 +86,215 @@ export class RegistrationConfirmationComponent implements OnInit, OnDestroy {
         } else { // success
             // move to the next step
             console.log('Moving to securehome');
+            localStorage.setItem('contentWatchedArray',
+            JSON.stringify(
+                {
+                    content47: {
+                        BOOL: false
+                    },
+                    content48: {
+                        BOOL: false
+                    },
+                    content49: {
+                        BOOL: false
+                    },
+                    content43: {
+                        BOOL: false
+                    },
+                    content44: {
+                        BOOL: false
+                    },
+                    content45: {
+                        BOOL: false
+                    },
+                    content46: {
+                        BOOL: false
+                    },
+                    content40: {
+                        BOOL: false
+                    },
+                    content41: {
+                        BOOL: false
+                    },
+                    content42: {
+                        BOOL: false
+                    },
+                    content36: {
+                        BOOL: false
+                    },
+                    content37: {
+                        BOOL: false
+                    },
+                    content38: {
+                        BOOL: false
+                    },
+                    content39: {
+                        BOOL: false
+                    },
+                    content32: {
+                        BOOL: false
+                    },
+                    content33: {
+                        BOOL: false
+                    },
+                    content34: {
+                        BOOL: false
+                    },
+                    content35: {
+                        BOOL: false
+                    },
+                    content30: {
+                        BOOL: false
+                    },
+                    content31: {
+                        BOOL: false
+                    },
+                    content29: {
+                        BOOL: false
+                    },
+                    content25: {
+                        BOOL: false
+                    },
+                    content26: {
+                        BOOL: false
+                    },
+                    content27: {
+                        BOOL: false
+                    },
+                    content28: {
+                        BOOL: false
+                    },
+                    content21: {
+                        BOOL: false
+                    },
+                    content65: {
+                        BOOL: false
+                    },
+                    content22: {
+                        BOOL: false
+                    },
+                    content66: {
+                        BOOL: false
+                    },
+                    content23: {
+                        BOOL: false
+                    },
+                    content67: {
+                        BOOL: false
+                    },
+                    content24: {
+                        BOOL: false
+                    },
+                    content68: {
+                        BOOL: false
+                    },
+                    content61: {
+                        BOOL: false
+                    },
+                    content62: {
+                        BOOL: false
+                    },
+                    content63: {
+                        BOOL: false
+                    },
+                    content20: {
+                        BOOL: false
+                    },
+                    content64: {
+                        BOOL: false
+                    },
+                    content9: {
+                        BOOL: false
+                    },
+                    content60: {
+                        BOOL: false
+                    },
+                    content18: {
+                        BOOL: false
+                    },
+                    content19: {
+                        BOOL: false
+                    },
+                    content14: {
+                        BOOL: false
+                    },
+                    content58: {
+                        BOOL: false
+                    },
+                    content15: {
+                        BOOL: false
+                    },
+                    content59: {
+                        BOOL: false
+                    },
+                    content16: {
+                        BOOL: false
+                    },
+                    content17: {
+                        BOOL: false
+                    },
+                    content10: {
+                        BOOL: false
+                    },
+                    content54: {
+                        BOOL: false
+                    },
+                    content11: {
+                        BOOL: false
+                    },
+                    content55: {
+                        BOOL: false
+                    },
+                    content12: {
+                        BOOL: false
+                    },
+                    content56: {
+                        BOOL: false
+                    },
+                    content13: {
+                        BOOL: false
+                    },
+                    content57: {
+                        BOOL: false
+                    },
+                    content50: {
+                        BOOL: false
+                    },
+                    content51: {
+                        BOOL: false
+                    },
+                    content52: {
+                        BOOL: false
+                    },
+                    content53: {
+                        BOOL: false
+                    },
+                    content8: {
+                        BOOL: false
+                    },
+                    content7: {
+                        BOOL: false
+                    },
+                    content6: {
+                        BOOL: false
+                    },
+                    content5: {
+                        BOOL: false
+                    },
+                    content4: {
+                        BOOL: false
+                    },
+                    content3: {
+                        BOOL: false
+                    },
+                    content2: {
+                        BOOL: false
+                    },
+                    content1: {
+                        BOOL: false
+                    }
+                }
+            ));
             // this.configs.curUser = result.user;
             this.router.navigate(['/securehome']);
         }

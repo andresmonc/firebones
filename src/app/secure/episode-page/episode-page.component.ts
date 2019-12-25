@@ -43,8 +43,6 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
     private youtubeService: YoutubeService,
   ) {
     console.log('in Episode Page');
-    this.loadingScreenService.startLoading();
-
     /*
     *  This is where we decide what we want to do if the video the user played has ended,
     *  First we check if the user's content is in the current packet AND the globalcontent watch flag is true,
@@ -68,12 +66,13 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   isEven(num) { return !(num % 2); }
 
   ngOnInit() {
-    this.loadingScreenService.startLoading();
     this.timelineEpisodeCount = this.getTimelineEpisodeCount();
     const currentTime = new Date();
 
     // Checks to see if it is time to check again for a db call to get new packet
-    if (this.contentWatched === 'TRUE' ) {
+    if ((this.contentWatched === 'TRUE' && (currentTime.getTime() > this.timeStamp.getTime()))) {
+    // if (this.contentWatched === 'TRUE' ) {
+      this.loadingScreenService.startLoading();
       this.ddb.getUserContent().then(data => {
         console.log('this is the resolved contentCount!!!', data);
         console.log('getUserObject function execution done!');
@@ -81,8 +80,6 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
         this.timelineEpisodeCount = this.getTimelineEpisodeCount();
         this.loadingScreenService.stopLoading();
       });
-    } else {
-      this.loadingScreenService.stopLoading();
     }
   }
 

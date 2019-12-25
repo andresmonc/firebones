@@ -17,6 +17,8 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
   public currentEpisode = this.getEpisodes();
   public contentWatched = this.ddb.getLocalStorageContentWatched();
   public timeStamp = new Date(this.ddb.getLocalStorageTimeStamp());
+  public contentCountForBadge;
+  public prevContentCountForBadge;
 
   constructor(
     public episodeDetailsService: EpisodeDetailsService,
@@ -25,16 +27,20 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // this.loadingScreenService.startLoading();
+    this.contentCountForBadge = this.ddb.getLocalStorageContentCount();
+    this.prevContentCountForBadge = this.ddb.getLocalStoragePrevContentCount();
     const currentTime = new Date();
-
-    if (this.contentWatched === 'TRUE') {
+    if (this.contentWatched === 'TRUE' && (currentTime.getTime() > this.timeStamp.getTime())) {
+    // if (this.contentWatched === 'TRUE') {
+      this.loadingScreenService.startLoading();
       this.ddb.getUserContent().then((data => {
         console.log('this is the resolved contentCount!!!', data);
         console.log('getUserObject function execution done!');
         this.contentCount = data;
         this.currentEpisode = this.getEpisodes();
-        // this.loadingScreenService.stopLoading();
+        this.contentCountForBadge = this.ddb.getLocalStorageContentCount();
+        this.prevContentCountForBadge = this.ddb.getLocalStoragePrevContentCount();
+        this.loadingScreenService.stopLoading();
       }));
     }
     console.log('INIT CONTENT COUNT', this.contentCount);
@@ -46,11 +52,16 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
   }
 
   isCurrentPacket(key) {
+    // extract episode details service content keys for main ep icons
     const jsonObj = this.episodesObj[key].contentArray;
     const episodeKeys = Object.keys(jsonObj);
-    const contentCount = this.ddb.getLocalStorageContentCount();
-    const prevContentCount = this.ddb.getLocalStoragePrevContentCount();
-    if (episodeKeys.includes(contentCount) && episodeKeys.includes(prevContentCount) && this.contentWatched === 'FALSE') {
+
+    // check if keys from episode details service are in line with local storage counts
+    if (
+     episodeKeys.includes(this.contentCountForBadge)
+     && episodeKeys.includes(this.prevContentCountForBadge)
+     && this.contentWatched === 'FALSE'
+     ) {
       return true;
     } else {
       return false;

@@ -272,6 +272,7 @@ export class DynamoDBService {
                         }
                         localStorage.setItem('contentCount', result.Item.contentCount.N);
                         localStorage.setItem('prevContentCount', result.Item.prevContentCount.N);
+                        localStorage.setItem('contentWatched', result.Item.contentWatched.S);
                         resolve(result.Item.contentCount.N);
                     }
                 });

@@ -38,165 +38,84 @@ export class EpisodeDetailsService {
       episodeDesc: 'loremipsum',
       image: 'ep 00 -how to go show.svg',
       contentArray: {
+        4: {
+          contentType: 'Episode 4: Pilot',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        5: {
+          contentType: 'Episode 5: Some Text',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          imageUrl: 'https://www.gstatic.com/webp/gallery/4.sm.jpg'
+        },
         6: {
-          contentType: 'snack',
+          contentType: 'Episode 6: This text',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-          mediaUrl: 'hellowrold.com',
-        },
-        7: {
-          contentType: 'episode',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-          mediaUrl: 'hellowrold.com',
-        },
-        8: {
-          contentType: 'snack',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-          mediaUrl: 'hellowrold.com',
-        },
-        9: {
-          contentType: 'episode',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-          mediaUrl: 'hellowrold.com',
+          audioUrl: 'https://www.html5tutorial.info/media/vincent.mp3'
         }
       },
     },
     3: {
-      episodeTitle: 'Return of the Shirt',
+      episodeTitle: 'Purple Giraffe',
+      episodeDesc: 'loremipsum',
+      image: 'ep 00 -how to go show.svg',
+      contentArray: {
+        7: {
+          contentType: 'Episode 7: Pilot',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        8: {
+          contentType: 'Episode 8: Some Text',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          imageUrl: 'https://www.gstatic.com/webp/gallery/4.sm.jpg'
+        },
+        9: {
+          contentType: 'Episode 9: This text',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          audioUrl: 'https://www.html5tutorial.info/media/vincent.mp3'
+        }
+      },
+    },
+    4: {
+      episodeTitle: 'Purple Giraffe',
       episodeDesc: 'loremipsum',
       image: 'ep 00 -how to go show.svg',
       contentArray: {
         10: {
-          contentType: 'snack',
+          contentType: 'Episode 10: Pilot',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',
           videoId: 'HaWjwKhLu2g',
         },
         11: {
-          contentType: 'episode',
+          contentType: 'Episode 11: Some Text',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
+          imageUrl: 'https://www.gstatic.com/webp/gallery/4.sm.jpg'
         },
         12: {
-          contentType: 'snack',
+          contentType: 'Episode 12: This text',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
           iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-        13: {
-          contentType: 'episode',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-        14: {
-          contentType: 'episode',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-      }
-    },
-    4: {
-      episodeTitle: 'Return of the Shirt',
-      episodeDesc: 'loremipsum',
-      image: 'ep 00 -how to go show.svg',
-      contentArray: {
-        15: {
-          contentType: 'snack',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-        16: {
-          contentType: 'episode',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-        17: {
-          contentType: 'snack',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-        18: {
-          contentType: 'episode',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-        19: {
-          contentType: 'episode',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-      }
-    },
-    5: {
-      episodeTitle: 'Return of the Shirt',
-      episodeDesc: 'loremipsum',
-      image: 'ep 00 -how to go show.svg',
-      contentArray: {
-        20: {
-          contentType: 'snack',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-        21: {
-          contentType: 'episode',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-        22: {
-          contentType: 'snack',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-        23: {
-          contentType: 'episode',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-        24: {
-          contentType: 'episode',
-          contentDesc: 'helloWorld',
-          mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
-          videoId: 'HaWjwKhLu2g',
-        },
-      }
+          audioUrl: 'https://www.html5tutorial.info/media/vincent.mp3'
+        }
+      },
     }
   } as unknown as JSON;
 

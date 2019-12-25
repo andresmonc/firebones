@@ -73,11 +73,10 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
     const currentTime = new Date();
 
     // Checks to see if it is time to check again for a db call to get new packet
-    if ((this.contentWatched === 'TRUE' && (currentTime.getTime() > this.timeStamp.getTime()))) {
+    if (this.contentWatched === 'TRUE' ) {
       this.ddb.getUserContent().then(data => {
         console.log('this is the resolved contentCount!!!', data);
         console.log('getUserObject function execution done!');
-        this.ddb.setLocalStorageContentWatchedFalse();
         this.contentCount = data;
         this.timelineEpisodeCount = this.getTimelineEpisodeCount();
         this.loadingScreenService.stopLoading();

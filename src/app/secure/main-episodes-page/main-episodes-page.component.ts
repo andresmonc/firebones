@@ -28,12 +28,11 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
     // this.loadingScreenService.startLoading();
     const currentTime = new Date();
 
-    if (this.contentWatched === 'TRUE' && (currentTime.getTime() > this.timeStamp.getTime())) {
+    if (this.contentWatched === 'TRUE') {
       this.ddb.getUserContent().then((data => {
         console.log('this is the resolved contentCount!!!', data);
         console.log('getUserObject function execution done!');
         this.contentCount = data;
-        this.ddb.setLocalStorageContentWatchedFalse();
         this.currentEpisode = this.getEpisodes();
         // this.loadingScreenService.stopLoading();
       }));

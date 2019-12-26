@@ -45,6 +45,8 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
     private youtubeService: YoutubeService,
   ) {
     console.log('in Episode Page');
+    this.route.params.subscribe( params => console.log("This is the params entered to get in this component",) );
+
     /*
     *  This is where we decide what we want to do if the video the user played has ended,
     *  First we check if the user's content is in the current packet AND the globalcontent watch flag is true,
@@ -68,6 +70,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   isEven(num) { return !(num % 2); }
 
   ngOnInit() {
+    console.log("were on regular epsidoes PAGE");
     this.timelineEpisodeCount = this.getTimelineEpisodeCount();
     const currentTime = new Date();
 
@@ -81,7 +84,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
         this.contentCount = data;
         this.timelineEpisodeCount = this.getTimelineEpisodeCount();
         const currentEpisode = this.episodeDetailsService.getEpisodeIdFromContentCount(this.contentCount);
-        this.router.navigate(['/securehome/episode-page/', currentEpisode]);
+        this.router.navigate(['/securehome']);
         this.loadingScreenService.stopLoading();
         this.openDialog('', 'You have new content!', 'Close');
       });

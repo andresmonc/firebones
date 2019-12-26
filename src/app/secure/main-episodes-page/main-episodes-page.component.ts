@@ -1,12 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { EpisodeDetailsService } from '../../service/episode-details.service';
 import { DynamoDBService } from '../../service/ddb.service';
 import { LoadingScreenService } from '../../service/loading-screen/loading-screen.service';
 import { Router} from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { GlobalMessageModalComponent } from '../../global-message-modal/global-message-modal.component';
-
-
 
 @Component({
   selector: 'app-main-episodes-page',
@@ -19,12 +17,13 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
   public episodesObj = this.episodeDetailsService.getEpisodes();
   public contentCount = this.ddb.getLocalStorageContentCount();
   public currentEpisode = this.getEpisodes();
-  public contentWatched = this.ddb.getLocalStorageContentWatched();
+  public contentWatched;
   public timeStamp = new Date(this.ddb.getLocalStorageTimeStamp());
   public contentCountForBadge;
   public prevContentCountForBadge;
 
   constructor(
+    private ngZone: NgZone,
     private router: Router,
     public episodeDetailsService: EpisodeDetailsService,
     public ddb: DynamoDBService,
@@ -33,11 +32,13 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    console.log("were on main episodes page")
     this.contentCountForBadge = this.ddb.getLocalStorageContentCount();
     this.prevContentCountForBadge = this.ddb.getLocalStoragePrevContentCount();
+    this.contentWatched = this.ddb.getLocalStorageContentWatched();
     const currentTime = new Date();
-    // if (this.contentWatched === 'TRUE' && (currentTime.getTime() > this.timeStamp.getTime())) {
-    if (this.contentWatched === 'TRUE') {
+    if (this.contentWatched === 'TRUE' && (currentTime.getTime() > this.timeStamp.getTime())) {
+    // if (this.contentWatched === 'TRUE') {
       this.loadingScreenService.startLoading();
       this.ddb.getUserContent().then((data => {
         console.log('this is the resolved contentCount!!!', data);
@@ -46,7 +47,8 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
         this.currentEpisode = this.getEpisodes();
         this.contentCountForBadge = this.ddb.getLocalStorageContentCount();
         this.prevContentCountForBadge = this.ddb.getLocalStoragePrevContentCount();
-        this.router.navigate(['/securehome/episode-page/', this.currentEpisode]);
+        this.contentWatched = 'FALSE';
+        this.router.navigate(['/securehome']);
         this.loadingScreenService.stopLoading();
         this.openDialog('', 'You have new content!', 'Close');
       }));
@@ -55,6 +57,7 @@ export class MainEpisodesPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.loadingScreenService.stopLoading();
     this.contentCount = null;
     console.log('weve destroyed content count');
   }

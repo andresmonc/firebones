@@ -11,21 +11,21 @@ form {
 
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    height: 100%;
+    /* height: 100%; */
 }
 
 .form-signin input[type="password"] {
 
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    height: 100%;
+    /* height: 100%; */
 }
 
 .form-signin input[type="email"] {
 
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    height: 100% !important;
+    /* height: 100% !important; */
 }
 
 ::ng-deep .mat-focused .mat-form-field-label {

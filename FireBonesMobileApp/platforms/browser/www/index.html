@@ -1,49 +1,74 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
+<!doctype html>
 <html>
-    <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <title>Fire Bones</title>
+    <base href=".">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="assets/css/sb-admin-2.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/login-form.css">
+    <script src="https://kit.fontawesome.com/7229b70378.js"></script>
+
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gentium+Basic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin&display=swap" rel="stylesheet">
+
+
+
+    <!-- Metadata -->
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, viewport-fit=cover">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/Icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/Icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/Icons/favicon-16x16.png">
+    <link rel="mask-icon" href="/assets/Icons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="/manifest.webmanifest">
+<link rel="stylesheet" href="styles.590db1b6041ac80966a6.css"></head>
+
+<body>
+
+    <!-- Scripts -->
+    <script src="assets/ui-js/jquery.min.js"></script>
+    <script src="assets/ui-js/bootstrap.min.js"></script>
+    <!-- /Scripts -->
+    <!-- Cordova/Angular Back Button Monkey Patch -->
+    <script>
+        window.addEventListener = function () {
+          (window.EventTarget || Window).prototype.addEventListener.apply(this, arguments);
+        };
+        window.removeEventListener = function () {
+          (window.EventTarget || Window).prototype.removeEventListener.apply(this, arguments);
+        };
+        document.addEventListener = function () {
+          (window.EventTarget || Document).prototype.addEventListener.apply(this, arguments);
+        };
+        document.removeEventListener = function () {
+          (window.EventTarget || Document).prototype.removeEventListener.apply(this, arguments);
+        };
+      </script>
+    <!-- Cordova -->
+
+    <!-- /Cordova -->
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="assets/ui-js/metisMenu.min.js"></script>
+    <script src="assets/ui-js/sb-admin-2.min.js"></script>
+    <!-- /Metis Menu Plugin JavaScript -->
+
+    <app-root>
+    </app-root>
+
+    <noscript>Please enable JavaScript to continue using this application.</noscript>
+    <script type="text/javascript" src="cordova.js"></script>
+
+<script src="runtime.465c2333d355155ec5f3.js"></script><script src="polyfills-es5.2b9dfcccc1df08caecfc.js" nomodule></script><script src="polyfills.e580371516ff2d7070f9.js"></script><script src="main.b6de91b81e31f92ea60e.js"></script></body>
 </html>

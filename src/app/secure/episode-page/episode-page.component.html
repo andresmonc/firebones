@@ -43,8 +43,8 @@
     </div>
 
     <div id="id03" class="w3-modal episodeVidModal">
-        <div class="w3-animate-zoom episodeDivAudio">
-            <audio (ended)="audioEnded()" class="audio-tag" controls>
+        <div class="fadeIn animated episodeDivAudio">
+            <audio autoplay controls (ended)="audioEnded()" class="audio-tag">
                 <source src="" type="audio/ogg">
                 Your browser does not support the audio element.
             </audio>

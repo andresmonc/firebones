@@ -40,7 +40,7 @@ export class YoutubePlayerComponent implements OnInit, AfterViewInit, OnDestroy 
           },
           onStateChange: (event) => { this.onPlayerStateChange(event); }
         },
-        playerVars: {autoplay: 1, controls: 1, modestbranding: 1, rel: 0, showInfo: 0}
+        playerVars: {autoplay: 0, controls: 1, modestbranding: 1, rel: 0, showInfo: 0}
       });
     };
   }

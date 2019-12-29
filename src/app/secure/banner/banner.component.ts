@@ -23,9 +23,8 @@ export class BannerComponent implements OnInit {
   styleNav() {
     if (this.document.body.clientWidth < 399) {
       this.bringTextCloser = true;
-      this.document.getElementById('navbar').style.padding = '0px 10px';
       this.document.getElementById('navbar').style.height = '115px';
-      this.document.getElementById('navbar').style.top = '-2%';
+      this.document.getElementById('navbar').style.top = '0%';
       this.document.getElementById('navbar').style.backgroundColor = 'black';
       this.document.getElementById('navbar').style.color = '#f9dfbe';
       this.document.getElementById('logo').style.height = 'auto';

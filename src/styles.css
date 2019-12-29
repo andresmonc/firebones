@@ -7,6 +7,10 @@ body, html {
     background-color: white;
     background-size: cover;
     margin: 0;
+    height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling : touch !important;
+	overflow: auto !important;
 }
 
 main {

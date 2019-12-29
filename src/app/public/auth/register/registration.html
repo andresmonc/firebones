@@ -8,7 +8,7 @@
         <mat-form-field hideRequiredMarker>
             <mat-placeholder style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;font-size: 18px;">Name</mat-placeholder>
             <input matInput id="signupName" required type="text" maxlength="50" [(ngModel)]="registrationUser.name"
-            style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;"
+            style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif; font-size: 18px;"
                 [ngModelOptions]="{standalone: true}">
         </mat-form-field>
     </div>
@@ -18,7 +18,7 @@
         <mat-form-field hideRequiredMarker>
             <mat-placeholder style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;font-size: 18px;">Email</mat-placeholder>
             <input matInput id="signupEmail" required type="email" maxlength="50" [(ngModel)]="registrationUser.email"
-            style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;"
+            style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif; font-size: 18px;"
                 [ngModelOptions]="{standalone: true}">
         </mat-form-field>
     </div>
@@ -27,7 +27,7 @@
         <mat-form-field hideRequiredMarker>
             <mat-placeholder style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;font-size: 18px;">Password</mat-placeholder>
             <input matInput id="signupPassword" [type]="hide ? 'password' : 'text'" maxlength="40" [(ngModel)]="registrationUser.password"
-            style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;"
+            style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif; font-size: 18px;"
                 [ngModelOptions]="{standalone: true}">
             <button mat-icon-button matSuffix (click)="hide = !hide">
                 <mat-icon style="height: 1.4em;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -40,7 +40,7 @@
             <mat-placeholder style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;font-size: 18px;">Phone
                 Number</mat-placeholder>
             <input matInput id="signupPhone" required type="tel" maxlength="10" [(ngModel)]="registrationUser.phone_number"
-            style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;"
+            style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif; font-size: 18px;"
                 [ngModelOptions]="{standalone: true}">
         </mat-form-field>
     </div>

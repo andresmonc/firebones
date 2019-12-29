@@ -13,7 +13,7 @@
             <p><i class="paddingRight fas fa-phone-alt"></i>Phone Number:
                 <mat-form-field class="edit-field">
                     <span style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;" matPrefix>+1 &nbsp;</span>
-                    <input [readonly]="!editMode" maxlength="10" type="tel" style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;"
+                    <input [readonly]="!editMode" maxlength="10" type="tel" style="color: #4e4e4e !important; height: 20px; font-family: 'Gentium Basic', serif;"
                         type="tel" [(ngModel)]="phoneInput" matInput>
                     <mat-icon style="font-size:140%;" (click)="editMode=true; phoneInput=''" *ngIf="!editMode"
                         matSuffix>mode_edit</mat-icon>

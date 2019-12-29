@@ -29,6 +29,7 @@ export class YoutubePlayerComponent implements OnInit, AfterViewInit, OnDestroy 
       this.loadingScreenService.startLoading();
       (window as any).onYouTubeIframeAPIReady = () => {
       console.log('Youtube Initalized');
+      this.loadingScreenService.stopLoading();
       this.player = new (window as any).YT.Player('player', {
         height: '100%',
         width: '100%',

@@ -10,17 +10,32 @@
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
+    <access origin="https://*.youtube-nocookie.com" />
+    <access origin="https://*.youtube.com" />
+    <access origin="https://*.ytimg.com" />
+    <access origin="https://*.gstatic.com" />
+    <access origin="https://*.googlevideo.com" />
+    <access origin="https://*.google.com" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-intent href="https://www.youtube.com/" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <preference name="BackupWebStorage" value="local"/>
+        <preference name="Fullscreen" value="true"/>
+        <preference name="Orientation" value="portrait"/>
+        <preference name="AllowInlineMediaPlayback" value="true" />
+        <preference name="MediaPlaybackRequiresUserAction" value="false" />   
+        <allow-navigation href="*youtube*" />
+        <allow-navigation href="*ytimg*" />
+        <allow-navigation href="*youtube-nocookie*" />
     </platform>
 </widget>

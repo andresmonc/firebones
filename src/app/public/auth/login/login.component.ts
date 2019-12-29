@@ -44,6 +44,13 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
         this.changeDetect.detectChanges();
     }
 
+    keyDownFunction(event) {
+        if (event.keyCode === 13) {
+            this.onLogin();
+          // rest of your code
+        }
+      }
+
     openDialog(headerText: string, text: string, buttonText: string) {
         const dialogConfig = new MatDialogConfig();
 

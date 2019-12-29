@@ -45,7 +45,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
     private youtubeService: YoutubeService,
   ) {
     console.log('in Episode Page');
-    this.route.params.subscribe( params => console.log("This is the params entered to get in this component",) );
+    this.route.params.subscribe( params => console.log('This is the params entered to get in this component', ) );
 
     /*
     *  This is where we decide what we want to do if the video the user played has ended,
@@ -70,8 +70,9 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
   isEven(num) { return !(num % 2); }
 
   ngOnInit() {
-    console.log("were on regular epsidoes PAGE");
+    console.log('were on regular epsidoes PAGE');
     this.timelineEpisodeCount = this.getTimelineEpisodeCount();
+    console.log('This is the timeEpisodeCount were working with', this.timelineEpisodeCount);
     const currentTime = new Date();
 
     // Checks to see if it is time to check again for a db call to get new packet
@@ -150,18 +151,25 @@ export class EpisodePageComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
   getTimelineEpisodeCount() {
-    let timelineCount = 0;
-    const lastKeyCount = Object.keys(this.episodeContent).length;
+    // let timelineCount = 0;
+    // const lastKeyCount = Object.keys(this.episodeContent).length;
 
-    // tslint:disable-next-line:forin
-    for (const key in this.episodeContent) {
-      timelineCount++;
-      if (key === this.contentCount) {
-        return timelineCount;
-      }
+    // console.log("lastKeyCount", lastKeyCount);
+    // console.log("this.contentCount", this.contentCount);
+
+    // // tslint:disable-next-line:forin
+    // for (const key in this.episodeContent) {
+    //   timelineCount++;
+    //   if (key === this.contentCount) {
+    //     return timelineCount;
+    //   }
+    // }
+    // return lastKeyCount;
+    if (['24', '34'].includes(this.contentCount)) {
+      return 4;
+    } else {
+      return 3;
     }
-    console.log('last key count', lastKeyCount);
-    return lastKeyCount;
   }
 
   openDialog(headerText: string, text: string, buttonText: string) {

@@ -20,6 +20,8 @@
   z-index: 1001;
   text-align: center;
   clip-path: polygon(0 0, 100% 0, 100% 95%, 90% 89%, 59% 100%, 35% 91%, 15% 96%, 0 88%); 
+  padding-top: calc(cosntant(safe-area-inset-top) - 37px);
+  padding-top: calc(env(safe-area-inset-top) - 37px);
 }
 
 #navbar a {
@@ -110,7 +112,7 @@
 
 @media only screen and (max-width: 399px) {
   #navbar a {
-    font-size: 28px;
+    font-size: 31px;
   }
   #logo {
     width: 120px;

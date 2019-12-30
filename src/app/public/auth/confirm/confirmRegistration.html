@@ -4,7 +4,7 @@
     </div>
     <div class="form-group">
         <label class="confirmationCodeText control-label" for="confirmationCode">Enter Confirmation Code</label>
-        <input id="confirmationCode" type="tel" maxlength="6" class="codeBox form-control" [(ngModel)]="confirmationCode"
+        <input id="confirmationCode" type="tel" style="font-size: 18px" maxlength="6" class="codeBox form-control" [(ngModel)]="confirmationCode"
             [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group">
@@ -13,9 +13,7 @@
         </button>
     </div>
     <div class="pushDown">
-        <p> <a [routerLink]="['/home/resendCode']">Resend Code</a>
-            <!-- <a [routerLink]="['/home/register']"> Register</a> -->
-            <a [routerLink]="['/home/login']" style="margin-left: 45px;"> Already have an account?</a>
-        </p>
+        <a [routerLink]="['/home/resendCode']">Resend Code</a>
+        <a [routerLink]="['/home/login']" style="float: right;"> Already have an account?</a>
     </div>
 </form>

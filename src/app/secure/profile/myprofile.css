@@ -95,6 +95,10 @@ label {
     background-color: #332f2f !important;
 }
 
+::ng-deep.mat-form-field-infix{
+    padding-bottom:4px !important;
+}
+
 
 input[type=tel] {
     width: 100px;

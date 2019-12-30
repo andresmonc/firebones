@@ -45,12 +45,13 @@ a {
 }
 
 .logoutButton {
-    position: fixed;
-    margin-top: 34px;
-    left: 39%;
+    display: inline-block;
+    width: 100%;
     bottom: 12%;
     font-size: 25px;
+    position: absolute;
     font-family: 'Gentium Basic', serif;
+    text-align: center;
 }
 
 label {

@@ -69,5 +69,6 @@
         <icon src="res/ios/Icon-App-100x100@1x.png" width="100" height="100" />
         <!-- iPad Pro -->
         <icon src="res/ios/Icon-App-83.5x83.5@2x.png" width="167" height="167" />
+        <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
     </platform>
 </widget>

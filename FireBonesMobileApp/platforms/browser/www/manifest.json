@@ -1,8 +1,8 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "FireBonesMobileApp",
-  "short_name": "FireBonesMobileApp",
+  "name": "Fire Bones",
+  "short_name": "Fire Bones",
   "version": "com.firebones.app",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "author": "Apache Cordova Team",

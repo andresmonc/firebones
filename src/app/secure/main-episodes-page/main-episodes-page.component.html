@@ -1,7 +1,7 @@
 <div class="container eipsodes-page">
     <div class="row episode-tiles">
         <div class="col-xs-6 episode-tile" [class.disable]="key>currentEpisode" *ngFor="let key of objectKeys(episodesObj)">
-            <img src='/assets/img/episodes/{{episodesObj[key].image}}' [routerLink]="['/securehome/episode-page',key]">
+            <img src='assets/img/episodes/{{episodesObj[key].image}}' [routerLink]="['/securehome/episode-page',key]">
             <p>
                 <span>Episode {{key}}:</span>
             </p>

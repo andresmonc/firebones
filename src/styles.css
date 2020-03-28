@@ -9,8 +9,6 @@ body, html {
     margin: 0;
     height: 100vh;
     overflow-y: auto;
-    -webkit-overflow-scrolling : touch !important;
-	overflow: auto !important;
 }
 
 main {

@@ -26,11 +26,11 @@
     <div class="form-group">
         <mat-form-field hideRequiredMarker>
             <mat-placeholder style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif;font-size: 18px;">Password</mat-placeholder>
-            <input matInput id="signupPassword" [type]="hide ? 'password' : 'text'" maxlength="40" [(ngModel)]="registrationUser.password"
+            <input matInput id="signupPassword" [type]="hide ? 'text' : 'password'" maxlength="40" [(ngModel)]="registrationUser.password"
             style="color: #4e4e4e !important; font-family: 'Gentium Basic', serif; font-size: 18px;"
                 [ngModelOptions]="{standalone: true}">
             <button mat-icon-button matSuffix (click)="hide = !hide">
-                <mat-icon style="height: 1.4em;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-icon style="height: 1.4em;">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
             </button>
         </mat-form-field>
     </div>

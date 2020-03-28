@@ -34,6 +34,7 @@ export class BannerComponent implements OnInit {
       this.document.getElementsByClassName('');
     } else if (this.document.body.clientWidth < 900 && this.document.body.clientWidth > 400) {
       this.bringTextCloser = true;
+      this.document.getElementById('navbar').style.padding = '0px 30px';
       this.document.getElementById('navbar').style.height = '135px';
       this.document.getElementById('navbar').style.top = '-3%';
       this.document.getElementById('navbar').style.backgroundColor = 'black';

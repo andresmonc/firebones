@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.firebones.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.firebones.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Fire Bones</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -15,6 +15,7 @@
     <access origin="https://*.gstatic.com" />
     <access origin="https://*.googlevideo.com" />
     <access origin="https://*.google.com" />
+    <access origin="https://firebones.org/" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -22,4 +23,5 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-intent href="https://www.youtube.com/" />
+    <allow-intent href="https://firebones.org/" />
 </widget>

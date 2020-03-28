@@ -7,7 +7,7 @@ export class EpisodeDetailsService {
   private episodesDetails: JSON = {
     1: {
       episodeTitle: 'Pilot',
-      episodeDesc: 'loremipsum',
+      episodeDesc: 'How to go show',
       image: 'ep 00 -how to go show.svg',
       contentArray: {
         1: {
@@ -21,14 +21,14 @@ export class EpisodeDetailsService {
           contentType: 'Episode 2: Some Text',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          iconUrl: 'snack 02 -eyes undeniable.svg',
           imageUrl: 'https://www.gstatic.com/webp/gallery/4.sm.jpg'
         },
         3: {
           contentType: 'Episode 3: This text',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
-          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          iconUrl: 'snack 03 -95 song.svg',
           audioUrl: 'https://www.html5tutorial.info/media/vincent.mp3'
         }
       }
@@ -36,7 +36,7 @@ export class EpisodeDetailsService {
     2: {
       episodeTitle: 'Blue Giraffe',
       episodeDesc: 'loremipsum',
-      image: 'ep 00 -how to go show.svg',
+      image: 'ep 01 -introducing greg and bart.svg',
       contentArray: {
         4: {
           contentType: 'Episode 4: Pilot',
@@ -64,7 +64,7 @@ export class EpisodeDetailsService {
     3: {
       episodeTitle: 'Red Giraffe',
       episodeDesc: 'loremipsum',
-      image: 'ep 00 -how to go show.svg',
+      image: 'ep 02 -the beekeeper spaceman.svg',
       contentArray: {
         7: {
           contentType: 'Episode 7: Pilot',
@@ -92,7 +92,7 @@ export class EpisodeDetailsService {
     4: {
       episodeTitle: 'Green Giraffe',
       episodeDesc: 'loremipsum',
-      image: 'ep 00 -how to go show.svg',
+      image: 'ep 03 -welcome to planet swan.svg',
       contentArray: {
         10: {
           contentType: 'Episode 10: Pilot',
@@ -109,6 +109,118 @@ export class EpisodeDetailsService {
           imageUrl: 'https://www.gstatic.com/webp/gallery/4.sm.jpg'
         },
         12: {
+          contentType: 'Episode 12: This text',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          audioUrl: 'https://www.html5tutorial.info/media/vincent.mp3'
+        }
+      },
+    },
+    5: {
+      episodeTitle: 'Green Giraffe',
+      episodeDesc: 'loremipsum',
+      image: 'ep 04 - razorback in time.svg',
+      contentArray: {
+        13: {
+          contentType: 'Episode 10: Pilot',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        14: {
+          contentType: 'Episode 11: Some Text',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          imageUrl: 'https://www.gstatic.com/webp/gallery/4.sm.jpg'
+        },
+        15: {
+          contentType: 'Episode 12: This text',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          audioUrl: 'https://www.html5tutorial.info/media/vincent.mp3'
+        }
+      },
+    },
+    6: {
+      episodeTitle: 'Green Giraffe',
+      episodeDesc: 'loremipsum',
+      image: 'ep 05 -jumon_s desire.svg',
+      contentArray: {
+        14: {
+          contentType: 'Episode 10: Pilot',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        15: {
+          contentType: 'Episode 11: Some Text',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          imageUrl: 'https://www.gstatic.com/webp/gallery/4.sm.jpg'
+        },
+        16: {
+          contentType: 'Episode 12: This text',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          audioUrl: 'https://www.html5tutorial.info/media/vincent.mp3'
+        }
+      },
+    },
+    7: {
+      episodeTitle: 'Green Giraffe',
+      episodeDesc: 'loremipsum',
+      image: 'ep 06 -halloween honey.svg',
+      contentArray: {
+        15: {
+          contentType: 'Episode 10: Pilot',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        16: {
+          contentType: 'Episode 11: Some Text',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          imageUrl: 'https://www.gstatic.com/webp/gallery/4.sm.jpg'
+        },
+        17: {
+          contentType: 'Episode 12: This text',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          audioUrl: 'https://www.html5tutorial.info/media/vincent.mp3'
+        }
+      },
+    },
+    8: {
+      episodeTitle: 'Green Giraffe',
+      episodeDesc: 'loremipsum',
+      image: 'ep 07 -a girl named nobody.svg',
+      contentArray: {
+        18: {
+          contentType: 'Episode 10: Pilot',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          videoId: 'HaWjwKhLu2g',
+        },
+        19: {
+          contentType: 'Episode 11: Some Text',
+          contentDesc: 'helloWorld',
+          mediaType: 'audio',
+          iconUrl: 'snack 01 -sportscaster disaster.svg',
+          imageUrl: 'https://www.gstatic.com/webp/gallery/4.sm.jpg'
+        },
+        20: {
           contentType: 'Episode 12: This text',
           contentDesc: 'helloWorld',
           mediaType: 'audio',
